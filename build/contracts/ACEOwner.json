@@ -1,0 +1,2885 @@
+{
+  "contractName": "ACEOwner",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "_owners",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_required",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_secondsTimeLocked",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Confirmation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "confirmationTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "ConfirmationTimeSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Execution",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ExecutionFailure",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnerAddition",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnerRemoval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "required",
+          "type": "uint256"
+        }
+      ],
+      "name": "RequirementChange",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Revocation",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Submission",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "secondsTimeLocked",
+          "type": "uint256"
+        }
+      ],
+      "name": "TimeLockChange",
+      "type": "event"
+    },
+    {
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "fallback"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "MAX_OWNER_COUNT",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "addOwner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_required",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeRequirement",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_secondsTimeLocked",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeTimeLock",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "confirmTransaction",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "confirmationTimes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "confirmations",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "executeTransaction",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getConfirmationCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getConfirmations",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "_confirmations",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getOwners",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "pending",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "executed",
+          "type": "bool"
+        }
+      ],
+      "name": "getTransactionCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "from",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "to",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "pending",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "executed",
+          "type": "bool"
+        }
+      ],
+      "name": "getTransactionIds",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "_transactionIds",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "isConfirmed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "owners",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "removeOwner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "replaceOwner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "required",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "revokeConfirmation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "secondsTimeLocked",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "destination",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "submitTransaction",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "transactionCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "transactions",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "destination",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "executed",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "transactionId",
+          "type": "uint256"
+        }
+      ],
+      "name": "emergencyExecuteInvalidateProof",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_owners\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"_required\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_secondsTimeLocked\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"Confirmation\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"confirmationTime\",\"type\":\"uint256\"}],\"name\":\"ConfirmationTimeSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"Execution\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"ExecutionFailure\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnerAddition\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnerRemoval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"required\",\"type\":\"uint256\"}],\"name\":\"RequirementChange\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"Revocation\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"Submission\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"secondsTimeLocked\",\"type\":\"uint256\"}],\"name\":\"TimeLockChange\",\"type\":\"event\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"},{\"constant\":true,\"inputs\":[],\"name\":\"MAX_OWNER_COUNT\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"addOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_required\",\"type\":\"uint256\"}],\"name\":\"changeRequirement\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_secondsTimeLocked\",\"type\":\"uint256\"}],\"name\":\"changeTimeLock\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"confirmTransaction\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"confirmationTimes\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"confirmations\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"emergencyExecuteInvalidateProof\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"executeTransaction\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"getConfirmationCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"getConfirmations\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"_confirmations\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getOwners\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"bool\",\"name\":\"pending\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"}],\"name\":\"getTransactionCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"from\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"to\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"pending\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"}],\"name\":\"getTransactionIds\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"_transactionIds\",\"type\":\"uint256[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"isConfirmed\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"owners\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"removeOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"replaceOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"required\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"name\":\"revokeConfirmation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"secondsTimeLocked\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"destination\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"submitTransaction\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"transactionId\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"transactionCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"transactions\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"destination\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"/  * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{\"addOwner(address)\":{\"details\":\"Allows to add a new owner. Transaction has to be sent by wallet.\",\"params\":{\"owner\":\"Address of new owner.\"}},\"changeRequirement(uint256)\":{\"details\":\"Allows to change the number of required confirmations. Transaction has to be sent by wallet.\",\"params\":{\"_required\":\"Number of required confirmations.\"}},\"changeTimeLock(uint256)\":{\"details\":\"Changes the duration of the time lock for transactions.\",\"params\":{\"_secondsTimeLocked\":\"Duration needed after a transaction is confirmed and  before it becomes executable, in seconds.\"}},\"confirmTransaction(uint256)\":{\"details\":\"Allows an owner to confirm a transaction.\",\"params\":{\"transactionId\":\"Transaction ID.\"}},\"executeTransaction(uint256)\":{\"details\":\"Allows anyone to execute a confirmed transaction.\",\"params\":{\"transactionId\":\"Transaction ID.\"}},\"getConfirmationCount(uint256)\":{\"details\":\"Returns number of confirmations of a transaction.\",\"params\":{\"transactionId\":\"Transaction ID.\"},\"return\":\"Number of confirmations.\"},\"getConfirmations(uint256)\":{\"details\":\"Returns array with owner addresses, which confirmed transaction.\",\"params\":{\"transactionId\":\"Transaction ID.\"},\"return\":\"Returns array of owner addresses.\"},\"getOwners()\":{\"details\":\"Returns list of owners.\",\"return\":\"List of owner addresses.\"},\"getTransactionCount(bool,bool)\":{\"details\":\"Returns total number of transactions after filers are applied.\",\"params\":{\"executed\":\"Include executed transactions.\",\"pending\":\"Include pending transactions.\"},\"return\":\"Total number of transactions after filters are applied.\"},\"getTransactionIds(uint256,uint256,bool,bool)\":{\"details\":\"Returns list of transaction IDs in defined range.\",\"params\":{\"executed\":\"Include executed transactions.\",\"from\":\"Index start position of transaction array.\",\"pending\":\"Include pending transactions.\",\"to\":\"Index end position of transaction array.\"},\"return\":\"Returns array of transaction IDs.\"},\"isConfirmed(uint256)\":{\"details\":\"Returns the confirmation status of a transaction.\",\"params\":{\"transactionId\":\"Transaction ID.\"},\"return\":\"Confirmation status.\"},\"removeOwner(address)\":{\"details\":\"Allows to remove an owner. Transaction has to be sent by wallet.\",\"params\":{\"owner\":\"Address of owner.\"}},\"replaceOwner(address,address)\":{\"details\":\"Allows to replace an owner with a new owner. Transaction has to be sent by wallet.\",\"params\":{\"newOwner\":\"Address of new owner.\",\"owner\":\"Address of owner to be replaced.\"}},\"revokeConfirmation(uint256)\":{\"details\":\"Allows an owner to revoke a confirmation for a transaction.\",\"params\":{\"transactionId\":\"Transaction ID.\"}},\"submitTransaction(address,uint256,bytes)\":{\"details\":\"Allows an owner to submit and confirm a transaction.\",\"params\":{\"data\":\"Transaction data payload.\",\"destination\":\"Transaction target address.\",\"value\":\"Transaction ether value.\"},\"return\":\"Returns transaction ID.\"}},\"title\":\"The ACE Owner\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/ACEOwner.sol\":\"ACEOwner\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/ACEOwner.sol\":{\"keccak256\":\"0x4b02f71619661bd6adbed8517bf4f0ac4a113c74c48d706e974c9c5c0efe52fc\",\"urls\":[\"bzz-raw://df224aa12c0f5e284440fdac20435f3c24cf80d7a2a3e90f4b9ff56e8e17e1ac\",\"dweb:/ipfs/QmQGGnzD3D4wJmhq6ReXb9bbdqVTckQhq953NhnGFcLxvj\"]},\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/MultiSig/MultiSigWallet.sol\":{\"keccak256\":\"0x78dcdcb1fb66faad65f1abb46d12dc1bd24abeccd277116c9f9f40f0f64948a1\",\"urls\":[\"bzz-raw://6d40cda9ee097efefb9ef0a674fb164914b42519018294b96f2bcb2538021d45\",\"dweb:/ipfs/Qmc2VBRKkBnhd7m4kno1d7pMBYYDesrkWJjRq69LtpDyZx\"]},\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/MultiSig/MultiSigWalletWithTimeLock.sol\":{\"keccak256\":\"0xc0cbfe0e80a6235402af76f1fbc001c720a4ad526eb56365818ec3fcf15b24e2\",\"urls\":[\"bzz-raw://18b281c0bdf3062bd272e1fdad353f8e618a5ac44708dd2f0b63733daedc1669\",\"dweb:/ipfs/QmUWHdVPonHNC29oSyEWvTcV91ode9aSSG1su8huRojhb8\"]},\"openzeppelin-solidity/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x640b6dee7a4b830bdfd52b5031a07fc2b12209f5b2e29e5d364a7d37f69d8076\",\"urls\":[\"bzz-raw://31113152e1ddb78fe7a4197f247591ca894e93f916867beb708d8e747b6cc74f\",\"dweb:/ipfs/QmbZaJyXdpsYGykVhHH9qpVGQg9DGCxE2QufbCUy3daTgq\"]},\"openzeppelin-solidity/contracts/utils/Address.sol\":{\"keccak256\":\"0x1a8e5072509c5ea7365eb1d48030b9be865140c8fb779968da0a459a0e174a11\",\"urls\":[\"bzz-raw://03335b7b07c7c8c8d613cfdd8ec39a0b5ec133ee510bf2fe6cc5a496767bef4b\",\"dweb:/ipfs/Qmebp4nzPja645c9yXSdJkGq96oU3am3LUnG2K3R7XxyKf\"]}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b5060405162001d9638038062001d96833981810160405260608110156200003757600080fd5b81019080805160405193929190846401000000008211156200005857600080fd5b9083019060208201858111156200006e57600080fd5b82518660208202830111640100000000821117156200008c57600080fd5b82525081516020918201928201910280838360005b83811015620000bb578181015183820152602001620000a1565b5050505091909101604090815260208301519201518551929450925084918491508390839083908160328211801590620000f55750818111155b80156200010157508015155b80156200010d57508115155b6200011757600080fd5b60005b8451811015620001e957600260008683815181106200013557fe5b6020908102919091018101516001600160a01b031682528101919091526040016000205460ff1615801562000191575060006001600160a01b03168582815181106200017d57fe5b60200260200101516001600160a01b031614155b6200019b57600080fd5b600160026000878481518110620001ae57fe5b6020908102919091018101516001600160a01b03168252810191909152604001600020805460ff19169115159190911790556001016200011a565b508351620001ff90600390602087019062000215565b5050506004555060065550620002a99350505050565b8280548282559060005260206000209081019282156200026d579160200282015b828111156200026d57825182546001600160a01b0319166001600160a01b0390911617825560209092019160019091019062000236565b506200027b9291506200027f565b5090565b620002a691905b808211156200027b5780546001600160a01b031916815560010162000286565b90565b611add80620002b96000396000f3fe6080604052600436106101665760003560e01c80639ace38c2116100d1578063c01a8c841161008a578063d74f8edd11610064578063d74f8edd146106f5578063dc8452cd1461070a578063e20056e61461071f578063ee22610b1461075a57610166565b8063c01a8c84146105d9578063c642747414610603578063d38f2d82146106cb57610166565b80639ace38c2146103fe578063a0e67e2b146104cb578063a8abe69a14610530578063b5dc40c314610570578063b77bf6001461059a578063ba51a6df146105af57610166565b8063547415251161012357806354741525146102ef57806360669380146103235780637065cb481461034d578063784547a7146103805780637ad28c51146103aa5780638b51d13f146103d457610166565b8063025e7c27146101a5578063173825d9146101eb57806320ea8d861461021e5780632f54bf6e146102485780633411c81c1461028f57806337bd78a0146102c8575b34156101a35760408051348152905133917fe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c919081900360200190a25b005b3480156101b157600080fd5b506101cf600480360360208110156101c857600080fd5b5035610784565b604080516001600160a01b039092168252519081900360200190f35b3480156101f757600080fd5b506101a36004803603602081101561020e57600080fd5b50356001600160a01b03166107ab565b34801561022a57600080fd5b506101a36004803603602081101561024157600080fd5b5035610917565b34801561025457600080fd5b5061027b6004803603602081101561026b57600080fd5b50356001600160a01b03166109cd565b604080519115158252519081900360200190f35b34801561029b57600080fd5b5061027b600480360360408110156102b257600080fd5b50803590602001356001600160a01b03166109e2565b3480156102d457600080fd5b506102dd610a02565b60408051918252519081900360200190f35b3480156102fb57600080fd5b506102dd6004803603604081101561031257600080fd5b508035151590602001351515610a08565b34801561032f57600080fd5b506101a36004803603602081101561034657600080fd5b5035610a74565b34801561035957600080fd5b506101a36004803603602081101561037057600080fd5b50356001600160a01b0316610cdc565b34801561038c57600080fd5b5061027b600480360360208110156103a357600080fd5b5035610df0565b3480156103b657600080fd5b506101a3600480360360208110156103cd57600080fd5b5035610e77565b3480156103e057600080fd5b506102dd600480360360208110156103f757600080fd5b5035610ebe565b34801561040a57600080fd5b506104286004803603602081101561042157600080fd5b5035610f2d565b60405180856001600160a01b03166001600160a01b031681526020018481526020018060200183151515158152602001828103825284818151815260200191508051906020019080838360005b8381101561048d578181015183820152602001610475565b50505050905090810190601f1680156104ba5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b3480156104d757600080fd5b506104e0610feb565b60408051602080825283518183015283519192839290830191858101910280838360005b8381101561051c578181015183820152602001610504565b505050509050019250505060405180910390f35b34801561053c57600080fd5b506104e06004803603608081101561055357600080fd5b50803590602081013590604081013515159060600135151561104e565b34801561057c57600080fd5b506104e06004803603602081101561059357600080fd5b5035611179565b3480156105a657600080fd5b506102dd6112f0565b3480156105bb57600080fd5b506101a3600480360360208110156105d257600080fd5b50356112f6565b3480156105e557600080fd5b506101a3600480360360208110156105fc57600080fd5b5035611373565b34801561060f57600080fd5b506102dd6004803603606081101561062657600080fd5b6001600160a01b038235169160208101359181019060608101604082013564010000000081111561065657600080fd5b82018360208201111561066857600080fd5b8035906020019184600183028401116401000000008311171561068a57600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955061149b945050505050565b3480156106d757600080fd5b506102dd600480360360208110156106ee57600080fd5b50356114ba565b34801561070157600080fd5b506102dd6114cc565b34801561071657600080fd5b506102dd6114d1565b34801561072b57600080fd5b506101a36004803603604081101561074257600080fd5b506001600160a01b03813581169160200135166114d7565b34801561076657600080fd5b506101a36004803603602081101561077d57600080fd5b5035611669565b6003818154811061079157fe5b6000918252602090912001546001600160a01b0316905081565b3330146107b757600080fd5b6001600160a01b038116600090815260026020526040902054819060ff166107de57600080fd5b6001600160a01b0382166000908152600260205260408120805460ff191690555b600354600019018110156108b257826001600160a01b03166003828154811061082457fe5b6000918252602090912001546001600160a01b031614156108aa5760038054600019810190811061085157fe5b600091825260209091200154600380546001600160a01b03909216918390811061087757fe5b9060005260206000200160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506108b2565b6001016107ff565b506003805460001901906108c690826119e7565b5060035460045411156108df576003546108df906112f6565b6040516001600160a01b038316907f8001553a916ef2f495d26a907cc54d96ed840d7bda71e73194bf5a9df7a76b9090600090a25050565b3360008181526002602052604090205460ff1661093357600080fd5b60008281526001602090815260408083203380855292529091205483919060ff1661095d57600080fd5b600084815260208190526040902060030154849060ff161561097e57600080fd5b6000858152600160209081526040808320338085529252808320805460ff191690555187927ff6a317157440607f36269043eb55f1287a5a19ba2216afeab88cd46cbcfb88e991a35050505050565b60026020526000908152604090205460ff1681565b600160209081526000928352604080842090915290825290205460ff1681565b60065481565b6000805b600554811015610a6d57838015610a35575060008181526020819052604090206003015460ff16155b80610a595750828015610a59575060008181526020819052604090206003015460ff165b15610a65576001820191505b600101610a0c565b5092915050565b600081815260208190526040902060030154819060ff1615610a9557600080fd5b81610a9f81610df0565b610ae9576040805162461bcd60e51b8152602060048201526016602482015275151617d393d517d19553131657d0d3d391925493515160521b604482015290519081900360640190fd5b600083815260208181526040918290206002808201805485516001821615610100026000190190911692909204601f81018590048502830185019095528482529193606093919291830182828015610b825780601f10610b5757610100808354040283529160200191610b82565b820191906000526020600020905b815481529060010190602001808311610b6557829003601f168201915b5050505050905063caaaa5d8602082015160e01c1460008114610ba457610ba9565b600080fd5b5060038201805460ff1916600190811790915582548382015460028086018054604080516020601f600019998516156101000299909901909316949094049687018290048202840182019052858352610c68956001600160a01b03909516949291908390830182828015610c5e5780601f10610c3357610100808354040283529160200191610c5e565b820191906000526020600020905b815481529060010190602001808311610c4157829003601f168201915b5050505050611847565b15610c9d5760405185907f33e13ecb54c3076d8e8bb8c2881800a4d972b792045ffae98fdf46df365fed7590600090a2610cd5565b60405185907f526441bb6c1aba3c9a4a6ca1d6545da9c2333c8c48343ef398eb858d72b7923690600090a260038201805460ff191690555b5050505050565b333014610ce857600080fd5b6001600160a01b038116600090815260026020526040902054819060ff1615610d1057600080fd5b816001600160a01b038116610d2457600080fd5b60038054905060010160045460328211158015610d415750818111155b8015610d4c57508015155b8015610d5757508115155b610d6057600080fd5b6001600160a01b038516600081815260026020526040808220805460ff1916600190811790915560038054918201815583527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0180546001600160a01b03191684179055517ff39e6e1eb0edcf53c221607b54b00cd28f3196fed0a24994dc308b8f611b682d9190a25050505050565b600080805b600354811015610e6f5760008481526001602052604081206003805491929184908110610e1e57fe5b60009182526020808320909101546001600160a01b0316835282019290925260400190205460ff1615610e52576001820191505b600454821415610e6757600192505050610e72565b600101610df5565b50505b919050565b333014610e8357600080fd5b60068190556040805182815290517fd1c9101a34feff75cccef14a28785a0279cb0b49c1f321f21f5f422e746b43779181900360200190a150565b6000805b600354811015610f275760008381526001602052604081206003805491929184908110610eeb57fe5b60009182526020808320909101546001600160a01b0316835282019290925260400190205460ff1615610f1f576001820191505b600101610ec2565b50919050565b6000602081815291815260409081902080546001808301546002808501805487516101009582161595909502600019011691909104601f81018890048802840188019096528583526001600160a01b0390931695909491929190830182828015610fd85780601f10610fad57610100808354040283529160200191610fd8565b820191906000526020600020905b815481529060010190602001808311610fbb57829003601f168201915b5050506003909301549192505060ff1684565b6060600380548060200260200160405190810160405280929190818152602001828054801561104357602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311611025575b505050505090505b90565b60608060055460405190808252806020026020018201604052801561107d578160200160208202803883390190505b5090506000805b6005548110156110fe578580156110ad575060008181526020819052604090206003015460ff16155b806110d157508480156110d1575060008181526020819052604090206003015460ff165b156110f657808383815181106110e357fe5b6020026020010181815250506001820191505b600101611084565b87870360405190808252806020026020018201604052801561112a578160200160208202803883390190505b5093508790505b8681101561116e5782818151811061114557fe5b6020026020010151848983038151811061115b57fe5b6020908102919091010152600101611131565b505050949350505050565b6060806003805490506040519080825280602002602001820160405280156111ab578160200160208202803883390190505b5090506000805b60035481101561126e57600085815260016020526040812060038054919291849081106111db57fe5b60009182526020808320909101546001600160a01b0316835282019290925260400190205460ff1615611266576003818154811061121557fe5b9060005260206000200160009054906101000a90046001600160a01b031683838151811061123f57fe5b60200260200101906001600160a01b031690816001600160a01b0316815250506001820191505b6001016111b2565b81604051908082528060200260200182016040528015611298578160200160208202803883390190505b509350600090505b818110156112e8578281815181106112b457fe5b60200260200101518482815181106112c857fe5b6001600160a01b03909216602092830291909101909101526001016112a0565b505050919050565b60055481565b33301461130257600080fd5b60035481603282118015906113175750818111155b801561132257508015155b801561132d57508115155b61133657600080fd5b60048390556040805184815290517fa3f1ee9126a074d9326c682f561767f710e927faa811f7a99829d49dc421797a9181900360200190a1505050565b3360008181526002602052604090205460ff1661138f57600080fd5b60008281526020819052604090205482906001600160a01b03166113b257600080fd5b60008381526001602090815260408083203380855292529091205484919060ff16156113dd57600080fd5b846113e781610df0565b1561142e576040805162461bcd60e51b8152602060048201526012602482015271151617d19553131657d0d3d391925493515160721b604482015290519081900360640190fd5b6000868152600160208181526040808420338086529252808420805460ff1916909317909255905188927f4a504a94899432a9846e1aa406dceb1bcfd538bb839071d49d1e5e23f5be30ef91a361148486610df0565b1561149357611493864261187f565b505050505050565b60006114a88484846118ca565b90506114b381611373565b9392505050565b60076020526000908152604090205481565b603281565b60045481565b806001600160a01b0381166114eb57600080fd5b3330146114f757600080fd5b6001600160a01b038316600090815260026020526040902054839060ff1661151e57600080fd5b6001600160a01b038316600090815260026020526040902054839060ff161561154657600080fd5b60005b6003548110156115ce57856001600160a01b03166003828154811061156a57fe5b6000918252602090912001546001600160a01b031614156115c657846003828154811061159357fe5b9060005260206000200160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506115ce565b600101611549565b506001600160a01b03808616600081815260026020526040808220805460ff1990811690915593881682528082208054909416600117909355915190917f8001553a916ef2f495d26a907cc54d96ed840d7bda71e73194bf5a9df7a76b9091a26040516001600160a01b038516907ff39e6e1eb0edcf53c221607b54b00cd28f3196fed0a24994dc308b8f611b682d90600090a25050505050565b600081815260208190526040902060030154819060ff161561168a57600080fd5b8161169481610df0565b6116de576040805162461bcd60e51b8152602060048201526016602482015275151617d393d517d19553131657d0d3d391925493515160521b604482015290519081900360640190fd5b60065460008481526007602052604090205484910142101561173e576040805162461bcd60e51b815260206004820152601460248201527354494d455f4c4f434b5f494e434f4d504c45544560601b604482015290519081900360640190fd5b6000848152602081815260409182902060038101805460ff19166001908117909155815481830154600280850180548851601f6000199783161561010002979097019091169290920494850187900487028201870190975283815293956117d6956001600160a01b03909316949193928390830182828015610c5e5780601f10610c3357610100808354040283529160200191610c5e565b1561180b5760405185907f33e13ecb54c3076d8e8bb8c2881800a4d972b792045ffae98fdf46df365fed7590600090a2610cd5565b60405185907f526441bb6c1aba3c9a4a6ca1d6545da9c2333c8c48343ef398eb858d72b7923690600090a2600301805460ff1916905550505050565b600084611853816119ab565b61185c57600080fd5b60006040516020850160008288838b8d6187965a03f19998505050505050505050565b6000828152600760209081526040918290208390558151838152915184927f0b237afe65f1514fd7ea3f923ea4fe792bdd07000a912b6cd1602a8e7f573c8d92908290030190a25050565b6000836001600160a01b0381166118e057600080fd5b600554604080516080810182526001600160a01b038881168252602080830189815283850189815260006060860181905287815280845295909520845181546001600160a01b03191694169390931783555160018301559251805194965091939092611953926002850192910190611a10565b50606091909101516003909101805460ff191691151591909117905560058054600101905560405182907fc0ba8fe4b176c1714197d43b9cc6bcf797a4a7461c5fe8d0ef6e184ae7601e5190600090a2509392505050565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a4708181148015906119df57508115155b949350505050565b815481835581811115611a0b57600083815260209020611a0b918101908301611a8e565b505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10611a5157805160ff1916838001178555611a7e565b82800160010185558215611a7e579182015b82811115611a7e578251825591602001919060010190611a63565b50611a8a929150611a8e565b5090565b61104b91905b80821115611a8a5760008155600101611a9456fea265627a7a723158204ca953dc8b189be31683183580923a3d40ba4ce8776b99ed027b777c1e67e6d564736f6c63430005110032",
+  "deployedBytecode": "0x6080604052600436106101665760003560e01c80639ace38c2116100d1578063c01a8c841161008a578063d74f8edd11610064578063d74f8edd146106f5578063dc8452cd1461070a578063e20056e61461071f578063ee22610b1461075a57610166565b8063c01a8c84146105d9578063c642747414610603578063d38f2d82146106cb57610166565b80639ace38c2146103fe578063a0e67e2b146104cb578063a8abe69a14610530578063b5dc40c314610570578063b77bf6001461059a578063ba51a6df146105af57610166565b8063547415251161012357806354741525146102ef57806360669380146103235780637065cb481461034d578063784547a7146103805780637ad28c51146103aa5780638b51d13f146103d457610166565b8063025e7c27146101a5578063173825d9146101eb57806320ea8d861461021e5780632f54bf6e146102485780633411c81c1461028f57806337bd78a0146102c8575b34156101a35760408051348152905133917fe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c919081900360200190a25b005b3480156101b157600080fd5b506101cf600480360360208110156101c857600080fd5b5035610784565b604080516001600160a01b039092168252519081900360200190f35b3480156101f757600080fd5b506101a36004803603602081101561020e57600080fd5b50356001600160a01b03166107ab565b34801561022a57600080fd5b506101a36004803603602081101561024157600080fd5b5035610917565b34801561025457600080fd5b5061027b6004803603602081101561026b57600080fd5b50356001600160a01b03166109cd565b604080519115158252519081900360200190f35b34801561029b57600080fd5b5061027b600480360360408110156102b257600080fd5b50803590602001356001600160a01b03166109e2565b3480156102d457600080fd5b506102dd610a02565b60408051918252519081900360200190f35b3480156102fb57600080fd5b506102dd6004803603604081101561031257600080fd5b508035151590602001351515610a08565b34801561032f57600080fd5b506101a36004803603602081101561034657600080fd5b5035610a74565b34801561035957600080fd5b506101a36004803603602081101561037057600080fd5b50356001600160a01b0316610cdc565b34801561038c57600080fd5b5061027b600480360360208110156103a357600080fd5b5035610df0565b3480156103b657600080fd5b506101a3600480360360208110156103cd57600080fd5b5035610e77565b3480156103e057600080fd5b506102dd600480360360208110156103f757600080fd5b5035610ebe565b34801561040a57600080fd5b506104286004803603602081101561042157600080fd5b5035610f2d565b60405180856001600160a01b03166001600160a01b031681526020018481526020018060200183151515158152602001828103825284818151815260200191508051906020019080838360005b8381101561048d578181015183820152602001610475565b50505050905090810190601f1680156104ba5780820380516001836020036101000a031916815260200191505b509550505050505060405180910390f35b3480156104d757600080fd5b506104e0610feb565b60408051602080825283518183015283519192839290830191858101910280838360005b8381101561051c578181015183820152602001610504565b505050509050019250505060405180910390f35b34801561053c57600080fd5b506104e06004803603608081101561055357600080fd5b50803590602081013590604081013515159060600135151561104e565b34801561057c57600080fd5b506104e06004803603602081101561059357600080fd5b5035611179565b3480156105a657600080fd5b506102dd6112f0565b3480156105bb57600080fd5b506101a3600480360360208110156105d257600080fd5b50356112f6565b3480156105e557600080fd5b506101a3600480360360208110156105fc57600080fd5b5035611373565b34801561060f57600080fd5b506102dd6004803603606081101561062657600080fd5b6001600160a01b038235169160208101359181019060608101604082013564010000000081111561065657600080fd5b82018360208201111561066857600080fd5b8035906020019184600183028401116401000000008311171561068a57600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955061149b945050505050565b3480156106d757600080fd5b506102dd600480360360208110156106ee57600080fd5b50356114ba565b34801561070157600080fd5b506102dd6114cc565b34801561071657600080fd5b506102dd6114d1565b34801561072b57600080fd5b506101a36004803603604081101561074257600080fd5b506001600160a01b03813581169160200135166114d7565b34801561076657600080fd5b506101a36004803603602081101561077d57600080fd5b5035611669565b6003818154811061079157fe5b6000918252602090912001546001600160a01b0316905081565b3330146107b757600080fd5b6001600160a01b038116600090815260026020526040902054819060ff166107de57600080fd5b6001600160a01b0382166000908152600260205260408120805460ff191690555b600354600019018110156108b257826001600160a01b03166003828154811061082457fe5b6000918252602090912001546001600160a01b031614156108aa5760038054600019810190811061085157fe5b600091825260209091200154600380546001600160a01b03909216918390811061087757fe5b9060005260206000200160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506108b2565b6001016107ff565b506003805460001901906108c690826119e7565b5060035460045411156108df576003546108df906112f6565b6040516001600160a01b038316907f8001553a916ef2f495d26a907cc54d96ed840d7bda71e73194bf5a9df7a76b9090600090a25050565b3360008181526002602052604090205460ff1661093357600080fd5b60008281526001602090815260408083203380855292529091205483919060ff1661095d57600080fd5b600084815260208190526040902060030154849060ff161561097e57600080fd5b6000858152600160209081526040808320338085529252808320805460ff191690555187927ff6a317157440607f36269043eb55f1287a5a19ba2216afeab88cd46cbcfb88e991a35050505050565b60026020526000908152604090205460ff1681565b600160209081526000928352604080842090915290825290205460ff1681565b60065481565b6000805b600554811015610a6d57838015610a35575060008181526020819052604090206003015460ff16155b80610a595750828015610a59575060008181526020819052604090206003015460ff165b15610a65576001820191505b600101610a0c565b5092915050565b600081815260208190526040902060030154819060ff1615610a9557600080fd5b81610a9f81610df0565b610ae9576040805162461bcd60e51b8152602060048201526016602482015275151617d393d517d19553131657d0d3d391925493515160521b604482015290519081900360640190fd5b600083815260208181526040918290206002808201805485516001821615610100026000190190911692909204601f81018590048502830185019095528482529193606093919291830182828015610b825780601f10610b5757610100808354040283529160200191610b82565b820191906000526020600020905b815481529060010190602001808311610b6557829003601f168201915b5050505050905063caaaa5d8602082015160e01c1460008114610ba457610ba9565b600080fd5b5060038201805460ff1916600190811790915582548382015460028086018054604080516020601f600019998516156101000299909901909316949094049687018290048202840182019052858352610c68956001600160a01b03909516949291908390830182828015610c5e5780601f10610c3357610100808354040283529160200191610c5e565b820191906000526020600020905b815481529060010190602001808311610c4157829003601f168201915b5050505050611847565b15610c9d5760405185907f33e13ecb54c3076d8e8bb8c2881800a4d972b792045ffae98fdf46df365fed7590600090a2610cd5565b60405185907f526441bb6c1aba3c9a4a6ca1d6545da9c2333c8c48343ef398eb858d72b7923690600090a260038201805460ff191690555b5050505050565b333014610ce857600080fd5b6001600160a01b038116600090815260026020526040902054819060ff1615610d1057600080fd5b816001600160a01b038116610d2457600080fd5b60038054905060010160045460328211158015610d415750818111155b8015610d4c57508015155b8015610d5757508115155b610d6057600080fd5b6001600160a01b038516600081815260026020526040808220805460ff1916600190811790915560038054918201815583527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0180546001600160a01b03191684179055517ff39e6e1eb0edcf53c221607b54b00cd28f3196fed0a24994dc308b8f611b682d9190a25050505050565b600080805b600354811015610e6f5760008481526001602052604081206003805491929184908110610e1e57fe5b60009182526020808320909101546001600160a01b0316835282019290925260400190205460ff1615610e52576001820191505b600454821415610e6757600192505050610e72565b600101610df5565b50505b919050565b333014610e8357600080fd5b60068190556040805182815290517fd1c9101a34feff75cccef14a28785a0279cb0b49c1f321f21f5f422e746b43779181900360200190a150565b6000805b600354811015610f275760008381526001602052604081206003805491929184908110610eeb57fe5b60009182526020808320909101546001600160a01b0316835282019290925260400190205460ff1615610f1f576001820191505b600101610ec2565b50919050565b6000602081815291815260409081902080546001808301546002808501805487516101009582161595909502600019011691909104601f81018890048802840188019096528583526001600160a01b0390931695909491929190830182828015610fd85780601f10610fad57610100808354040283529160200191610fd8565b820191906000526020600020905b815481529060010190602001808311610fbb57829003601f168201915b5050506003909301549192505060ff1684565b6060600380548060200260200160405190810160405280929190818152602001828054801561104357602002820191906000526020600020905b81546001600160a01b03168152600190910190602001808311611025575b505050505090505b90565b60608060055460405190808252806020026020018201604052801561107d578160200160208202803883390190505b5090506000805b6005548110156110fe578580156110ad575060008181526020819052604090206003015460ff16155b806110d157508480156110d1575060008181526020819052604090206003015460ff165b156110f657808383815181106110e357fe5b6020026020010181815250506001820191505b600101611084565b87870360405190808252806020026020018201604052801561112a578160200160208202803883390190505b5093508790505b8681101561116e5782818151811061114557fe5b6020026020010151848983038151811061115b57fe5b6020908102919091010152600101611131565b505050949350505050565b6060806003805490506040519080825280602002602001820160405280156111ab578160200160208202803883390190505b5090506000805b60035481101561126e57600085815260016020526040812060038054919291849081106111db57fe5b60009182526020808320909101546001600160a01b0316835282019290925260400190205460ff1615611266576003818154811061121557fe5b9060005260206000200160009054906101000a90046001600160a01b031683838151811061123f57fe5b60200260200101906001600160a01b031690816001600160a01b0316815250506001820191505b6001016111b2565b81604051908082528060200260200182016040528015611298578160200160208202803883390190505b509350600090505b818110156112e8578281815181106112b457fe5b60200260200101518482815181106112c857fe5b6001600160a01b03909216602092830291909101909101526001016112a0565b505050919050565b60055481565b33301461130257600080fd5b60035481603282118015906113175750818111155b801561132257508015155b801561132d57508115155b61133657600080fd5b60048390556040805184815290517fa3f1ee9126a074d9326c682f561767f710e927faa811f7a99829d49dc421797a9181900360200190a1505050565b3360008181526002602052604090205460ff1661138f57600080fd5b60008281526020819052604090205482906001600160a01b03166113b257600080fd5b60008381526001602090815260408083203380855292529091205484919060ff16156113dd57600080fd5b846113e781610df0565b1561142e576040805162461bcd60e51b8152602060048201526012602482015271151617d19553131657d0d3d391925493515160721b604482015290519081900360640190fd5b6000868152600160208181526040808420338086529252808420805460ff1916909317909255905188927f4a504a94899432a9846e1aa406dceb1bcfd538bb839071d49d1e5e23f5be30ef91a361148486610df0565b1561149357611493864261187f565b505050505050565b60006114a88484846118ca565b90506114b381611373565b9392505050565b60076020526000908152604090205481565b603281565b60045481565b806001600160a01b0381166114eb57600080fd5b3330146114f757600080fd5b6001600160a01b038316600090815260026020526040902054839060ff1661151e57600080fd5b6001600160a01b038316600090815260026020526040902054839060ff161561154657600080fd5b60005b6003548110156115ce57856001600160a01b03166003828154811061156a57fe5b6000918252602090912001546001600160a01b031614156115c657846003828154811061159357fe5b9060005260206000200160006101000a8154816001600160a01b0302191690836001600160a01b031602179055506115ce565b600101611549565b506001600160a01b03808616600081815260026020526040808220805460ff1990811690915593881682528082208054909416600117909355915190917f8001553a916ef2f495d26a907cc54d96ed840d7bda71e73194bf5a9df7a76b9091a26040516001600160a01b038516907ff39e6e1eb0edcf53c221607b54b00cd28f3196fed0a24994dc308b8f611b682d90600090a25050505050565b600081815260208190526040902060030154819060ff161561168a57600080fd5b8161169481610df0565b6116de576040805162461bcd60e51b8152602060048201526016602482015275151617d393d517d19553131657d0d3d391925493515160521b604482015290519081900360640190fd5b60065460008481526007602052604090205484910142101561173e576040805162461bcd60e51b815260206004820152601460248201527354494d455f4c4f434b5f494e434f4d504c45544560601b604482015290519081900360640190fd5b6000848152602081815260409182902060038101805460ff19166001908117909155815481830154600280850180548851601f6000199783161561010002979097019091169290920494850187900487028201870190975283815293956117d6956001600160a01b03909316949193928390830182828015610c5e5780601f10610c3357610100808354040283529160200191610c5e565b1561180b5760405185907f33e13ecb54c3076d8e8bb8c2881800a4d972b792045ffae98fdf46df365fed7590600090a2610cd5565b60405185907f526441bb6c1aba3c9a4a6ca1d6545da9c2333c8c48343ef398eb858d72b7923690600090a2600301805460ff1916905550505050565b600084611853816119ab565b61185c57600080fd5b60006040516020850160008288838b8d6187965a03f19998505050505050505050565b6000828152600760209081526040918290208390558151838152915184927f0b237afe65f1514fd7ea3f923ea4fe792bdd07000a912b6cd1602a8e7f573c8d92908290030190a25050565b6000836001600160a01b0381166118e057600080fd5b600554604080516080810182526001600160a01b038881168252602080830189815283850189815260006060860181905287815280845295909520845181546001600160a01b03191694169390931783555160018301559251805194965091939092611953926002850192910190611a10565b50606091909101516003909101805460ff191691151591909117905560058054600101905560405182907fc0ba8fe4b176c1714197d43b9cc6bcf797a4a7461c5fe8d0ef6e184ae7601e5190600090a2509392505050565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a4708181148015906119df57508115155b949350505050565b815481835581811115611a0b57600083815260209020611a0b918101908301611a8e565b505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10611a5157805160ff1916838001178555611a7e565b82800160010185558215611a7e579182015b82811115611a7e578251825591602001919060010190611a63565b50611a8a929150611a8e565b5090565b61104b91905b80821115611a8a5760008155600101611a9456fea265627a7a723158204ca953dc8b189be31683183580923a3d40ba4ce8776b99ed027b777c1e67e6d564736f6c63430005110032",
+  "sourceMap": "759:1089:1:-;;;813:226;8:9:-1;5:2;;;30:1;27;20:12;5:2;813:226:1;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;813:226:1;;;;;;;;;;;;;19:11:-1;14:3;11:20;8:2;;;44:1;41;34:12;8:2;62:21;;;;123:4;114:14;;138:31;;;135:2;;;182:1;179;172:12;135:2;219:3;213:10;331:9;325:2;311:12;307:21;289:16;285:44;282:59;261:11;247:12;244:29;233:116;230:2;;;362:1;359;352:12;230:2;373:25;;-1:-1;813:226:1;;421:4:-1;412:14;;;;813:226:1;;;;;412:14:-1;813:226:1;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;-1:-1;;;;813:226:1;;;;;;;;;;;;;;;3155:14:52;;813:226:1;;-1:-1:-1;813:226:1;-1:-1:-1;971:7:1;;813:226;;-1:-1:-1;813:226:1;;971:7;;813:226;;;899:2:52;2355:29;;;;;:68;;;2413:10;2400:9;:23;;2355:68;:98;;;;-1:-1:-1;2439:14:52;;;2355:98;:129;;;;-1:-1:-1;2469:15:52;;;2355:129;2347:138;;;;;;3201:6;3196:162;3213:7;:14;3211:1;:16;3196:162;;;3257:7;:19;3265:7;3273:1;3265:10;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;3257:19:52;;;;;;;;;;;-1:-1:-1;3257:19:52;;;;3256:20;:50;;;;;3302:3;-1:-1:-1;;;;;3280:26:52;:7;3288:1;3280:10;;;;;;;;;;;;;;-1:-1:-1;;;;;3280:26:52;;;3256:50;3248:59;;;;;;3343:4;3321:7;:19;3329:7;3337:1;3329:10;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;3321:19:52;;;;;;;;;;;-1:-1:-1;3321:19:52;:26;;-1:-1:-1;;3321:26:52;;;;;;;;;;-1:-1:-1;3229:3:52;3196:162;;;-1:-1:-1;3367:16:52;;;;:6;;:16;;;;;:::i;:::-;-1:-1:-1;;;3393:8:52;:20;-1:-1:-1;2360:17:53;:38;-1:-1:-1;759:1089:1;;-1:-1:-1;;;;759:1089:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;759:1089:1;-1:-1:-1;;;;;759:1089:1;;;;;;;;;;;-1:-1:-1;759:1089:1;;;;;;;-1:-1:-1;759:1089:1;;;-1:-1:-1;759:1089:1;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;-1:-1:-1;;;;;;759:1089:1;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "759:1089:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2749:9:52;:13;2745:66;;2781:30;;;2801:9;2781:30;;;;2789:10;;2781:30;;;;;;;;;;2745:66;759:1089:1;1110:23:52;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1110:23:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1110:23:52;;:::i;:::-;;;;-1:-1:-1;;;;;1110:23:52;;;;;;;;;;;;;;3952:465;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3952:465:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;3952:465:52;-1:-1:-1;;;;;3952:465:52;;:::i;6576:296::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;6576:296:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;6576:296:52;;:::i;1064:40::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1064:40:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1064:40:52;-1:-1:-1;;;;;1064:40:52;;:::i;:::-;;;;;;;;;;;;;;;;;;994:64;;8:9:-1;5:2;;;30:1;27;20:12;5:2;994:64:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;994:64:52;;;;;;-1:-1:-1;;;;;994:64:52;;:::i;1156:32:53:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1156:32:53;;;:::i;:::-;;;;;;;;;;;;;;;;10913:315:52;;8:9:-1;5:2;;;30:1;27;20:12;5:2;10913:315:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;10913:315:52;;;;;;;;;;;:::i;1045:801:1:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1045:801:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1045:801:1;;:::i;3547:282:52:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3547:282:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;3547:282:52;-1:-1:-1;;;;;3547:282:52;;:::i;9077:333::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;9077:333:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;9077:333:52;;:::i;2618:194:53:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2618:194:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;2618:194:53;;:::i;10403:248:52:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;10403:248:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;10403:248:52;;:::i;939:49::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;939:49:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;939:49:52;;:::i;:::-;;;;;-1:-1:-1;;;;;939:49:52;-1:-1:-1;;;;;939:49:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;939:49:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;11312:118;;8:9:-1;5:2;;;30:1;27;20:12;5:2;11312:118:52;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;11312:118:52;;;;;;;;;;;;;;;;;12536:679;;8:9:-1;5:2;;;30:1;27;20:12;5:2;12536:679:52;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;-1:-1;12536:679:52;;;;;;;;;;;;;;;;;;;;;:::i;11609:578::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;11609:578:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;11609:578:52;;:::i;1165:28::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1165:28:52;;;:::i;5275:212::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;5275:212:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;5275:212:52;;:::i;2918:467:53:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2918:467:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;2918:467:53;;:::i;5746:251:52:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;5746:251:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;;;;;5746:251:52;;;;;;;;;;;;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;5746:251:52;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;5746:251:52;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;5746:251:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;5746:251:52;;-1:-1:-1;5746:251:52;;-1:-1:-1;;;;;5746:251:52:i;1195:53:53:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1195:53:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1195:53:53;;:::i;860:41:52:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;860:41:52;;;:::i;1139:20::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1139:20:52;;;:::i;4619:485::-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;4619:485:52;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;;;;;;4619:485:52;;;;;;;;;;:::i;3499:516:53:-;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3499:516:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;3499:516:53;;:::i;1110:23:52:-;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1110:23:52;;-1:-1:-1;1110:23:52;:::o;3952:465::-;1397:10;1419:4;1397:27;1389:36;;;;;;-1:-1:-1;;;;;1603:14:52;;;;;;:7;:14;;;;;;4042:5;;1603:14;;1595:23;;;;;;-1:-1:-1;;;;;4063:14:52;;4080:5;4063:14;;;:7;:14;;;;;:22;;-1:-1:-1;;4063:22:52;;;4095:170;4112:6;:13;-1:-1:-1;;4112:17:52;4110:19;;4095:170;;;4165:5;-1:-1:-1;;;;;4152:18:52;:6;4159:1;4152:9;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;4152:9:52;:18;4148:117;;;4202:6;4209:13;;-1:-1:-1;;4209:17:52;;;4202:25;;;;;;;;;;;;;;;;4190:6;:9;;-1:-1:-1;;;;;4202:25:52;;;;4197:1;;4190:9;;;;;;;;;;;;;;:37;;;;;-1:-1:-1;;;;;4190:37:52;;;;;-1:-1:-1;;;;;4190:37:52;;;;;;4245:5;;4148:117;4131:3;;4095:170;;;-1:-1:-1;4274:6:52;:18;;-1:-1:-1;;4274:18:52;;;;;;:::i;:::-;-1:-1:-1;4317:6:52;:13;4306:8;;:24;4302:74;;;4362:6;:13;4344:32;;:17;:32::i;:::-;4391:19;;-1:-1:-1;;;;;4391:19:52;;;;;;;;1435:1;3952:465;:::o;6576:296::-;6659:10;1603:14;;;;:7;:14;;;;;;;;1595:23;;;;;;1859:28;;;;:13;:28;;;;;;;;6704:10;1859:35;;;;;;;;;6689:13;;6704:10;1859:35;;1851:44;;;;;;2115:12;:27;;;;;;;;;;:36;;;6736:13;;2115:36;;2114:37;2106:46;;;;;;6808:5;6765:28;;;:13;:28;;;;;;;;6794:10;6765:40;;;;;;;;:48;;-1:-1:-1;;6765:48:52;;;6828:37;6779:13;;6828:37;;;1905:1;1628;;6576:296;;:::o;1064:40::-;;;;;;;;;;;;;;;:::o;994:64::-;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1156:32:53:-;;;;:::o;10913:315:52:-;11016:10;;11042:179;11059:16;;11057:1;:18;11042:179;;;11101:7;:36;;;;-1:-1:-1;11113:12:52;:15;;;;;;;;;;:24;;;;;11112:25;11101:36;:92;;;;11157:8;:36;;;;-1:-1:-1;11169:12:52;:15;;;;;;;;;;:24;;;;;11157:36;11094:127;;;11220:1;11211:10;;;;11094:127;11077:3;;11042:179;;;;10913:315;;;;:::o;1045:801:1:-;2115:12:52;:27;;;;;;;;;;:36;;;1144:13:1;;2115:36:52;;2114:37;2106:46;;;;;;1182:13:1;1509:26:53;1521:13;1509:11;:26::i;:::-;1488:95;;;;;-1:-1:-1;;;1488:95:53;;;;;;;;;;;;-1:-1:-1;;;1488:95:53;;;;;;;;;;;;;;;1211:23:1;1237:27;;;;;;;;;;;;1296:8;;;;1274:30;;;;;;;;;;-1:-1:-1;;1274:30:1;;;;;;;;;;;;;;;;;;;;;;;;;;1237:27;;1274:19;;:30;;1296:8;1274:30;;1296:8;1274:30;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1482:10;1473:4;1465:6;1461:17;1455:24;1450:3;1446:34;1443:50;1511:1;1506:57;;;;1436:127;;1506:57;1544:4;1538;1531:18;1436:127;-1:-1:-1;1582:12:1;;;:19;;-1:-1:-1;;1582:19:1;1597:4;1582:19;;;;;;1629:15;;1646:9;;;;1657:8;;;;:15;;1615:68;;;;;-1:-1:-1;;1657:15:1;;;;1582:19;1657:15;;;;;;;;;;;;1615:68;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;1629:15:1;;;;1657;1615:68;1657:8;:15;;1615:68;;1657:8;:15;1615:68;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:13;:68::i;:::-;1611:229;;;1704:24;;1714:13;;1704:24;;;;;1611:229;;;1764:31;;1781:13;;1764:31;;;;;1809:12;;;:20;;-1:-1:-1;;1809:20:1;;;1611:229;1593:1:53;;2162::52;1045:801:1;;:::o;3547:282:52:-;1397:10;1419:4;1397:27;1389:36;;;;;;-1:-1:-1;;;;;1510:14:52;;;;;;:7;:14;;;;;;3640:5;;1510:14;;1509:15;1501:24;;;;;;3663:5;-1:-1:-1;;;;;2229:24:52;;2221:33;;;;;;3695:6;:13;;;;3711:1;3695:17;3714:8;;899:2;2355:10;:29;;:68;;;;;2413:10;2400:9;:23;;2355:68;:98;;;;-1:-1:-1;2439:14:52;;;2355:98;:129;;;;-1:-1:-1;2469:15:52;;;2355:129;2347:138;;;;;;-1:-1:-1;;;;;3738:14:52;;;;;;:7;:14;;;;;;:21;;-1:-1:-1;;3738:21:52;3755:4;3738:21;;;;;;3769:6;27:10:-1;;23:18;;;45:23;;3769:18:52;;;;;;-1:-1:-1;;;;;;3769:18:52;;;;;3802:20;;;3738:14;3802:20;2264:1;;1535;1435;3547:282;:::o;9077:333::-;9163:4;;;9207:197;9224:6;:13;9222:15;;9207:197;;;9262:28;;;;:13;:28;;;;;9291:6;:9;;9262:28;;;9298:1;;9291:9;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;9291:9:52;9262:39;;;;;;;;;;;;;;;9258:71;;;9328:1;9319:10;;;;9258:71;9356:8;;9347:5;:17;9343:50;;;9389:4;9382:11;;;;;;9343:50;9239:3;;9207:197;;;;9077:333;;;;;:::o;2618:194:53:-;1397:10:52;1419:4;1397:27;1389:36;;;;;;2718:17:53;:38;;;2771:34;;;;;;;;;;;;;;;;;2618:194;:::o;10403:248:52:-;10498:10;;10524:120;10541:6;:13;10539:15;;10524:120;;;10577:28;;;;:13;:28;;;;;10606:6;:9;;10577:28;;;10613:1;;10606:9;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;10606:9:52;10577:39;;;;;;;;;;;;;;;10573:71;;;10643:1;10634:10;;;;10573:71;10556:3;;10524:120;;;;10403:248;;;:::o;939:49::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;939:49:52;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;939:49:52;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;939:49:52;;;;;;;-1:-1:-1;;939:49:52;;;:::o;11312:118::-;11378:16;11417:6;11410:13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;11410:13:52;;;;;;;;;;;;;;;;;;;;;;;11312:118;;:::o;12536:679::-;12657:29;12702:32;12748:16;;12737:28;;;;;;;;;;;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;136:17;;-1:-1;12737:28:52;-1:-1:-1;12702:63:52;-1:-1:-1;12775:10:52;;12815:250;12827:16;;12825:1;:18;12815:250;;;12869:7;:36;;;;-1:-1:-1;12881:12:52;:15;;;;;;;;;;:24;;;;;12880:25;12869:36;:92;;;;12925:8;:36;;;;-1:-1:-1;12937:12:52;:15;;;;;;;;;;:24;;;;;12925:36;12862:203;;;13021:1;12993:18;13012:5;12993:25;;;;;;;;;;;;;:29;;;;;13049:1;13040:10;;;;12862:203;12845:3;;12815:250;;;13108:4;13103:2;:9;13092:21;;;;;;;;;;;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;136:17;;-1:-1;13092:21:52;;13074:39;;13130:4;13128:6;;13123:85;13138:2;13136:1;:4;13123:85;;;13187:18;13206:1;13187:21;;;;;;;;;;;;;;13159:15;13179:4;13175:1;:8;13159:25;;;;;;;;;;;;;;;;;:49;13142:3;;13123:85;;;12536:679;;;;;;;;;:::o;11609:578::-;11700:31;11747:34;11798:6;:13;;;;11784:28;;;;;;;;;;;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;136:17;;-1:-1;11784:28:52;-1:-1:-1;11747:65:52;-1:-1:-1;11822:10:52;;11862:186;11874:6;:13;11872:15;;11862:186;;;11910:28;;;;:13;:28;;;;;11939:6;:9;;11910:28;;;11946:1;;11939:9;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;11939:9:52;11910:39;;;;;;;;;;;;;;;11906:142;;;11996:6;12003:1;11996:9;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;11996:9:52;11969:17;11987:5;11969:24;;;;;;;;;;;;;:36;-1:-1:-1;;;;;11969:36:52;;;-1:-1:-1;;;;;11969:36:52;;;;;12032:1;12023:10;;;;11906:142;11889:3;;11862:186;;;12088:5;12074:20;;;;;;;;;;;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;136:17;;-1:-1;12074:20:52;;12057:37;;12111:1;12109:3;;12104:76;12116:5;12114:1;:7;12104:76;;;12160:17;12178:1;12160:20;;;;;;;;;;;;;;12140:14;12155:1;12140:17;;;;;;;;-1:-1:-1;;;;;12140:40:52;;;:17;;;;;;;;;;;:40;12123:3;;12104:76;;;11609:578;;;;;;:::o;1165:28::-;;;;:::o;5275:212::-;1397:10;1419:4;1397:27;1389:36;;;;;;5377:6;:13;5392:9;899:2;2355:29;;;;;:68;;;2413:10;2400:9;:23;;2355:68;:98;;;;-1:-1:-1;2439:14:52;;;2355:98;:129;;;;-1:-1:-1;2469:15:52;;;2355:129;2347:138;;;;;;5417:8;:20;;;5452:28;;;;;;;;;;;;;;;;;1435:1;;5275:212;:::o;2918:467:53:-;3004:10;1603:14:52;;;;:7;:14;;;;;;;;1595:23;;;;;;1758:3;1707:27;;;;;;;;;;:39;3042:13:53;;-1:-1:-1;;;;;1707:39:52;1699:64;;;;;;1995:28;;;;:13;:28;;;;;;;;3093:10:53;1995:35:52;;;;;;;;;3078:13:53;;3093:10;1995:35:52;;1994:36;1986:45;;;;;;3131:13:53;1337:26;1349:13;1337:11;:26::i;:::-;1336:27;1315:92;;;;;-1:-1:-1;;;1315:92:53;;;;;;;;;;;;-1:-1:-1;;;1315:92:53;;;;;;;;;;;;;;;3160:28;;;;3203:4;3160:28;;;;;;;;3189:10;3160:40;;;;;;;;:47;;-1:-1:-1;;3160:47:53;;;;;;;3222:39;;3174:13;;3222:39;;;3275:26;3287:13;3275:11;:26::i;:::-;3271:108;;;3317:51;3337:13;3352:15;3317:19;:51::i;:::-;2041:1:52;1773;;1628;2918:467:53;;:::o;5746:251:52:-;5857:18;5907:40;5922:11;5935:5;5942:4;5907:14;:40::i;:::-;5891:56;;5957:33;5976:13;5957:18;:33::i;:::-;5746:251;;;;;:::o;1195:53:53:-;;;;;;;;;;;;;:::o;860:41:52:-;899:2;860:41;:::o;1139:20::-;;;;:::o;4619:485::-;4705:8;-1:-1:-1;;;;;2229:24:52;;2221:33;;;;;;1397:10;1419:4;1397:27;1389:36;;;;;;-1:-1:-1;;;;;1603:14:52;;;;;;:7;:14;;;;;;4754:5;;1603:14;;1595:23;;;;;;-1:-1:-1;;;;;1510:14:52;;;;;;:7;:14;;;;;;4787:8;;1510:14;;1509:15;1501:24;;;;;;4816:6;4811:149;4828:6;:13;4826:15;;4811:149;;;4877:5;-1:-1:-1;;;;;4864:18:52;:6;4871:1;4864:9;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;4864:9:52;:18;4860:100;;;4914:8;4902:6;4909:1;4902:9;;;;;;;;;;;;;;;;:20;;;;;-1:-1:-1;;;;;4902:20:52;;;;;-1:-1:-1;;;;;4902:20:52;;;;;;4940:5;;4860:100;4843:3;;4811:149;;;-1:-1:-1;;;;;;4969:14:52;;;4986:5;4969:14;;;:7;:14;;;;;;:22;;-1:-1:-1;;4969:22:52;;;;;;5001:17;;;;;;;;:24;;;;;4969:22;5001:24;;;;5040:19;;4969:14;;5040:19;;;5074:23;;-1:-1:-1;;;;;5074:23:52;;;;;;;;1628:1;1435;4619:485;;;:::o;3499:516:53:-;2115:12:52;:27;;;;;;;;;;:36;;;3585:13:53;;2115:36:52;;2114:37;2106:46;;;;;;3623:13:53;1509:26;1521:13;1509:11;:26::i;:::-;1488:95;;;;;-1:-1:-1;;;1488:95:53;;;;;;;;;;;;-1:-1:-1;;;1488:95:53;;;;;;;;;;;;;;;1737:17;;1702:32;;;;:17;:32;;;;;;3659:13;;1702:52;1683:15;:71;;1662:138;;;;;-1:-1:-1;;;1662:138:53;;;;;;;;;;;;-1:-1:-1;;;1662:138:53;;;;;;;;;;;;;;;3688:23;3714:27;;;;;;;;;;;;3751:12;;;:19;;-1:-1:-1;;3751:19:53;3766:4;3751:19;;;;;;3798:15;;3815:9;;;;3826:8;;;;:15;;3784:68;;;-1:-1:-1;;3826:15:53;;;;3751:19;3826:15;;;;;;;;;;;;3784:68;;;;;;;;;;;;;;;;;;3714:27;;3784:68;;-1:-1:-1;;;;;3798:15:53;;;;3815:9;;3826:15;;;3784:68;;3826:8;:15;3784:68;;;;;;;;;;;;;;;;;;;;;;;;3780:229;;;3873:24;;3883:13;;3873:24;;;;;3780:229;;;3933:31;;3950:13;;3933:31;;;;;3978:12;;:20;;-1:-1:-1;;3978:20:53;;;-1:-1:-1;;;;3499:516:53:o;7759:1167:52:-;7922:4;7892:11;2574:32;2593:12;2574:18;:32::i;:::-;2566:41;;;;;;7942:11;8001:4;7995:11;8134:2;8128:4;8124:13;8799:1;8780;8672:10;8653:1;8630:5;8601:11;8256:5;8251:3;8247:15;8225:662;8215:672;7759:1167;-1:-1:-1;;;;;;;;;7759:1167:52:o;4083:234:53:-;4192:32;;;;:17;:32;;;;;;;;;:51;;;4258:52;;;;;;;4210:13;;4258:52;;;;;;;;;4083:234;;:::o;9743:463:52:-;9882:18;9852:11;-1:-1:-1;;;;;2229:24:52;;2221:33;;;;;;9932:16;;9988:140;;;;;;;;-1:-1:-1;;;;;9988:140:52;;;;;;;;;;;;;;;;;;-1:-1:-1;9988:140:52;;;;;;9958:27;;;;;;;;;;:170;;;;-1:-1:-1;;;;;;9958:170:52;;;;;;;;;;-1:-1:-1;9958:170:52;;;;;;;9932:16;;-1:-1:-1;9988:140:52;;9958:27;;:170;;;;;;;;;;:::i;:::-;-1:-1:-1;9958:170:52;;;;;;;;;;;;-1:-1:-1;;9958:170:52;;;;;;;;;;10138:16;:21;;-1:-1:-1;10138:21:52;;;10174:25;;10185:13;;10174:25;;-1:-1:-1;;10174:25:52;9743:463;;;;;;:::o;686:610:123:-;746:4;1207:20;;1052:66;1246:23;;;;;;:42;;-1:-1:-1;1273:15:123;;;1246:42;1238:51;686:610;-1:-1:-1;;;;686:610:123:o;759:1089:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;759:1089:1;;;-1:-1:-1;759:1089:1;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\nimport \"../MultiSig/MultiSigWalletWithTimeLock.sol\";\n\n/**\n * @title The ACE Owner\n * @author AZTEC\n * @dev /\n * \n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n **/\ncontract ACEOwner is MultiSigWalletWithTimeLock {\n    constructor(\n        address[] memory _owners,\n        uint256 _required,\n        uint256 _secondsTimeLocked\n    ) public MultiSigWalletWithTimeLock(\n        _owners,\n        _required,\n        _secondsTimeLocked\n    ) {\n    }\n\n    function emergencyExecuteInvalidateProof(uint256 transactionId)\n        public\n        notExecuted(transactionId)\n        fullyConfirmed(transactionId)\n    {\n        Transaction storage txn = transactions[transactionId];\n        bytes memory txData = txn.data;\n\n        // Revert unless method signature in data is signature for invalidateProof(uint24 _proof)\n        assembly {\n            switch eq(shr(224, mload(add(txData, 0x20))), 0xcaaaa5d8)\n            case 0 {\n                revert(0x00, 0x00)\n            }\n        }\n        txn.executed = true;\n        if (external_call(txn.destination, txn.value, txn.data.length, txn.data)) {\n            emit Execution(transactionId);\n        } else {\n            emit ExecutionFailure(transactionId);\n            txn.executed = false;\n        }\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/ACEOwner.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/ACEOwner.sol",
+    "exportedSymbols": {
+      "ACEOwner": [
+        704
+      ]
+    },
+    "id": 705,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 626,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:1"
+      },
+      {
+        "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/MultiSig/MultiSigWalletWithTimeLock.sol",
+        "file": "../MultiSig/MultiSigWalletWithTimeLock.sol",
+        "id": 627,
+        "nodeType": "ImportDirective",
+        "scope": 705,
+        "sourceUnit": 7802,
+        "src": "33:52:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 628,
+              "name": "MultiSigWalletWithTimeLock",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 7801,
+              "src": "780:26:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_MultiSigWalletWithTimeLock_$7801",
+                "typeString": "contract MultiSigWalletWithTimeLock"
+              }
+            },
+            "id": 629,
+            "nodeType": "InheritanceSpecifier",
+            "src": "780:26:1"
+          }
+        ],
+        "contractDependencies": [
+          7574,
+          7801
+        ],
+        "contractKind": "contract",
+        "documentation": "@title The ACE Owner\n@author AZTEC\n@dev /\n\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 704,
+        "linearizedBaseContracts": [
+          704,
+          7801,
+          7574
+        ],
+        "name": "ACEOwner",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 644,
+              "nodeType": "Block",
+              "src": "1032:7:1",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 645,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 639,
+                    "name": "_owners",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 632,
+                    "src": "971:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                      "typeString": "address[] memory"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 640,
+                    "name": "_required",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 634,
+                    "src": "988:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  {
+                    "argumentTypes": null,
+                    "id": 641,
+                    "name": "_secondsTimeLocked",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 636,
+                    "src": "1007:18:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 642,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 638,
+                  "name": "MultiSigWalletWithTimeLock",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 7801,
+                  "src": "935:26:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_type$_t_contract$_MultiSigWalletWithTimeLock_$7801_$",
+                    "typeString": "type(contract MultiSigWalletWithTimeLock)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "935:96:1"
+              }
+            ],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 637,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 632,
+                  "name": "_owners",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 645,
+                  "src": "834:24:1",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 630,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "834:7:1",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 631,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "834:9:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 634,
+                  "name": "_required",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 645,
+                  "src": "868:17:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 633,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "868:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 636,
+                  "name": "_secondsTimeLocked",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 645,
+                  "src": "895:26:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 635,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "895:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "824:103:1"
+            },
+            "returnParameters": {
+              "id": 643,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1032:0:1"
+            },
+            "scope": 704,
+            "src": "813:226:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 702,
+              "nodeType": "Block",
+              "src": "1201:645:1",
+              "statements": [
+                {
+                  "assignments": [
+                    657
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 657,
+                      "name": "txn",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 702,
+                      "src": "1211:23:1",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                        "typeString": "struct MultiSigWallet.Transaction"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 656,
+                        "name": "Transaction",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 6621,
+                        "src": "1211:11:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                          "typeString": "struct MultiSigWallet.Transaction"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 661,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 658,
+                      "name": "transactions",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6595,
+                      "src": "1237:12:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Transaction_$6621_storage_$",
+                        "typeString": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)"
+                      }
+                    },
+                    "id": 660,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 659,
+                      "name": "transactionId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 647,
+                      "src": "1250:13:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1237:27:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Transaction_$6621_storage",
+                      "typeString": "struct MultiSigWallet.Transaction storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1211:53:1"
+                },
+                {
+                  "assignments": [
+                    663
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 663,
+                      "name": "txData",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 702,
+                      "src": "1274:19:1",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes_memory_ptr",
+                        "typeString": "bytes"
+                      },
+                      "typeName": {
+                        "id": 662,
+                        "name": "bytes",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1274:5:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage_ptr",
+                          "typeString": "bytes"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 666,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "id": 664,
+                      "name": "txn",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 657,
+                      "src": "1296:3:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                        "typeString": "struct MultiSigWallet.Transaction storage pointer"
+                      }
+                    },
+                    "id": 665,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "data",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 6618,
+                    "src": "1296:8:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage",
+                      "typeString": "bytes storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1274:30:1"
+                },
+                {
+                  "externalReferences": [
+                    {
+                      "txData": {
+                        "declaration": 663,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1465:6:1",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 667,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    switch eq(shr(224, mload(add(txData, 0x20))), 0xcaaaa5d8)\n    case 0 { revert(0x00, 0x00) }\n}",
+                  "src": "1413:160:1"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 672,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 668,
+                        "name": "txn",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 657,
+                        "src": "1582:3:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                          "typeString": "struct MultiSigWallet.Transaction storage pointer"
+                        }
+                      },
+                      "id": 670,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "executed",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 6620,
+                      "src": "1582:12:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "74727565",
+                      "id": 671,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "bool",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1597:4:1",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "value": "true"
+                    },
+                    "src": "1582:19:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 673,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1582:19:1"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 675,
+                          "name": "txn",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 657,
+                          "src": "1629:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                            "typeString": "struct MultiSigWallet.Transaction storage pointer"
+                          }
+                        },
+                        "id": 676,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "destination",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6614,
+                        "src": "1629:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 677,
+                          "name": "txn",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 657,
+                          "src": "1646:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                            "typeString": "struct MultiSigWallet.Transaction storage pointer"
+                          }
+                        },
+                        "id": 678,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "value",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6616,
+                        "src": "1646:9:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 679,
+                            "name": "txn",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 657,
+                            "src": "1657:3:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                              "typeString": "struct MultiSigWallet.Transaction storage pointer"
+                            }
+                          },
+                          "id": 680,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "data",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 6618,
+                          "src": "1657:8:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_storage",
+                            "typeString": "bytes storage ref"
+                          }
+                        },
+                        "id": 681,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1657:15:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 682,
+                          "name": "txn",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 657,
+                          "src": "1674:3:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                            "typeString": "struct MultiSigWallet.Transaction storage pointer"
+                          }
+                        },
+                        "id": 683,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "data",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": 6618,
+                        "src": "1674:8:1",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_storage",
+                          "typeString": "bytes storage ref"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_bytes_storage",
+                          "typeString": "bytes storage ref"
+                        }
+                      ],
+                      "id": 674,
+                      "name": "external_call",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7224,
+                      "src": "1615:13:1",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$_t_uint256_$_t_bytes_memory_ptr_$returns$_t_bool_$",
+                        "typeString": "function (address,uint256,uint256,bytes memory) returns (bool)"
+                      }
+                    },
+                    "id": 684,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1615:68:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 700,
+                    "nodeType": "Block",
+                    "src": "1745:95:1",
+                    "statements": [
+                      {
+                        "eventCall": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 691,
+                              "name": "transactionId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 647,
+                              "src": "1781:13:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "id": 690,
+                            "name": "ExecutionFailure",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6570,
+                            "src": "1764:16:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 692,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1764:31:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 693,
+                        "nodeType": "EmitStatement",
+                        "src": "1759:36:1"
+                      },
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 698,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "expression": {
+                              "argumentTypes": null,
+                              "id": 694,
+                              "name": "txn",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 657,
+                              "src": "1809:3:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_Transaction_$6621_storage_ptr",
+                                "typeString": "struct MultiSigWallet.Transaction storage pointer"
+                              }
+                            },
+                            "id": 696,
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "memberName": "executed",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 6620,
+                            "src": "1809:12:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "hexValue": "66616c7365",
+                            "id": 697,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "bool",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1824:5:1",
+                            "subdenomination": null,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "value": "false"
+                          },
+                          "src": "1809:20:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 699,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1809:20:1"
+                      }
+                    ]
+                  },
+                  "id": 701,
+                  "nodeType": "IfStatement",
+                  "src": "1611:229:1",
+                  "trueBody": {
+                    "id": 689,
+                    "nodeType": "Block",
+                    "src": "1685:54:1",
+                    "statements": [
+                      {
+                        "eventCall": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 686,
+                              "name": "transactionId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 647,
+                              "src": "1714:13:1",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              }
+                            ],
+                            "id": 685,
+                            "name": "Execution",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 6566,
+                            "src": "1704:9:1",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256)"
+                            }
+                          },
+                          "id": 687,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1704:24:1",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
+                          }
+                        },
+                        "id": 688,
+                        "nodeType": "EmitStatement",
+                        "src": "1699:29:1"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 703,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 650,
+                    "name": "transactionId",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 647,
+                    "src": "1144:13:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 651,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 649,
+                  "name": "notExecuted",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6723,
+                  "src": "1132:11:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$_t_uint256_$",
+                    "typeString": "modifier (uint256)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1132:26:1"
+              },
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 653,
+                    "name": "transactionId",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 647,
+                    "src": "1182:13:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  }
+                ],
+                "id": 654,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 652,
+                  "name": "fullyConfirmed",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 7626,
+                  "src": "1167:14:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$_t_uint256_$",
+                    "typeString": "modifier (uint256)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1167:29:1"
+              }
+            ],
+            "name": "emergencyExecuteInvalidateProof",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 648,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 647,
+                  "name": "transactionId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 703,
+                  "src": "1086:21:1",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 646,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1086:7:1",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1085:23:1"
+            },
+            "returnParameters": {
+              "id": 655,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1201:0:1"
+            },
+            "scope": 704,
+            "src": "1045:801:1",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 705,
+        "src": "759:1089:1"
+      }
+    ],
+    "src": "0:1849:1"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/ACEOwner.sol",
+      "exportedSymbols": {
+        "ACEOwner": [
+          704
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 626,
+        "name": "PragmaDirective",
+        "src": "0:31:1"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 7802,
+          "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/MultiSig/MultiSigWalletWithTimeLock.sol",
+          "file": "../MultiSig/MultiSigWalletWithTimeLock.sol",
+          "scope": 705,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 627,
+        "name": "ImportDirective",
+        "src": "33:52:1"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            7574,
+            7801
+          ],
+          "contractKind": "contract",
+          "documentation": "@title The ACE Owner\n@author AZTEC\n@dev /\n\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            704,
+            7801,
+            7574
+          ],
+          "name": "ACEOwner",
+          "scope": 705
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "MultiSigWalletWithTimeLock",
+                  "referencedDeclaration": 7801,
+                  "type": "contract MultiSigWalletWithTimeLock"
+                },
+                "id": 628,
+                "name": "UserDefinedTypeName",
+                "src": "780:26:1"
+              }
+            ],
+            "id": 629,
+            "name": "InheritanceSpecifier",
+            "src": "780:26:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "name": "",
+              "scope": 704,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_owners",
+                      "scope": 645,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "address[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "address[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "stateMutability": "nonpayable",
+                              "type": "address"
+                            },
+                            "id": 630,
+                            "name": "ElementaryTypeName",
+                            "src": "834:7:1"
+                          }
+                        ],
+                        "id": 631,
+                        "name": "ArrayTypeName",
+                        "src": "834:9:1"
+                      }
+                    ],
+                    "id": 632,
+                    "name": "VariableDeclaration",
+                    "src": "834:24:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_required",
+                      "scope": 645,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 633,
+                        "name": "ElementaryTypeName",
+                        "src": "868:7:1"
+                      }
+                    ],
+                    "id": 634,
+                    "name": "VariableDeclaration",
+                    "src": "868:17:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_secondsTimeLocked",
+                      "scope": 645,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 635,
+                        "name": "ElementaryTypeName",
+                        "src": "895:7:1"
+                      }
+                    ],
+                    "id": 636,
+                    "name": "VariableDeclaration",
+                    "src": "895:26:1"
+                  }
+                ],
+                "id": 637,
+                "name": "ParameterList",
+                "src": "824:103:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 643,
+                "name": "ParameterList",
+                "src": "1032:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 7801,
+                      "type": "type(contract MultiSigWalletWithTimeLock)",
+                      "value": "MultiSigWalletWithTimeLock"
+                    },
+                    "id": 638,
+                    "name": "Identifier",
+                    "src": "935:26:1"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 632,
+                      "type": "address[] memory",
+                      "value": "_owners"
+                    },
+                    "id": 639,
+                    "name": "Identifier",
+                    "src": "971:7:1"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 634,
+                      "type": "uint256",
+                      "value": "_required"
+                    },
+                    "id": 640,
+                    "name": "Identifier",
+                    "src": "988:9:1"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 636,
+                      "type": "uint256",
+                      "value": "_secondsTimeLocked"
+                    },
+                    "id": 641,
+                    "name": "Identifier",
+                    "src": "1007:18:1"
+                  }
+                ],
+                "id": 642,
+                "name": "ModifierInvocation",
+                "src": "935:96:1"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 644,
+                "name": "Block",
+                "src": "1032:7:1"
+              }
+            ],
+            "id": 645,
+            "name": "FunctionDefinition",
+            "src": "813:226:1"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "emergencyExecuteInvalidateProof",
+              "scope": 704,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "transactionId",
+                      "scope": 703,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 646,
+                        "name": "ElementaryTypeName",
+                        "src": "1086:7:1"
+                      }
+                    ],
+                    "id": 647,
+                    "name": "VariableDeclaration",
+                    "src": "1086:21:1"
+                  }
+                ],
+                "id": 648,
+                "name": "ParameterList",
+                "src": "1085:23:1"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 655,
+                "name": "ParameterList",
+                "src": "1201:0:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 6723,
+                      "type": "modifier (uint256)",
+                      "value": "notExecuted"
+                    },
+                    "id": 649,
+                    "name": "Identifier",
+                    "src": "1132:11:1"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 647,
+                      "type": "uint256",
+                      "value": "transactionId"
+                    },
+                    "id": 650,
+                    "name": "Identifier",
+                    "src": "1144:13:1"
+                  }
+                ],
+                "id": 651,
+                "name": "ModifierInvocation",
+                "src": "1132:26:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 7626,
+                      "type": "modifier (uint256)",
+                      "value": "fullyConfirmed"
+                    },
+                    "id": 652,
+                    "name": "Identifier",
+                    "src": "1167:14:1"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 647,
+                      "type": "uint256",
+                      "value": "transactionId"
+                    },
+                    "id": 653,
+                    "name": "Identifier",
+                    "src": "1182:13:1"
+                  }
+                ],
+                "id": 654,
+                "name": "ModifierInvocation",
+                "src": "1167:29:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        657
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "txn",
+                          "scope": 702,
+                          "stateVariable": false,
+                          "storageLocation": "storage",
+                          "type": "struct MultiSigWallet.Transaction",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "Transaction",
+                              "referencedDeclaration": 6621,
+                              "type": "struct MultiSigWallet.Transaction"
+                            },
+                            "id": 656,
+                            "name": "UserDefinedTypeName",
+                            "src": "1211:11:1"
+                          }
+                        ],
+                        "id": 657,
+                        "name": "VariableDeclaration",
+                        "src": "1211:23:1"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct MultiSigWallet.Transaction storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6595,
+                              "type": "mapping(uint256 => struct MultiSigWallet.Transaction storage ref)",
+                              "value": "transactions"
+                            },
+                            "id": 658,
+                            "name": "Identifier",
+                            "src": "1237:12:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 647,
+                              "type": "uint256",
+                              "value": "transactionId"
+                            },
+                            "id": 659,
+                            "name": "Identifier",
+                            "src": "1250:13:1"
+                          }
+                        ],
+                        "id": 660,
+                        "name": "IndexAccess",
+                        "src": "1237:27:1"
+                      }
+                    ],
+                    "id": 661,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1211:53:1"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        663
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "txData",
+                          "scope": 702,
+                          "stateVariable": false,
+                          "storageLocation": "memory",
+                          "type": "bytes",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes",
+                              "type": "bytes"
+                            },
+                            "id": 662,
+                            "name": "ElementaryTypeName",
+                            "src": "1274:5:1"
+                          }
+                        ],
+                        "id": 663,
+                        "name": "VariableDeclaration",
+                        "src": "1274:19:1"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "data",
+                          "referencedDeclaration": 6618,
+                          "type": "bytes storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 657,
+                              "type": "struct MultiSigWallet.Transaction storage pointer",
+                              "value": "txn"
+                            },
+                            "id": 664,
+                            "name": "Identifier",
+                            "src": "1296:3:1"
+                          }
+                        ],
+                        "id": 665,
+                        "name": "MemberAccess",
+                        "src": "1296:8:1"
+                      }
+                    ],
+                    "id": 666,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1274:30:1"
+                  },
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "txData": {
+                            "declaration": 663,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "1465:6:1",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{\n    switch eq(shr(224, mload(add(txData, 0x20))), 0xcaaaa5d8)\n    case 0 { revert(0x00, 0x00) }\n}"
+                    },
+                    "children": [],
+                    "id": 667,
+                    "name": "InlineAssembly",
+                    "src": "1413:160:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "executed",
+                              "referencedDeclaration": 6620,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 657,
+                                  "type": "struct MultiSigWallet.Transaction storage pointer",
+                                  "value": "txn"
+                                },
+                                "id": 668,
+                                "name": "Identifier",
+                                "src": "1582:3:1"
+                              }
+                            ],
+                            "id": 670,
+                            "name": "MemberAccess",
+                            "src": "1582:12:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "74727565",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "bool",
+                              "type": "bool",
+                              "value": "true"
+                            },
+                            "id": 671,
+                            "name": "Literal",
+                            "src": "1597:4:1"
+                          }
+                        ],
+                        "id": 672,
+                        "name": "Assignment",
+                        "src": "1582:19:1"
+                      }
+                    ],
+                    "id": 673,
+                    "name": "ExpressionStatement",
+                    "src": "1582:19:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "bool",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                },
+                                {
+                                  "typeIdentifier": "t_bytes_storage",
+                                  "typeString": "bytes storage ref"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7224,
+                              "type": "function (address,uint256,uint256,bytes memory) returns (bool)",
+                              "value": "external_call"
+                            },
+                            "id": 674,
+                            "name": "Identifier",
+                            "src": "1615:13:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "destination",
+                              "referencedDeclaration": 6614,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 657,
+                                  "type": "struct MultiSigWallet.Transaction storage pointer",
+                                  "value": "txn"
+                                },
+                                "id": 675,
+                                "name": "Identifier",
+                                "src": "1629:3:1"
+                              }
+                            ],
+                            "id": 676,
+                            "name": "MemberAccess",
+                            "src": "1629:15:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "value",
+                              "referencedDeclaration": 6616,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 657,
+                                  "type": "struct MultiSigWallet.Transaction storage pointer",
+                                  "value": "txn"
+                                },
+                                "id": 677,
+                                "name": "Identifier",
+                                "src": "1646:3:1"
+                              }
+                            ],
+                            "id": 678,
+                            "name": "MemberAccess",
+                            "src": "1646:9:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "length",
+                              "referencedDeclaration": null,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "data",
+                                  "referencedDeclaration": 6618,
+                                  "type": "bytes storage ref"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 657,
+                                      "type": "struct MultiSigWallet.Transaction storage pointer",
+                                      "value": "txn"
+                                    },
+                                    "id": 679,
+                                    "name": "Identifier",
+                                    "src": "1657:3:1"
+                                  }
+                                ],
+                                "id": 680,
+                                "name": "MemberAccess",
+                                "src": "1657:8:1"
+                              }
+                            ],
+                            "id": 681,
+                            "name": "MemberAccess",
+                            "src": "1657:15:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "data",
+                              "referencedDeclaration": 6618,
+                              "type": "bytes storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 657,
+                                  "type": "struct MultiSigWallet.Transaction storage pointer",
+                                  "value": "txn"
+                                },
+                                "id": 682,
+                                "name": "Identifier",
+                                "src": "1674:3:1"
+                              }
+                            ],
+                            "id": 683,
+                            "name": "MemberAccess",
+                            "src": "1674:8:1"
+                          }
+                        ],
+                        "id": 684,
+                        "name": "FunctionCall",
+                        "src": "1615:68:1"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6566,
+                                      "type": "function (uint256)",
+                                      "value": "Execution"
+                                    },
+                                    "id": 685,
+                                    "name": "Identifier",
+                                    "src": "1704:9:1"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 647,
+                                      "type": "uint256",
+                                      "value": "transactionId"
+                                    },
+                                    "id": 686,
+                                    "name": "Identifier",
+                                    "src": "1714:13:1"
+                                  }
+                                ],
+                                "id": 687,
+                                "name": "FunctionCall",
+                                "src": "1704:24:1"
+                              }
+                            ],
+                            "id": 688,
+                            "name": "EmitStatement",
+                            "src": "1699:29:1"
+                          }
+                        ],
+                        "id": 689,
+                        "name": "Block",
+                        "src": "1685:54:1"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "tuple()",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_uint256",
+                                          "typeString": "uint256"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 6570,
+                                      "type": "function (uint256)",
+                                      "value": "ExecutionFailure"
+                                    },
+                                    "id": 690,
+                                    "name": "Identifier",
+                                    "src": "1764:16:1"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 647,
+                                      "type": "uint256",
+                                      "value": "transactionId"
+                                    },
+                                    "id": 691,
+                                    "name": "Identifier",
+                                    "src": "1781:13:1"
+                                  }
+                                ],
+                                "id": 692,
+                                "name": "FunctionCall",
+                                "src": "1764:31:1"
+                              }
+                            ],
+                            "id": 693,
+                            "name": "EmitStatement",
+                            "src": "1759:36:1"
+                          },
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "=",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": true,
+                                      "member_name": "executed",
+                                      "referencedDeclaration": 6620,
+                                      "type": "bool"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 657,
+                                          "type": "struct MultiSigWallet.Transaction storage pointer",
+                                          "value": "txn"
+                                        },
+                                        "id": 694,
+                                        "name": "Identifier",
+                                        "src": "1809:3:1"
+                                      }
+                                    ],
+                                    "id": 696,
+                                    "name": "MemberAccess",
+                                    "src": "1809:12:1"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "66616c7365",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "bool",
+                                      "type": "bool",
+                                      "value": "false"
+                                    },
+                                    "id": 697,
+                                    "name": "Literal",
+                                    "src": "1824:5:1"
+                                  }
+                                ],
+                                "id": 698,
+                                "name": "Assignment",
+                                "src": "1809:20:1"
+                              }
+                            ],
+                            "id": 699,
+                            "name": "ExpressionStatement",
+                            "src": "1809:20:1"
+                          }
+                        ],
+                        "id": 700,
+                        "name": "Block",
+                        "src": "1745:95:1"
+                      }
+                    ],
+                    "id": 701,
+                    "name": "IfStatement",
+                    "src": "1611:229:1"
+                  }
+                ],
+                "id": 702,
+                "name": "Block",
+                "src": "1201:645:1"
+              }
+            ],
+            "id": 703,
+            "name": "FunctionDefinition",
+            "src": "1045:801:1"
+          }
+        ],
+        "id": 704,
+        "name": "ContractDefinition",
+        "src": "759:1089:1"
+      }
+    ],
+    "id": 705,
+    "name": "SourceUnit",
+    "src": "0:1849:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.398Z",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "/  * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {
+      "addOwner(address)": {
+        "details": "Allows to add a new owner. Transaction has to be sent by wallet.",
+        "params": {
+          "owner": "Address of new owner."
+        }
+      },
+      "changeRequirement(uint256)": {
+        "details": "Allows to change the number of required confirmations. Transaction has to be sent by wallet.",
+        "params": {
+          "_required": "Number of required confirmations."
+        }
+      },
+      "changeTimeLock(uint256)": {
+        "details": "Changes the duration of the time lock for transactions.",
+        "params": {
+          "_secondsTimeLocked": "Duration needed after a transaction is confirmed and  before it becomes executable, in seconds."
+        }
+      },
+      "confirmTransaction(uint256)": {
+        "details": "Allows an owner to confirm a transaction.",
+        "params": {
+          "transactionId": "Transaction ID."
+        }
+      },
+      "executeTransaction(uint256)": {
+        "details": "Allows anyone to execute a confirmed transaction.",
+        "params": {
+          "transactionId": "Transaction ID."
+        }
+      },
+      "getConfirmationCount(uint256)": {
+        "details": "Returns number of confirmations of a transaction.",
+        "params": {
+          "transactionId": "Transaction ID."
+        },
+        "return": "Number of confirmations."
+      },
+      "getConfirmations(uint256)": {
+        "details": "Returns array with owner addresses, which confirmed transaction.",
+        "params": {
+          "transactionId": "Transaction ID."
+        },
+        "return": "Returns array of owner addresses."
+      },
+      "getOwners()": {
+        "details": "Returns list of owners.",
+        "return": "List of owner addresses."
+      },
+      "getTransactionCount(bool,bool)": {
+        "details": "Returns total number of transactions after filers are applied.",
+        "params": {
+          "executed": "Include executed transactions.",
+          "pending": "Include pending transactions."
+        },
+        "return": "Total number of transactions after filters are applied."
+      },
+      "getTransactionIds(uint256,uint256,bool,bool)": {
+        "details": "Returns list of transaction IDs in defined range.",
+        "params": {
+          "executed": "Include executed transactions.",
+          "from": "Index start position of transaction array.",
+          "pending": "Include pending transactions.",
+          "to": "Index end position of transaction array."
+        },
+        "return": "Returns array of transaction IDs."
+      },
+      "isConfirmed(uint256)": {
+        "details": "Returns the confirmation status of a transaction.",
+        "params": {
+          "transactionId": "Transaction ID."
+        },
+        "return": "Confirmation status."
+      },
+      "removeOwner(address)": {
+        "details": "Allows to remove an owner. Transaction has to be sent by wallet.",
+        "params": {
+          "owner": "Address of owner."
+        }
+      },
+      "replaceOwner(address,address)": {
+        "details": "Allows to replace an owner with a new owner. Transaction has to be sent by wallet.",
+        "params": {
+          "newOwner": "Address of new owner.",
+          "owner": "Address of owner to be replaced."
+        }
+      },
+      "revokeConfirmation(uint256)": {
+        "details": "Allows an owner to revoke a confirmation for a transaction.",
+        "params": {
+          "transactionId": "Transaction ID."
+        }
+      },
+      "submitTransaction(address,uint256,bytes)": {
+        "details": "Allows an owner to submit and confirm a transaction.",
+        "params": {
+          "data": "Transaction data payload.",
+          "destination": "Transaction target address.",
+          "value": "Transaction ether value."
+        },
+        "return": "Returns transaction ID."
+      }
+    },
+    "title": "The ACE Owner"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

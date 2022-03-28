@@ -1,0 +1,519 @@
+{
+  "contractName": "ModifiersTest",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "testAddress",
+          "type": "address"
+        }
+      ],
+      "name": "testCheckZeroAddress",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"testAddress\",\"type\":\"address\"}],\"name\":\"testCheckZeroAddress\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"testCheckZeroAddress(address)\":{\"details\":\"Test the checkZeroAddress() modifier\",\"params\":{\"testAddress\":\"- address being checked if is it the 0x0 address\"}}},\"title\":\"Test contract used to test the modifiers inherited from the Modifiers contract Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/ModifiersTest.sol\":\"ModifiersTest\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol\":{\"keccak256\":\"0xf1d54fb9db0e5e941ab986c021f81fe116d7718665b9cafd150142a9c195527b\",\"urls\":[\"bzz-raw://67eaf6399d8de71d6877e02bf1fdd09859c924a5a8992edd1992f8e60a88c365\",\"dweb:/ipfs/QmY8F4cpkLfJqcqj9kx8V4DLxcW3PwmgggWZxYhHiomZQB\"]},\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/ModifiersTest.sol\":{\"keccak256\":\"0xb5429a82bb06a8840d4b7e3e4f8d595e613fb5dfc45e8e206a98cb1dc5f306b2\",\"urls\":[\"bzz-raw://a23bf2a09946b5ed0049df37cc917b2e8c5c6e0cad1369025948fd6f54f0e333\",\"dweb:/ipfs/Qmf6fgobDkKqMMZP6bHkirRztiVuBXU42dWizoaeTzCc71\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060f88061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063238b8e6a14602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166064565b604080519115158252519081900360200190f35b6000816001600160a01b03811660ba576040805162461bcd60e51b81526020600482015260166024820152750616464726573732063616e206e6f74206265203078360541b604482015290519081900360640190fd5b5060019291505056fea265627a7a72315820072b258fa443d112bd9935e0b0bf702f7f86b1fb32b00cb26e59b4387edba93164736f6c63430005110032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063238b8e6a14602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166064565b604080519115158252519081900360200190f35b6000816001600160a01b03811660ba576040805162461bcd60e51b81526020600482015260166024820152750616464726573732063616e206e6f74206265203078360541b604482015290519081900360640190fd5b5060019291505056fea265627a7a72315820072b258fa443d112bd9935e0b0bf702f7f86b1fb32b00cb26e59b4387edba93164736f6c63430005110032",
+  "sourceMap": "773:318:108:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;773:318:108;;;;;;;",
+  "deployedSourceMap": "773:318:108:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;773:318:108;;;;;;;;;;;;;;;;;;;953:136;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;953:136:108;-1:-1:-1;;;;;953:136:108;;:::i;:::-;;;;;;;;;;;;;;;;;;;1055:4;1021:11;-1:-1:-1;;;;;837:30:78;;829:65;;;;;-1:-1:-1;;;829:65:78;;;;;;;;;;;;-1:-1:-1;;;829:65:78;;;;;;;;;;;;;;;-1:-1:-1;1078:4:108;;953:136;-1:-1:-1;;953:136:108:o",
+  "source": "pragma solidity >= 0.5.0 <0.6.0;\n\nimport \"../../libs/Modifiers.sol\";\n\n/**\n* @title Test contract used to test the modifiers inherited from the Modifiers contract\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n*/\ncontract ModifiersTest is Modifiers {\n\n    /**\n    * @dev Test the checkZeroAddress() modifier\n    * @param testAddress - address being checked if is it the 0x0 address\n    */\n    function testCheckZeroAddress(address testAddress) checkZeroAddress(testAddress) public pure returns (bool) {\n        return true;\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/ModifiersTest.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/ModifiersTest.sol",
+    "exportedSymbols": {
+      "ModifiersTest": [
+        11553
+      ]
+    },
+    "id": 11554,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11536,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:108"
+      },
+      {
+        "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol",
+        "file": "../../libs/Modifiers.sol",
+        "id": 11537,
+        "nodeType": "ImportDirective",
+        "scope": 11554,
+        "sourceUnit": 9742,
+        "src": "34:34:108",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 11538,
+              "name": "Modifiers",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9741,
+              "src": "799:9:108",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Modifiers_$9741",
+                "typeString": "contract Modifiers"
+              }
+            },
+            "id": 11539,
+            "nodeType": "InheritanceSpecifier",
+            "src": "799:9:108"
+          }
+        ],
+        "contractDependencies": [
+          9741
+        ],
+        "contractKind": "contract",
+        "documentation": "@title Test contract used to test the modifiers inherited from the Modifiers contract\nCopyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.",
+        "fullyImplemented": true,
+        "id": 11553,
+        "linearizedBaseContracts": [
+          11553,
+          9741
+        ],
+        "name": "ModifiersTest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 11551,
+              "nodeType": "Block",
+              "src": "1061:28:108",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 11549,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1078:4:108",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 11548,
+                  "id": 11550,
+                  "nodeType": "Return",
+                  "src": "1071:11:108"
+                }
+              ]
+            },
+            "documentation": "@dev Test the checkZeroAddress() modifier\n@param testAddress - address being checked if is it the 0x0 address",
+            "id": 11552,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": [
+                  {
+                    "argumentTypes": null,
+                    "id": 11544,
+                    "name": "testAddress",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 11541,
+                    "src": "1021:11:108",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                ],
+                "id": 11545,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 11543,
+                  "name": "checkZeroAddress",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 9740,
+                  "src": "1004:16:108",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$_t_address_$",
+                    "typeString": "modifier (address)"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1004:29:108"
+              }
+            ],
+            "name": "testCheckZeroAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11542,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11541,
+                  "name": "testAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11552,
+                  "src": "983:19:108",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11540,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "983:7:108",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "982:21:108"
+            },
+            "returnParameters": {
+              "id": 11548,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11547,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11552,
+                  "src": "1055:4:108",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 11546,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1055:4:108",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1054:6:108"
+            },
+            "scope": 11553,
+            "src": "953:136:108",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 11554,
+        "src": "773:318:108"
+      }
+    ],
+    "src": "0:1092:108"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/ModifiersTest.sol",
+      "exportedSymbols": {
+        "ModifiersTest": [
+          11553
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 11536,
+        "name": "PragmaDirective",
+        "src": "0:32:108"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 9742,
+          "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol",
+          "file": "../../libs/Modifiers.sol",
+          "scope": 11554,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 11537,
+        "name": "ImportDirective",
+        "src": "34:34:108"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            9741
+          ],
+          "contractKind": "contract",
+          "documentation": "@title Test contract used to test the modifiers inherited from the Modifiers contract\nCopyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            11553,
+            9741
+          ],
+          "name": "ModifiersTest",
+          "scope": 11554
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Modifiers",
+                  "referencedDeclaration": 9741,
+                  "type": "contract Modifiers"
+                },
+                "id": 11538,
+                "name": "UserDefinedTypeName",
+                "src": "799:9:108"
+              }
+            ],
+            "id": 11539,
+            "name": "InheritanceSpecifier",
+            "src": "799:9:108"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Test the checkZeroAddress() modifier\n@param testAddress - address being checked if is it the 0x0 address",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "testCheckZeroAddress",
+              "scope": 11553,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "testAddress",
+                      "scope": 11552,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 11540,
+                        "name": "ElementaryTypeName",
+                        "src": "983:7:108"
+                      }
+                    ],
+                    "id": 11541,
+                    "name": "VariableDeclaration",
+                    "src": "983:19:108"
+                  }
+                ],
+                "id": 11542,
+                "name": "ParameterList",
+                "src": "982:21:108"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 11552,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 11546,
+                        "name": "ElementaryTypeName",
+                        "src": "1055:4:108"
+                      }
+                    ],
+                    "id": 11547,
+                    "name": "VariableDeclaration",
+                    "src": "1055:4:108"
+                  }
+                ],
+                "id": 11548,
+                "name": "ParameterList",
+                "src": "1054:6:108"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 9740,
+                      "type": "modifier (address)",
+                      "value": "checkZeroAddress"
+                    },
+                    "id": 11543,
+                    "name": "Identifier",
+                    "src": "1004:16:108"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 11541,
+                      "type": "address",
+                      "value": "testAddress"
+                    },
+                    "id": 11544,
+                    "name": "Identifier",
+                    "src": "1021:11:108"
+                  }
+                ],
+                "id": 11545,
+                "name": "ModifierInvocation",
+                "src": "1004:29:108"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 11548
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "74727565",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "bool",
+                          "type": "bool",
+                          "value": "true"
+                        },
+                        "id": 11549,
+                        "name": "Literal",
+                        "src": "1078:4:108"
+                      }
+                    ],
+                    "id": 11550,
+                    "name": "Return",
+                    "src": "1071:11:108"
+                  }
+                ],
+                "id": 11551,
+                "name": "Block",
+                "src": "1061:28:108"
+              }
+            ],
+            "id": 11552,
+            "name": "FunctionDefinition",
+            "src": "953:136:108"
+          }
+        ],
+        "id": 11553,
+        "name": "ContractDefinition",
+        "src": "773:318:108"
+      }
+    ],
+    "id": 11554,
+    "name": "SourceUnit",
+    "src": "0:1092:108"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.572Z",
+  "devdoc": {
+    "methods": {
+      "testCheckZeroAddress(address)": {
+        "details": "Test the checkZeroAddress() modifier",
+        "params": {
+          "testAddress": "- address being checked if is it the 0x0 address"
+        }
+      }
+    },
+    "title": "Test contract used to test the modifiers inherited from the Modifiers contract Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>."
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

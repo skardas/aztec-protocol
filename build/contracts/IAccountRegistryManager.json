@@ -1,0 +1,1205 @@
+{
+  "contractName": "IAccountRegistryManager",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "proxyAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "proxyAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "CreateProxy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "newLatestEpoch",
+          "type": "uint256"
+        }
+      ],
+      "name": "UpdateLatestEpoch",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "proxyAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newBehaviourAddress",
+          "type": "address"
+        }
+      ],
+      "name": "UpgradeAccountRegistry",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "latestEpoch",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "proxyAddress",
+      "outputs": [
+        {
+          "internalType": "address payable",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "getImplementation",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newBehaviourAddress",
+          "type": "address"
+        }
+      ],
+      "name": "upgradeAccountRegistry",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxyAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxyAdmin\",\"type\":\"address\"}],\"name\":\"CreateProxy\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newLatestEpoch\",\"type\":\"uint256\"}],\"name\":\"UpdateLatestEpoch\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"proxyAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newBehaviourAddress\",\"type\":\"address\"}],\"name\":\"UpgradeAccountRegistry\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[],\"name\":\"getImplementation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"latestEpoch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"proxyAddress\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newBehaviourAddress\",\"type\":\"address\"}],\"name\":\"upgradeAccountRegistry\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{},\"notice\":\"Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\"}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/AccountRegistry/interfaces/IAccountRegistryManager.sol\":\"IAccountRegistryManager\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/AccountRegistry/interfaces/IAccountRegistryManager.sol\":{\"keccak256\":\"0x975a751126fa963a6b78c42069064882926af3ed700c62c6f6c3195f262bb3cd\",\"urls\":[\"bzz-raw://081716b274ecd374de012f3f43642ce0b11f538f84ca7ccba9d7ef27d9ae8297\",\"dweb:/ipfs/QmQqZaNmUR8hwWviJotGdzqau3sBPsCcmj8J2zcjcS11ZW\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n/**\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n **/\ncontract IAccountRegistryManager {\n    address payable public proxyAddress;\n    uint256 public latestEpoch;\n\n    function getImplementation() external;\n\n    function isOwner() external view;\n\n    function renounceOwnership() external;\n\n    function transferOwnership(address newOwner) external;\n \n    function upgradeAccountRegistry(address newBehaviourAddress) external;\n    \n    event CreateProxy(address indexed proxyAddress, address indexed proxyAdmin);\n\n    event UpdateLatestEpoch(uint256 newLatestEpoch);\n\n    event UpgradeAccountRegistry(address indexed proxyAddress, address indexed newBehaviourAddress);\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/AccountRegistry/interfaces/IAccountRegistryManager.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/AccountRegistry/interfaces/IAccountRegistryManager.sol",
+    "exportedSymbols": {
+      "IAccountRegistryManager": [
+        4563
+      ]
+    },
+    "id": 4564,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4523,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:39"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": false,
+        "id": 4563,
+        "linearizedBaseContracts": [
+          4563
+        ],
+        "name": "IAccountRegistryManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 4525,
+            "name": "proxyAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 4563,
+            "src": "689:35:39",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address_payable",
+              "typeString": "address payable"
+            },
+            "typeName": {
+              "id": 4524,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "689:15:39",
+              "stateMutability": "payable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address_payable",
+                "typeString": "address payable"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 4527,
+            "name": "latestEpoch",
+            "nodeType": "VariableDeclaration",
+            "scope": 4563,
+            "src": "730:26:39",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 4526,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "730:7:39",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4530,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getImplementation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4528,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "789:2:39"
+            },
+            "returnParameters": {
+              "id": 4529,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "800:0:39"
+            },
+            "scope": 4563,
+            "src": "763:38:39",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4533,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4531,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "823:2:39"
+            },
+            "returnParameters": {
+              "id": 4532,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "839:0:39"
+            },
+            "scope": 4563,
+            "src": "807:33:39",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4536,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "renounceOwnership",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4534,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "872:2:39"
+            },
+            "returnParameters": {
+              "id": 4535,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "883:0:39"
+            },
+            "scope": 4563,
+            "src": "846:38:39",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4541,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferOwnership",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4539,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4538,
+                  "name": "newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4541,
+                  "src": "917:16:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4537,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "917:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "916:18:39"
+            },
+            "returnParameters": {
+              "id": 4540,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "943:0:39"
+            },
+            "scope": 4563,
+            "src": "890:54:39",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4546,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "upgradeAccountRegistry",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4544,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4543,
+                  "name": "newBehaviourAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4546,
+                  "src": "983:27:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4542,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "983:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "982:29:39"
+            },
+            "returnParameters": {
+              "id": 4545,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1020:0:39"
+            },
+            "scope": 4563,
+            "src": "951:70:39",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 4552,
+            "name": "CreateProxy",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 4551,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4548,
+                  "indexed": true,
+                  "name": "proxyAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4552,
+                  "src": "1049:28:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4547,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1049:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4550,
+                  "indexed": true,
+                  "name": "proxyAdmin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4552,
+                  "src": "1079:26:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4549,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1079:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1048:58:39"
+            },
+            "src": "1031:76:39"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 4556,
+            "name": "UpdateLatestEpoch",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 4555,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4554,
+                  "indexed": false,
+                  "name": "newLatestEpoch",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4556,
+                  "src": "1137:22:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4553,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1137:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1136:24:39"
+            },
+            "src": "1113:48:39"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 4562,
+            "name": "UpgradeAccountRegistry",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 4561,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4558,
+                  "indexed": true,
+                  "name": "proxyAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4562,
+                  "src": "1196:28:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4557,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1196:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4560,
+                  "indexed": true,
+                  "name": "newBehaviourAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4562,
+                  "src": "1226:35:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4559,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1226:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1195:67:39"
+            },
+            "src": "1167:96:39"
+          }
+        ],
+        "scope": 4564,
+        "src": "650:615:39"
+      }
+    ],
+    "src": "0:1266:39"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/AccountRegistry/interfaces/IAccountRegistryManager.sol",
+      "exportedSymbols": {
+        "IAccountRegistryManager": [
+          4563
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 4523,
+        "name": "PragmaDirective",
+        "src": "0:31:39"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4563
+          ],
+          "name": "IAccountRegistryManager",
+          "scope": 4564
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "proxyAddress",
+              "scope": 4563,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address payable",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "stateMutability": "payable",
+                  "type": "address payable"
+                },
+                "id": 4524,
+                "name": "ElementaryTypeName",
+                "src": "689:15:39"
+              }
+            ],
+            "id": 4525,
+            "name": "VariableDeclaration",
+            "src": "689:35:39"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "latestEpoch",
+              "scope": 4563,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 4526,
+                "name": "ElementaryTypeName",
+                "src": "730:7:39"
+              }
+            ],
+            "id": 4527,
+            "name": "VariableDeclaration",
+            "src": "730:26:39"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getImplementation",
+              "scope": 4563,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4528,
+                "name": "ParameterList",
+                "src": "789:2:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4529,
+                "name": "ParameterList",
+                "src": "800:0:39"
+              }
+            ],
+            "id": 4530,
+            "name": "FunctionDefinition",
+            "src": "763:38:39"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "isOwner",
+              "scope": 4563,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4531,
+                "name": "ParameterList",
+                "src": "823:2:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4532,
+                "name": "ParameterList",
+                "src": "839:0:39"
+              }
+            ],
+            "id": 4533,
+            "name": "FunctionDefinition",
+            "src": "807:33:39"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "renounceOwnership",
+              "scope": 4563,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4534,
+                "name": "ParameterList",
+                "src": "872:2:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4535,
+                "name": "ParameterList",
+                "src": "883:0:39"
+              }
+            ],
+            "id": 4536,
+            "name": "FunctionDefinition",
+            "src": "846:38:39"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "transferOwnership",
+              "scope": 4563,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newOwner",
+                      "scope": 4541,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4537,
+                        "name": "ElementaryTypeName",
+                        "src": "917:7:39"
+                      }
+                    ],
+                    "id": 4538,
+                    "name": "VariableDeclaration",
+                    "src": "917:16:39"
+                  }
+                ],
+                "id": 4539,
+                "name": "ParameterList",
+                "src": "916:18:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4540,
+                "name": "ParameterList",
+                "src": "943:0:39"
+              }
+            ],
+            "id": 4541,
+            "name": "FunctionDefinition",
+            "src": "890:54:39"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "upgradeAccountRegistry",
+              "scope": 4563,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newBehaviourAddress",
+                      "scope": 4546,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4542,
+                        "name": "ElementaryTypeName",
+                        "src": "983:7:39"
+                      }
+                    ],
+                    "id": 4543,
+                    "name": "VariableDeclaration",
+                    "src": "983:27:39"
+                  }
+                ],
+                "id": 4544,
+                "name": "ParameterList",
+                "src": "982:29:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4545,
+                "name": "ParameterList",
+                "src": "1020:0:39"
+              }
+            ],
+            "id": 4546,
+            "name": "FunctionDefinition",
+            "src": "951:70:39"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "CreateProxy"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "proxyAddress",
+                      "scope": 4552,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4547,
+                        "name": "ElementaryTypeName",
+                        "src": "1049:7:39"
+                      }
+                    ],
+                    "id": 4548,
+                    "name": "VariableDeclaration",
+                    "src": "1049:28:39"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "proxyAdmin",
+                      "scope": 4552,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4549,
+                        "name": "ElementaryTypeName",
+                        "src": "1079:7:39"
+                      }
+                    ],
+                    "id": 4550,
+                    "name": "VariableDeclaration",
+                    "src": "1079:26:39"
+                  }
+                ],
+                "id": 4551,
+                "name": "ParameterList",
+                "src": "1048:58:39"
+              }
+            ],
+            "id": 4552,
+            "name": "EventDefinition",
+            "src": "1031:76:39"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "UpdateLatestEpoch"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "newLatestEpoch",
+                      "scope": 4556,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4553,
+                        "name": "ElementaryTypeName",
+                        "src": "1137:7:39"
+                      }
+                    ],
+                    "id": 4554,
+                    "name": "VariableDeclaration",
+                    "src": "1137:22:39"
+                  }
+                ],
+                "id": 4555,
+                "name": "ParameterList",
+                "src": "1136:24:39"
+              }
+            ],
+            "id": 4556,
+            "name": "EventDefinition",
+            "src": "1113:48:39"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "UpgradeAccountRegistry"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "proxyAddress",
+                      "scope": 4562,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4557,
+                        "name": "ElementaryTypeName",
+                        "src": "1196:7:39"
+                      }
+                    ],
+                    "id": 4558,
+                    "name": "VariableDeclaration",
+                    "src": "1196:28:39"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "newBehaviourAddress",
+                      "scope": 4562,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 4559,
+                        "name": "ElementaryTypeName",
+                        "src": "1226:7:39"
+                      }
+                    ],
+                    "id": 4560,
+                    "name": "VariableDeclaration",
+                    "src": "1226:35:39"
+                  }
+                ],
+                "id": 4561,
+                "name": "ParameterList",
+                "src": "1195:67:39"
+              }
+            ],
+            "id": 4562,
+            "name": "EventDefinition",
+            "src": "1167:96:39"
+          }
+        ],
+        "id": 4563,
+        "name": "ContractDefinition",
+        "src": "650:615:39"
+      }
+    ],
+    "id": 4564,
+    "name": "SourceUnit",
+    "src": "0:1266:39"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.479Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {},
+    "notice": "Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*"
+  }
+}

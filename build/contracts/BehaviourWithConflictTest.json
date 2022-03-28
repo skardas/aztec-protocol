@@ -1,0 +1,524 @@
+{
+  "contractName": "BehaviourWithConflictTest",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "ReachedBehaviour",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[],\"name\":\"ReachedBehaviour\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{\"admin()\":{\"return\":\"The address of the proxy admin.\"}},\"title\":\"BehaviourWithConflictTest\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/BehaviourWithConflictTest.sol\":\"BehaviourWithConflictTest\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/BehaviourWithConflictTest.sol\":{\"keccak256\":\"0x323056e45d4c5912d9d729ce4dd08a842e6b9c86022d41fac218dc4f18be3d1a\",\"urls\":[\"bzz-raw://b4a13fbadf4940492b645847db4c7ee2061013b4df62115dd6f06fb5ba3c03cb\",\"dweb:/ipfs/QmYCRb121UqqbSj976vwxH5uLh6NKNJyDKXY1iZXZNoDgf\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5060b58061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063f851a44014602d575b600080fd5b6033604f565b604080516001600160a01b039092168252519081900360200190f35b6040516000907f826dabbe8796e7e0e75b79a6af10bbc628f17ca232b8f84285784684151079c8908290a15060009056fea265627a7a723158200976b889558ba9830f4741814035fe279a82b93d7b7b83a04d74420ac74c6a9764736f6c63430005110032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063f851a44014602d575b600080fd5b6033604f565b604080516001600160a01b039092168252519081900360200190f35b6040516000907f826dabbe8796e7e0e75b79a6af10bbc628f17ca232b8f84285784684151079c8908290a15060009056fea265627a7a723158200976b889558ba9830f4741814035fe279a82b93d7b7b83a04d74420ac74c6a9764736f6c63430005110032",
+  "sourceMap": "694:252:84:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;694:252:84;;;;;;;",
+  "deployedSourceMap": "694:252:84:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;694:252:84;;;;;;;;;;;;;;;;;;;831:113;;;:::i;:::-;;;;-1:-1:-1;;;;;831:113:84;;;;;;;;;;;;;;;890:18;;866:7;;890:18;;866:7;;890:18;-1:-1:-1;933:3:84;831:113;:::o",
+  "source": "pragma solidity ^0.5.0;\n\n/**\n * @title BehaviourWithConflictTest\n * @author AZTEC\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\ncontract BehaviourWithConflictTest {\n    event ReachedBehaviour();\n\n    /**\n        * @return The address of the proxy admin.\n    */\n    function admin() external returns (address) {\n        emit ReachedBehaviour();\n        return address(0x0);\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/BehaviourWithConflictTest.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/BehaviourWithConflictTest.sol",
+    "exportedSymbols": {
+      "BehaviourWithConflictTest": [
+        10019
+      ]
+    },
+    "id": 10020,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10003,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:84"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title BehaviourWithConflictTest\n@author AZTEC\nCopyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 10019,
+        "linearizedBaseContracts": [
+          10019
+        ],
+        "name": "BehaviourWithConflictTest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 10005,
+            "name": "ReachedBehaviour",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 10004,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "757:2:84"
+            },
+            "src": "735:25:84"
+          },
+          {
+            "body": {
+              "id": 10017,
+              "nodeType": "Block",
+              "src": "875:69:84",
+              "statements": [
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 10010,
+                      "name": "ReachedBehaviour",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10005,
+                      "src": "890:16:84",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$__$returns$__$",
+                        "typeString": "function ()"
+                      }
+                    },
+                    "id": 10011,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "890:18:84",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 10012,
+                  "nodeType": "EmitStatement",
+                  "src": "885:23:84"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "307830",
+                        "id": 10014,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "933:3:84",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0x0"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        }
+                      ],
+                      "id": 10013,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "nodeType": "ElementaryTypeNameExpression",
+                      "src": "925:7:84",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_address_$",
+                        "typeString": "type(address)"
+                      },
+                      "typeName": "address"
+                    },
+                    "id": 10015,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "925:12:84",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address_payable",
+                      "typeString": "address payable"
+                    }
+                  },
+                  "functionReturnParameters": 10009,
+                  "id": 10016,
+                  "nodeType": "Return",
+                  "src": "918:19:84"
+                }
+              ]
+            },
+            "documentation": "@return The address of the proxy admin.",
+            "id": 10018,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "admin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10006,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "845:2:84"
+            },
+            "returnParameters": {
+              "id": 10009,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10008,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10018,
+                  "src": "866:7:84",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10007,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "866:7:84",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "865:9:84"
+            },
+            "scope": 10019,
+            "src": "831:113:84",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10020,
+        "src": "694:252:84"
+      }
+    ],
+    "src": "0:947:84"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/BehaviourWithConflictTest.sol",
+      "exportedSymbols": {
+        "BehaviourWithConflictTest": [
+          10019
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 10003,
+        "name": "PragmaDirective",
+        "src": "0:23:84"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title BehaviourWithConflictTest\n@author AZTEC\nCopyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            10019
+          ],
+          "name": "BehaviourWithConflictTest",
+          "scope": 10020
+        },
+        "children": [
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "ReachedBehaviour"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 10004,
+                "name": "ParameterList",
+                "src": "757:2:84"
+              }
+            ],
+            "id": 10005,
+            "name": "EventDefinition",
+            "src": "735:25:84"
+          },
+          {
+            "attributes": {
+              "documentation": "@return The address of the proxy admin.",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "admin",
+              "scope": 10019,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 10006,
+                "name": "ParameterList",
+                "src": "845:2:84"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10018,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10007,
+                        "name": "ElementaryTypeName",
+                        "src": "866:7:84"
+                      }
+                    ],
+                    "id": 10008,
+                    "name": "VariableDeclaration",
+                    "src": "866:7:84"
+                  }
+                ],
+                "id": 10009,
+                "name": "ParameterList",
+                "src": "865:9:84"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10005,
+                              "type": "function ()",
+                              "value": "ReachedBehaviour"
+                            },
+                            "id": 10010,
+                            "name": "Identifier",
+                            "src": "890:16:84"
+                          }
+                        ],
+                        "id": 10011,
+                        "name": "FunctionCall",
+                        "src": "890:18:84"
+                      }
+                    ],
+                    "id": 10012,
+                    "name": "EmitStatement",
+                    "src": "885:23:84"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 10009
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "address payable",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "type": "type(address)",
+                              "value": "address"
+                            },
+                            "id": 10013,
+                            "name": "ElementaryTypeNameExpression",
+                            "src": "925:7:84"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "307830",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0x0"
+                            },
+                            "id": 10014,
+                            "name": "Literal",
+                            "src": "933:3:84"
+                          }
+                        ],
+                        "id": 10015,
+                        "name": "FunctionCall",
+                        "src": "925:12:84"
+                      }
+                    ],
+                    "id": 10016,
+                    "name": "Return",
+                    "src": "918:19:84"
+                  }
+                ],
+                "id": 10017,
+                "name": "Block",
+                "src": "875:69:84"
+              }
+            ],
+            "id": 10018,
+            "name": "FunctionDefinition",
+            "src": "831:113:84"
+          }
+        ],
+        "id": 10019,
+        "name": "ContractDefinition",
+        "src": "694:252:84"
+      }
+    ],
+    "id": 10020,
+    "name": "SourceUnit",
+    "src": "0:947:84"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.546Z",
+  "devdoc": {
+    "author": "AZTEC Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {
+      "admin()": {
+        "return": "The address of the proxy admin."
+      }
+    },
+    "title": "BehaviourWithConflictTest"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,0 +1,877 @@
+{
+  "contractName": "IAZTEC",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "BURN_PROOF",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "DIVIDEND_PROOF",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "JOIN_SPLIT_PROOF",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "MINT_PROOF",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "PRIVATE_RANGE_PROOF",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "PUBLIC_RANGE_PROOF",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"BURN_PROOF\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"DIVIDEND_PROOF\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"JOIN_SPLIT_PROOF\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"MINT_PROOF\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"PRIVATE_RANGE_PROOF\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"PUBLIC_RANGE_PROOF\",\"outputs\":[{\"internalType\":\"uint24\",\"name\":\"\",\"type\":\"uint24\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"IAZTEC\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IAZTEC.sol\":\"IAZTEC\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IAZTEC.sol\":{\"keccak256\":\"0x4b6c78ca2bfb273a598a733a6615e71e65d42fa8d16ca0a9a4fab67e50694f7a\",\"urls\":[\"bzz-raw://a980b158fb7a6627ba05b7e9065a6949a10db9016e18f487a6835d401a405958\",\"dweb:/ipfs/QmScpcDZHdGzfs6Meu1LR3M5qCbxNPxfEhVZs7owk7v9QU\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060f98061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060595760003560e01c80625bf73214605e57806308ae900a14607c57806349518b281460825780638500e1f81460885780638e526d9b14608e578063df924625146094575b600080fd5b6064609a565b6040805162ffffff9092168252519081900360200190f35b606460a1565b606460a8565b606460af565b606460b6565b606460bd565b6201010181565b6201040381565b6201040281565b6201040181565b6201020181565b620103018156fea265627a7a72315820b2f29f3f0b782a0e04a664497c8352c7bd7e291191215ff1bbb369713300281764736f6c63430005110032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060595760003560e01c80625bf73214605e57806308ae900a14607c57806349518b281460825780638500e1f81460885780638e526d9b14608e578063df924625146094575b600080fd5b6064609a565b6040805162ffffff9092168252519081900360200190f35b606460a1565b606460a8565b606460af565b606460b6565b606460bd565b6201010181565b6201040381565b6201040281565b6201040181565b6201020181565b620103018156fea265627a7a72315820b2f29f3f0b782a0e04a664497c8352c7bd7e291191215ff1bbb369713300281764736f6c63430005110032",
+  "sourceMap": "686:1195:61:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;686:1195:61;;;;;;;",
+  "deployedSourceMap": "686:1195:61:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;686:1195:61;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1006:47;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1665:49;;;:::i;1492:50::-;;;:::i;1833:45::-;;;:::i;1172:41::-;;;:::i;1332:::-;;;:::i;1006:47::-;1048:5;1006:47;:::o;1665:49::-;1709:5;1665:49;:::o;1492:50::-;1537:5;1492:50;:::o;1833:45::-;1873:5;1833:45;:::o;1172:41::-;1208:5;1172:41;:::o;1332:::-;1368:5;1332:41;:::o",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n/**\n * @title IAZTEC\n * @author AZTEC\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\ncontract IAZTEC {\n    enum ProofCategory {\n        NULL,\n        BALANCED,\n        MINT,\n        BURN,\n        UTILITY\n    }\n\n    enum NoteStatus {\n        DOES_NOT_EXIST,\n        UNSPENT,\n        SPENT\n    }\n    // proofEpoch = 1 | proofCategory = 1 | proofId = 1\n    // 1 * 256**(2) + 1 * 256**(1) ++ 1 * 256**(0)\n    uint24 public constant JOIN_SPLIT_PROOF = 65793;\n\n    // proofEpoch = 1 | proofCategory = 2 | proofId = 1\n    // (1 * 256**(2)) + (2 * 256**(1)) + (1 * 256**(0))\n    uint24 public constant MINT_PROOF = 66049;\n\n    // proofEpoch = 1 | proofCategory = 3 | proofId = 1\n    // (1 * 256**(2)) + (3 * 256**(1)) + (1 * 256**(0))\n    uint24 public constant BURN_PROOF = 66305;\n\n    // proofEpoch = 1 | proofCategory = 4 | proofId = 2\n    // (1 * 256**(2)) + (4 * 256**(1)) + (2 * 256**(0))\n    uint24 public constant PRIVATE_RANGE_PROOF = 66562;\n\n        // proofEpoch = 1 | proofCategory = 4 | proofId = 3\n    // (1 * 256**(2)) + (4 * 256**(1)) + (2 * 256**(0))\n    uint24 public constant PUBLIC_RANGE_PROOF = 66563;\n\n    // proofEpoch = 1 | proofCategory = 4 | proofId = 1\n    // (1 * 256**(2)) + (4 * 256**(1)) + (2 * 256**(0))\n    uint24 public constant DIVIDEND_PROOF = 66561;\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IAZTEC.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IAZTEC.sol",
+    "exportedSymbols": {
+      "IAZTEC": [
+        8488
+      ]
+    },
+    "id": 8489,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8459,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:61"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title IAZTEC\n@author AZTEC\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 8488,
+        "linearizedBaseContracts": [
+          8488
+        ],
+        "name": "IAZTEC",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IAZTEC.ProofCategory",
+            "id": 8465,
+            "members": [
+              {
+                "id": 8460,
+                "name": "NULL",
+                "nodeType": "EnumValue",
+                "src": "737:4:61"
+              },
+              {
+                "id": 8461,
+                "name": "BALANCED",
+                "nodeType": "EnumValue",
+                "src": "751:8:61"
+              },
+              {
+                "id": 8462,
+                "name": "MINT",
+                "nodeType": "EnumValue",
+                "src": "769:4:61"
+              },
+              {
+                "id": 8463,
+                "name": "BURN",
+                "nodeType": "EnumValue",
+                "src": "783:4:61"
+              },
+              {
+                "id": 8464,
+                "name": "UTILITY",
+                "nodeType": "EnumValue",
+                "src": "797:7:61"
+              }
+            ],
+            "name": "ProofCategory",
+            "nodeType": "EnumDefinition",
+            "src": "708:102:61"
+          },
+          {
+            "canonicalName": "IAZTEC.NoteStatus",
+            "id": 8469,
+            "members": [
+              {
+                "id": 8466,
+                "name": "DOES_NOT_EXIST",
+                "nodeType": "EnumValue",
+                "src": "842:14:61"
+              },
+              {
+                "id": 8467,
+                "name": "UNSPENT",
+                "nodeType": "EnumValue",
+                "src": "866:7:61"
+              },
+              {
+                "id": 8468,
+                "name": "SPENT",
+                "nodeType": "EnumValue",
+                "src": "883:5:61"
+              }
+            ],
+            "name": "NoteStatus",
+            "nodeType": "EnumDefinition",
+            "src": "816:78:61"
+          },
+          {
+            "constant": true,
+            "id": 8472,
+            "name": "JOIN_SPLIT_PROOF",
+            "nodeType": "VariableDeclaration",
+            "scope": 8488,
+            "src": "1006:47:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 8470,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "1006:6:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3635373933",
+              "id": 8471,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1048:5:61",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_65793_by_1",
+                "typeString": "int_const 65793"
+              },
+              "value": "65793"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 8475,
+            "name": "MINT_PROOF",
+            "nodeType": "VariableDeclaration",
+            "scope": 8488,
+            "src": "1172:41:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 8473,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "1172:6:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3636303439",
+              "id": 8474,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1208:5:61",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_66049_by_1",
+                "typeString": "int_const 66049"
+              },
+              "value": "66049"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 8478,
+            "name": "BURN_PROOF",
+            "nodeType": "VariableDeclaration",
+            "scope": 8488,
+            "src": "1332:41:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 8476,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "1332:6:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3636333035",
+              "id": 8477,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1368:5:61",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_66305_by_1",
+                "typeString": "int_const 66305"
+              },
+              "value": "66305"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 8481,
+            "name": "PRIVATE_RANGE_PROOF",
+            "nodeType": "VariableDeclaration",
+            "scope": 8488,
+            "src": "1492:50:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 8479,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "1492:6:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3636353632",
+              "id": 8480,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1537:5:61",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_66562_by_1",
+                "typeString": "int_const 66562"
+              },
+              "value": "66562"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 8484,
+            "name": "PUBLIC_RANGE_PROOF",
+            "nodeType": "VariableDeclaration",
+            "scope": 8488,
+            "src": "1665:49:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 8482,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "1665:6:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3636353633",
+              "id": 8483,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1709:5:61",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_66563_by_1",
+                "typeString": "int_const 66563"
+              },
+              "value": "66563"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 8487,
+            "name": "DIVIDEND_PROOF",
+            "nodeType": "VariableDeclaration",
+            "scope": 8488,
+            "src": "1833:45:61",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint24",
+              "typeString": "uint24"
+            },
+            "typeName": {
+              "id": 8485,
+              "name": "uint24",
+              "nodeType": "ElementaryTypeName",
+              "src": "1833:6:61",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint24",
+                "typeString": "uint24"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3636353631",
+              "id": 8486,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "1873:5:61",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_66561_by_1",
+                "typeString": "int_const 66561"
+              },
+              "value": "66561"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 8489,
+        "src": "686:1195:61"
+      }
+    ],
+    "src": "0:1882:61"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IAZTEC.sol",
+      "exportedSymbols": {
+        "IAZTEC": [
+          8488
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 8459,
+        "name": "PragmaDirective",
+        "src": "0:31:61"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title IAZTEC\n@author AZTEC\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            8488
+          ],
+          "name": "IAZTEC",
+          "scope": 8489
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "IAZTEC.ProofCategory",
+              "name": "ProofCategory"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "NULL"
+                },
+                "id": 8460,
+                "name": "EnumValue",
+                "src": "737:4:61"
+              },
+              {
+                "attributes": {
+                  "name": "BALANCED"
+                },
+                "id": 8461,
+                "name": "EnumValue",
+                "src": "751:8:61"
+              },
+              {
+                "attributes": {
+                  "name": "MINT"
+                },
+                "id": 8462,
+                "name": "EnumValue",
+                "src": "769:4:61"
+              },
+              {
+                "attributes": {
+                  "name": "BURN"
+                },
+                "id": 8463,
+                "name": "EnumValue",
+                "src": "783:4:61"
+              },
+              {
+                "attributes": {
+                  "name": "UTILITY"
+                },
+                "id": 8464,
+                "name": "EnumValue",
+                "src": "797:7:61"
+              }
+            ],
+            "id": 8465,
+            "name": "EnumDefinition",
+            "src": "708:102:61"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IAZTEC.NoteStatus",
+              "name": "NoteStatus"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "DOES_NOT_EXIST"
+                },
+                "id": 8466,
+                "name": "EnumValue",
+                "src": "842:14:61"
+              },
+              {
+                "attributes": {
+                  "name": "UNSPENT"
+                },
+                "id": 8467,
+                "name": "EnumValue",
+                "src": "866:7:61"
+              },
+              {
+                "attributes": {
+                  "name": "SPENT"
+                },
+                "id": 8468,
+                "name": "EnumValue",
+                "src": "883:5:61"
+              }
+            ],
+            "id": 8469,
+            "name": "EnumDefinition",
+            "src": "816:78:61"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "JOIN_SPLIT_PROOF",
+              "scope": 8488,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint24",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint24",
+                  "type": "uint24"
+                },
+                "id": 8470,
+                "name": "ElementaryTypeName",
+                "src": "1006:6:61"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "3635373933",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 65793",
+                  "value": "65793"
+                },
+                "id": 8471,
+                "name": "Literal",
+                "src": "1048:5:61"
+              }
+            ],
+            "id": 8472,
+            "name": "VariableDeclaration",
+            "src": "1006:47:61"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "MINT_PROOF",
+              "scope": 8488,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint24",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint24",
+                  "type": "uint24"
+                },
+                "id": 8473,
+                "name": "ElementaryTypeName",
+                "src": "1172:6:61"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "3636303439",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 66049",
+                  "value": "66049"
+                },
+                "id": 8474,
+                "name": "Literal",
+                "src": "1208:5:61"
+              }
+            ],
+            "id": 8475,
+            "name": "VariableDeclaration",
+            "src": "1172:41:61"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "BURN_PROOF",
+              "scope": 8488,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint24",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint24",
+                  "type": "uint24"
+                },
+                "id": 8476,
+                "name": "ElementaryTypeName",
+                "src": "1332:6:61"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "3636333035",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 66305",
+                  "value": "66305"
+                },
+                "id": 8477,
+                "name": "Literal",
+                "src": "1368:5:61"
+              }
+            ],
+            "id": 8478,
+            "name": "VariableDeclaration",
+            "src": "1332:41:61"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "PRIVATE_RANGE_PROOF",
+              "scope": 8488,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint24",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint24",
+                  "type": "uint24"
+                },
+                "id": 8479,
+                "name": "ElementaryTypeName",
+                "src": "1492:6:61"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "3636353632",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 66562",
+                  "value": "66562"
+                },
+                "id": 8480,
+                "name": "Literal",
+                "src": "1537:5:61"
+              }
+            ],
+            "id": 8481,
+            "name": "VariableDeclaration",
+            "src": "1492:50:61"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "PUBLIC_RANGE_PROOF",
+              "scope": 8488,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint24",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint24",
+                  "type": "uint24"
+                },
+                "id": 8482,
+                "name": "ElementaryTypeName",
+                "src": "1665:6:61"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "3636353633",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 66563",
+                  "value": "66563"
+                },
+                "id": 8483,
+                "name": "Literal",
+                "src": "1709:5:61"
+              }
+            ],
+            "id": 8484,
+            "name": "VariableDeclaration",
+            "src": "1665:49:61"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "DIVIDEND_PROOF",
+              "scope": 8488,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint24",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint24",
+                  "type": "uint24"
+                },
+                "id": 8485,
+                "name": "ElementaryTypeName",
+                "src": "1833:6:61"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "3636353631",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 66561",
+                  "value": "66561"
+                },
+                "id": 8486,
+                "name": "Literal",
+                "src": "1873:5:61"
+              }
+            ],
+            "id": 8487,
+            "name": "VariableDeclaration",
+            "src": "1833:45:61"
+          }
+        ],
+        "id": 8488,
+        "name": "ContractDefinition",
+        "src": "686:1195:61"
+      }
+    ],
+    "id": 8489,
+    "name": "SourceUnit",
+    "src": "0:1882:61"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.525Z",
+  "devdoc": {
+    "author": "AZTEC * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "IAZTEC"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

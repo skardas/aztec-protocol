@@ -1,0 +1,487 @@
+{
+  "contractName": "PublicRangeInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[6]",
+          "name": "",
+          "type": "uint256[6]"
+        }
+      ],
+      "name": "validatePublicRange",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[6]\",\"name\":\"\",\"type\":\"uint256[6]\"}],\"name\":\"validatePublicRange\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"An interface for the Public Range validator contract * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"PublicRangeInterface\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/PublicRangeInterface.sol\":\"PublicRangeInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/PublicRangeInterface.sol\":{\"keccak256\":\"0xead6e9f28c1e7e971f50645ce34e938ffd2862ef8ce615d2986afd4c30b8fb0d\",\"urls\":[\"bzz-raw://07d7f4ac25ebdad3d263deefacaf5fe0c60d3e9115a6f145ddc615252ec9aac3\",\"dweb:/ipfs/QmS64iPo7paHRtTK8mTVEvsio5VQfLBQ1ZwJPdC6Anxh6Z\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n/**\n * @title PublicRangeInterface\n * @author AZTEC\n * @dev An interface for the Public Range validator contract\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\ninterface PublicRangeInterface {\n    /* solhint-disable-next-line var-name-mixedcase */\n    \n    function validatePublicRange(\n        bytes calldata, \n        address, \n        uint[6] calldata\n    ) external pure returns (bytes memory);\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/PublicRangeInterface.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/PublicRangeInterface.sol",
+    "exportedSymbols": {
+      "PublicRangeInterface": [
+        9499
+      ]
+    },
+    "id": 9500,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9485,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:73"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title PublicRangeInterface\n@author AZTEC\n@dev An interface for the Public Range validator contract\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": false,
+        "id": 9499,
+        "linearizedBaseContracts": [
+          9499
+        ],
+        "name": "PublicRangeInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 9498,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validatePublicRange",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9494,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9487,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9498,
+                  "src": "896:14:73",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9486,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "896:5:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9489,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9498,
+                  "src": "921:7:73",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9488,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "921:7:73",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9493,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9498,
+                  "src": "939:16:73",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$6_calldata_ptr",
+                    "typeString": "uint256[6]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 9490,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "939:4:73",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 9492,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "36",
+                      "id": 9491,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "944:1:73",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_6_by_1",
+                        "typeString": "int_const 6"
+                      },
+                      "value": "6"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "939:7:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$6_storage_ptr",
+                      "typeString": "uint256[6]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "886:75:73"
+            },
+            "returnParameters": {
+              "id": 9497,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9496,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9498,
+                  "src": "985:12:73",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9495,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "985:5:73",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "984:14:73"
+            },
+            "scope": 9499,
+            "src": "858:141:73",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9500,
+        "src": "761:240:73"
+      }
+    ],
+    "src": "0:1002:73"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/PublicRangeInterface.sol",
+      "exportedSymbols": {
+        "PublicRangeInterface": [
+          9499
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 9485,
+        "name": "PragmaDirective",
+        "src": "0:31:73"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": "@title PublicRangeInterface\n@author AZTEC\n@dev An interface for the Public Range validator contract\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            9499
+          ],
+          "name": "PublicRangeInterface",
+          "scope": 9500
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "validatePublicRange",
+              "scope": 9499,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9498,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9486,
+                        "name": "ElementaryTypeName",
+                        "src": "896:5:73"
+                      }
+                    ],
+                    "id": 9487,
+                    "name": "VariableDeclaration",
+                    "src": "896:14:73"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9498,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9488,
+                        "name": "ElementaryTypeName",
+                        "src": "921:7:73"
+                      }
+                    ],
+                    "id": 9489,
+                    "name": "VariableDeclaration",
+                    "src": "921:7:73"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9498,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "uint256[6]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "uint256[6]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint",
+                              "type": "uint256"
+                            },
+                            "id": 9490,
+                            "name": "ElementaryTypeName",
+                            "src": "939:4:73"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "36",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 6",
+                              "value": "6"
+                            },
+                            "id": 9491,
+                            "name": "Literal",
+                            "src": "944:1:73"
+                          }
+                        ],
+                        "id": 9492,
+                        "name": "ArrayTypeName",
+                        "src": "939:7:73"
+                      }
+                    ],
+                    "id": 9493,
+                    "name": "VariableDeclaration",
+                    "src": "939:16:73"
+                  }
+                ],
+                "id": 9494,
+                "name": "ParameterList",
+                "src": "886:75:73"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9498,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9495,
+                        "name": "ElementaryTypeName",
+                        "src": "985:5:73"
+                      }
+                    ],
+                    "id": 9496,
+                    "name": "VariableDeclaration",
+                    "src": "985:12:73"
+                  }
+                ],
+                "id": 9497,
+                "name": "ParameterList",
+                "src": "984:14:73"
+              }
+            ],
+            "id": 9498,
+            "name": "FunctionDefinition",
+            "src": "858:141:73"
+          }
+        ],
+        "id": 9499,
+        "name": "ContractDefinition",
+        "src": "761:240:73"
+      }
+    ],
+    "id": 9500,
+    "name": "SourceUnit",
+    "src": "0:1002:73"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:56:51.448Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "An interface for the Public Range validator contract * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "PublicRangeInterface"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

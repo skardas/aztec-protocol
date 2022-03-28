@@ -1,0 +1,530 @@
+{
+  "contractName": "ProxyAdmin",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "admin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newImplementation",
+          "type": "address"
+        }
+      ],
+      "name": "upgradeTo",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "changeAdmin",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"admin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newAdmin\",\"type\":\"address\"}],\"name\":\"changeAdmin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_newImplementation\",\"type\":\"address\"}],\"name\":\"upgradeTo\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Minimal interface for the proxy contract\",\"methods\":{},\"title\":\"ProxyAdmin\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/ProxyAdmin.sol\":\"ProxyAdmin\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/ProxyAdmin.sol\":{\"keccak256\":\"0xecaaf23385bd3d4b4a3bb1c01cb8c95ad3a2eabf0ad1e205c6b059503fab1326\",\"urls\":[\"bzz-raw://1059318da874f2e197430c9f1e16a385d0504b2cae3e2ffa20000f13daf159fe\",\"dweb:/ipfs/QmZs4R8ihhXfdqfbyUquMWRVHdkR7jNC77LXKeDSAfcYoR\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.5.0;\n\n/**\n * @title ProxyAdmin\n * @dev Minimal interface for the proxy contract\n */\ncontract ProxyAdmin {\n    function admin() external returns (address);\n\n    function upgradeTo(address _newImplementation) external;\n\n    function changeAdmin(address _newAdmin) external;\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/ProxyAdmin.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/ProxyAdmin.sol",
+    "exportedSymbols": {
+      "ProxyAdmin": [
+        9483
+      ]
+    },
+    "id": 9484,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9467,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:72"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title ProxyAdmin\n@dev Minimal interface for the proxy contract",
+        "fullyImplemented": false,
+        "id": 9483,
+        "linearizedBaseContracts": [
+          9483
+        ],
+        "name": "ProxyAdmin",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 9472,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "admin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9468,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "143:2:72"
+            },
+            "returnParameters": {
+              "id": 9471,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9470,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9472,
+                  "src": "164:7:72",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9469,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "164:7:72",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "163:9:72"
+            },
+            "scope": 9483,
+            "src": "129:44:72",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 9477,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "upgradeTo",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9475,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9474,
+                  "name": "_newImplementation",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9477,
+                  "src": "198:26:72",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9473,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:7:72",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "197:28:72"
+            },
+            "returnParameters": {
+              "id": 9476,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "234:0:72"
+            },
+            "scope": 9483,
+            "src": "179:56:72",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 9482,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "changeAdmin",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9480,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9479,
+                  "name": "_newAdmin",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9482,
+                  "src": "262:17:72",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9478,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "262:7:72",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "261:19:72"
+            },
+            "returnParameters": {
+              "id": 9481,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "289:0:72"
+            },
+            "scope": 9483,
+            "src": "241:49:72",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9484,
+        "src": "103:189:72"
+      }
+    ],
+    "src": "0:293:72"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/ProxyAdmin.sol",
+      "exportedSymbols": {
+        "ProxyAdmin": [
+          9483
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.5",
+            ".0"
+          ]
+        },
+        "id": 9467,
+        "name": "PragmaDirective",
+        "src": "0:23:72"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title ProxyAdmin\n@dev Minimal interface for the proxy contract",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            9483
+          ],
+          "name": "ProxyAdmin",
+          "scope": 9484
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "admin",
+              "scope": 9483,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9468,
+                "name": "ParameterList",
+                "src": "143:2:72"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9472,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9469,
+                        "name": "ElementaryTypeName",
+                        "src": "164:7:72"
+                      }
+                    ],
+                    "id": 9470,
+                    "name": "VariableDeclaration",
+                    "src": "164:7:72"
+                  }
+                ],
+                "id": 9471,
+                "name": "ParameterList",
+                "src": "163:9:72"
+              }
+            ],
+            "id": 9472,
+            "name": "FunctionDefinition",
+            "src": "129:44:72"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "upgradeTo",
+              "scope": 9483,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_newImplementation",
+                      "scope": 9477,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9473,
+                        "name": "ElementaryTypeName",
+                        "src": "198:7:72"
+                      }
+                    ],
+                    "id": 9474,
+                    "name": "VariableDeclaration",
+                    "src": "198:26:72"
+                  }
+                ],
+                "id": 9475,
+                "name": "ParameterList",
+                "src": "197:28:72"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9476,
+                "name": "ParameterList",
+                "src": "234:0:72"
+              }
+            ],
+            "id": 9477,
+            "name": "FunctionDefinition",
+            "src": "179:56:72"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "changeAdmin",
+              "scope": 9483,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_newAdmin",
+                      "scope": 9482,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9478,
+                        "name": "ElementaryTypeName",
+                        "src": "262:7:72"
+                      }
+                    ],
+                    "id": 9479,
+                    "name": "VariableDeclaration",
+                    "src": "262:17:72"
+                  }
+                ],
+                "id": 9480,
+                "name": "ParameterList",
+                "src": "261:19:72"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9481,
+                "name": "ParameterList",
+                "src": "289:0:72"
+              }
+            ],
+            "id": 9482,
+            "name": "FunctionDefinition",
+            "src": "241:49:72"
+          }
+        ],
+        "id": 9483,
+        "name": "ContractDefinition",
+        "src": "103:189:72"
+      }
+    ],
+    "id": 9484,
+    "name": "SourceUnit",
+    "src": "0:293:72"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.537Z",
+  "devdoc": {
+    "details": "Minimal interface for the proxy contract",
+    "methods": {},
+    "title": "ProxyAdmin"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

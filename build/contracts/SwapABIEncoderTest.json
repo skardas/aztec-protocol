@@ -1,0 +1,638 @@
+{
+  "contractName": "SwapABIEncoderTest",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[6]",
+          "name": "",
+          "type": "uint256[6]"
+        }
+      ],
+      "name": "validateSwap",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[6]\",\"name\":\"\",\"type\":\"uint256[6]\"}],\"name\":\"validateSwap\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"Don't include this as an internal library. This contract uses a static memory table to cache elliptic curve primitives and hashes. Calling this internally from another function will lead to memory mutation and undefined behaviour. The intended use case is to call this externally via `staticcall`. External calls to OptimizedAZTEC can be treated as pure functions as this contract contains no storage and makes no external calls (other than to precompiles) * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"Swap ABI Encoder Test\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/swap/SwapABIEncoderTest.sol\":\"SwapABIEncoderTest\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/validators/swap/SwapABIEncoder.sol\":{\"keccak256\":\"0x5f91754f15202af4cda76744cbd749b7c798ca34e45078fb1b7a75446069769e\",\"urls\":[\"bzz-raw://ba11d958acf87de38062ec978554780039aa64da152f45edce368704e98bf58d\",\"dweb:/ipfs/QmSvv2hjGNMQNjnCgNEeunufvTYQJD12wAfzjynqo9p7rZ\"]},\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/swap/SwapABIEncoderTest.sol\":{\"keccak256\":\"0xa60c22472474a636dc400da48511c015ae3424a2bf8c5eab441b47811d46d309\",\"urls\":[\"bzz-raw://3b4d141b99cf04ea4f142639eaee2dd5d0ee3405233baab98b227270b8c341f6\",\"dweb:/ipfs/QmQsxeXBZffrNx78Xez7fRfWHovjaU2J6TSq5kAqZp3ScE\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061043e806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c80632863433314610030575b600080fd5b6100af600480360361010081101561004757600080fd5b81019060208101813564010000000081111561006257600080fd5b82018360208201111561007457600080fd5b8035906020019184600183028401116401000000008311171561009657600080fd5b91935091506001600160a01b0381351690602001610124565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100e95781810151838201526020016100d1565b50505050905090810190601f1680156101165780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606061012e610136565b949350505050565b610144356101040161016435610124016101843561014401602082033560041460208203356002141661016857600080fd5b60206101605260026101a05260806101c05260c06102205261020061024052600061026052600061028052610124356102a0526101206102c05260016102e052606061030052600160005260806060840160203760c06103205260016103405281356103605260a06000206103805260406103a052600160ff1b60016040511602602051176103c052600160ff1b60016080511602606051176103e05260016104205260606104405260806101e0840160203760016104805260408201356104a05260a06000206104c052803560408203810135806040016104e052600160ff1b600160405116026020511761050052600160ff1b60016080511602606051176105205280602084038301610540378060c00161046052806101200161040052806103200161020052806103c0016101e052806105400160c06020820152610200604082015260006060820152600060808201526101243560e052602060e02060a082015261012060c0820152600160e0820152606061010082015260806102a0870160203760c06101208201526001610140820152606085013561016082015260a060002061018082015260406101a0820152600160ff1b60016040511602602051176101c0820152600160ff1b60016080511602606051176101e08201526001610220820152606061024082015260806101208701602037600161028082015260208501356102a082015260a06000206102c082015260208401359250604084038301359150816040016102e0820152600160ff1b6001604051160260205117610300820152600160ff1b6001608051160260605117610320820152816020850384016103408301378160c00161026082015281610120016102008201528161032001815261020051826103c001016101805260406101805101610160f3fea265627a7a72315820dbb1259e54237f2534795eb83111ec74e4dbfff879e76c44a0b31d51d34a8fe064736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c80632863433314610030575b600080fd5b6100af600480360361010081101561004757600080fd5b81019060208101813564010000000081111561006257600080fd5b82018360208201111561007457600080fd5b8035906020019184600183028401116401000000008311171561009657600080fd5b91935091506001600160a01b0381351690602001610124565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100e95781810151838201526020016100d1565b50505050905090810190601f1680156101165780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606061012e610136565b949350505050565b610144356101040161016435610124016101843561014401602082033560041460208203356002141661016857600080fd5b60206101605260026101a05260806101c05260c06102205261020061024052600061026052600061028052610124356102a0526101206102c05260016102e052606061030052600160005260806060840160203760c06103205260016103405281356103605260a06000206103805260406103a052600160ff1b60016040511602602051176103c052600160ff1b60016080511602606051176103e05260016104205260606104405260806101e0840160203760016104805260408201356104a05260a06000206104c052803560408203810135806040016104e052600160ff1b600160405116026020511761050052600160ff1b60016080511602606051176105205280602084038301610540378060c00161046052806101200161040052806103200161020052806103c0016101e052806105400160c06020820152610200604082015260006060820152600060808201526101243560e052602060e02060a082015261012060c0820152600160e0820152606061010082015260806102a0870160203760c06101208201526001610140820152606085013561016082015260a060002061018082015260406101a0820152600160ff1b60016040511602602051176101c0820152600160ff1b60016080511602606051176101e08201526001610220820152606061024082015260806101208701602037600161028082015260208501356102a082015260a06000206102c082015260208401359250604084038301359150816040016102e0820152600160ff1b6001604051160260205117610300820152600160ff1b6001608051160260605117610320820152816020850384016103408301378160c00161026082015281610120016102008201528161032001815261020051826103c001016101805260406101805101610160f3fea265627a7a72315820dbb1259e54237f2534795eb83111ec74e4dbfff879e76c44a0b31d51d34a8fe064736f6c63430005110032",
+  "sourceMap": "1243:243:91:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1243:243:91;;;;;;;",
+  "deployedSourceMap": "1243:243:91:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1243:243:91;;;;;;;;;;;;;;;;;;;1277:207;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;1277:207:91;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;1277:207:91;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1277:207:91;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1277:207:91;;-1:-1:-1;1277:207:91;-1:-1:-1;;;;;;1277:207:91;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;1277:207:91;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1419:12;1447:30;:28;:30::i;:::-;1277:207;;;;;;:::o;1991:26025:31:-;2140:5;2127:19;2120:5;2116:31;2202:5;2189:19;2182:5;2178:31;2304:5;2291:19;2284:5;2280:31;2775:4;2763:10;2759:21;2746:35;2740:4;2737:45;2712:4;2699:11;2695:22;2682:36;2676:4;2673:46;2652:144;2642:2;;2829:4;2823;2816:18;2642:2;6069:4;6062:5;6055:19;6842:4;6835:5;6828:19;6990:4;6983:5;6976:19;7811:4;7804:5;7797:19;8195:5;8188;8181:20;8374:4;8367:5;8360:19;8449:4;8442:5;8435:19;8537:5;8524:19;8517:5;8510:34;9425:5;9418;9411:20;9502:4;9495:5;9488:19;9611:4;9604:5;9597:19;10433:4;10427;10420:18;10905:4;10898;10891:5;10887:16;10881:4;10868:42;11021:4;11014:5;11007:19;11105:4;11098:5;11091:19;11265:10;11252:24;11245:5;11238:39;11414:4;11408;11398:21;11391:5;11384:36;11520:4;11513:5;11506:19;-1:-1:-1;;;12441:4:31;12434;12428:11;12424:22;12352:208;12304:4;12298:11;12274:304;12251:5;12227:365;-1:-1:-1;;;12781:4:31;12774;12768:11;12764:22;12739:157;12712:4;12706:11;12682:232;12659:5;12635:293;13650:4;13643:5;13636:19;13749:4;13742:5;13735:19;15041:4;15033:5;15026;15022:17;15016:4;15003:43;15206:4;15199:5;15192:19;15445:4;15433:10;15429:21;15416:35;15409:5;15402:50;15543:4;15537;15527:21;15520:5;15513:36;15971:11;15958:25;17125:4;17112:11;17108:22;17093:13;17089:42;17076:56;17234:14;17228:4;17224:25;17217:5;17210:40;-1:-1:-1;;;17470:4:31;17463;17457:11;17453:22;17424:165;17397:4;17391:11;17367:240;17344:5;17320:301;-1:-1:-1;;;17841:4:31;17834;17828:11;17824:22;17795:165;17768:4;17762:11;17738:240;17715:5;17691:301;18600:14;18592:4;18579:11;18575:22;18560:13;18556:42;18549:5;18536:79;19090:14;19084:4;19080:25;19073:5;19066:40;19308:14;19301:5;19297:26;19290:5;19283:41;19531:14;19524:5;19520:26;19513:5;19506:41;20092:14;20085:5;20081:26;20074:5;20067:41;20429:14;20422:5;20418:26;20620:4;20613;20603:8;20599:19;20592:33;20732:5;20725:4;20715:8;20711:19;20704:34;20831:4;20824;20814:8;20810:19;20803:33;20944:4;20937;20927:8;20923:19;20916:33;21154:5;21141:19;21135:4;21128:33;21218:4;21212;21202:21;21195:4;21185:8;21181:19;21174:50;21475:5;21468:4;21458:8;21454:19;21447:34;21587:4;21580;21570:8;21566:19;21559:33;21713:4;21705:5;21695:8;21691:20;21684:34;22067:4;22059:5;22052;22048:17;22042:4;22029:43;22184:4;22176:5;22166:8;22162:20;22155:34;22320:4;22312:5;22302:8;22298:20;22291:34;22473:4;22461:10;22457:21;22444:35;22436:5;22426:8;22422:20;22415:65;22599:4;22593;22583:21;22575:5;22565:8;22561:20;22554:51;22726:4;22718:5;22708:8;22704:20;22697:34;-1:-1:-1;;;22976:4:31;22969;22963:11;22959:22;22930:165;22903:4;22897:11;22873:240;22849:5;22839:8;22835:20;22811:316;-1:-1:-1;;;23372:4:31;23365;23359:11;23355:22;23326:165;23299:4;23293:11;23269:240;23245:5;23235:8;23231:20;23207:316;23849:4;23841:5;23831:8;23827:20;23820:34;23963:4;23955:5;23945:8;23941:20;23934:34;24312:4;24304:5;24297;24293:17;24287:4;24274:43;24497:4;24489:5;24479:8;24475:20;24468:34;24650:4;24638:10;24634:21;24621:35;24613:5;24603:8;24599:20;24592:65;24762:4;24756;24746:21;24738:5;24728:8;24724:20;24717:51;24969:4;24956:11;24952:22;24939:36;24922:53;;25055:4;25042:11;25038:22;25023:13;25019:42;25006:56;24988:74;;25190:14;25184:4;25180:25;25172:5;25162:8;25158:20;25151:55;-1:-1:-1;;;25451:4:31;25444;25438:11;25434:22;25405:165;25378:4;25372:11;25348:240;25324:5;25314:8;25310:20;25286:316;-1:-1:-1;;;25847:4:31;25840;25834:11;25830:22;25801:165;25774:4;25768:11;25744:240;25720:5;25710:8;25706:20;25682:316;26150:14;26142:4;26129:11;26125:22;26110:13;26106:42;26098:5;26088:8;26084:20;26071:94;26383:14;26377:4;26373:25;26365:5;26355:8;26351:20;26344:55;26549:14;26542:5;26538:26;26530:5;26520:8;26516:20;26509:56;26685:14;26678:5;26674:26;26664:8;26657:44;27499:5;27493:12;27476:14;27469:5;27465:26;27461:45;27454:5;27447:60;27976:4;27968:5;27962:12;27958:23;27951:5;27944:38",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\nimport \"../../../../ACE/validators/swap/SwapABIEncoder.sol\";\n\n/**\n * @title Swap ABI Encoder Test\n * @author AZTEC\n * @dev Don't include this as an internal library. This contract uses a static memory table to cache\n * elliptic curve primitives and hashes.\n * Calling this internally from another function will lead to memory mutation and undefined behaviour.\n * The intended use case is to call this externally via `staticcall`.\n * External calls to OptimizedAZTEC can be treated as pure functions as this contract contains no\n * storage and makes no external calls (other than to precompiles)\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\ncontract SwapABIEncoderTest {\n    function validateSwap(\n        bytes calldata,\n        address,\n        uint[6] calldata\n    )\n        external\n        pure\n        returns (bytes memory)\n    {\n        SwapABIEncoder.encodeAndExit();\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/swap/SwapABIEncoderTest.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/swap/SwapABIEncoderTest.sol",
+    "exportedSymbols": {
+      "SwapABIEncoderTest": [
+        10191
+      ]
+    },
+    "id": 10192,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10170,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:91"
+      },
+      {
+        "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/validators/swap/SwapABIEncoder.sol",
+        "file": "../../../../ACE/validators/swap/SwapABIEncoder.sol",
+        "id": 10171,
+        "nodeType": "ImportDirective",
+        "scope": 10192,
+        "sourceUnit": 3200,
+        "src": "33:60:91",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title Swap ABI Encoder Test\n@author AZTEC\n@dev Don't include this as an internal library. This contract uses a static memory table to cache\nelliptic curve primitives and hashes.\nCalling this internally from another function will lead to memory mutation and undefined behaviour.\nThe intended use case is to call this externally via `staticcall`.\nExternal calls to OptimizedAZTEC can be treated as pure functions as this contract contains no\nstorage and makes no external calls (other than to precompiles)\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 10191,
+        "linearizedBaseContracts": [
+          10191
+        ],
+        "name": "SwapABIEncoderTest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 10189,
+              "nodeType": "Block",
+              "src": "1437:47:91",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 10184,
+                        "name": "SwapABIEncoder",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3199,
+                        "src": "1447:14:91",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_SwapABIEncoder_$3199_$",
+                          "typeString": "type(library SwapABIEncoder)"
+                        }
+                      },
+                      "id": 10186,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "encodeAndExit",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3198,
+                      "src": "1447:28:91",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$__$returns$__$",
+                        "typeString": "function () pure"
+                      }
+                    },
+                    "id": 10187,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1447:30:91",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 10188,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1447:30:91"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 10190,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validateSwap",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10180,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10173,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10190,
+                  "src": "1308:14:91",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10172,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1308:5:91",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10175,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10190,
+                  "src": "1332:7:91",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10174,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1332:7:91",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10179,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10190,
+                  "src": "1349:16:91",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$6_calldata_ptr",
+                    "typeString": "uint256[6]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 10176,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1349:4:91",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 10178,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "36",
+                      "id": 10177,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1354:1:91",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_6_by_1",
+                        "typeString": "int_const 6"
+                      },
+                      "value": "6"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "1349:7:91",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$6_storage_ptr",
+                      "typeString": "uint256[6]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1298:73:91"
+            },
+            "returnParameters": {
+              "id": 10183,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10182,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10190,
+                  "src": "1419:12:91",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10181,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1419:5:91",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1418:14:91"
+            },
+            "scope": 10191,
+            "src": "1277:207:91",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10192,
+        "src": "1243:243:91"
+      }
+    ],
+    "src": "0:1487:91"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/swap/SwapABIEncoderTest.sol",
+      "exportedSymbols": {
+        "SwapABIEncoderTest": [
+          10191
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 10170,
+        "name": "PragmaDirective",
+        "src": "0:31:91"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3200,
+          "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/validators/swap/SwapABIEncoder.sol",
+          "file": "../../../../ACE/validators/swap/SwapABIEncoder.sol",
+          "scope": 10192,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 10171,
+        "name": "ImportDirective",
+        "src": "33:60:91"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title Swap ABI Encoder Test\n@author AZTEC\n@dev Don't include this as an internal library. This contract uses a static memory table to cache\nelliptic curve primitives and hashes.\nCalling this internally from another function will lead to memory mutation and undefined behaviour.\nThe intended use case is to call this externally via `staticcall`.\nExternal calls to OptimizedAZTEC can be treated as pure functions as this contract contains no\nstorage and makes no external calls (other than to precompiles)\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            10191
+          ],
+          "name": "SwapABIEncoderTest",
+          "scope": 10192
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "validateSwap",
+              "scope": 10191,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10190,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10172,
+                        "name": "ElementaryTypeName",
+                        "src": "1308:5:91"
+                      }
+                    ],
+                    "id": 10173,
+                    "name": "VariableDeclaration",
+                    "src": "1308:14:91"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10190,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10174,
+                        "name": "ElementaryTypeName",
+                        "src": "1332:7:91"
+                      }
+                    ],
+                    "id": 10175,
+                    "name": "VariableDeclaration",
+                    "src": "1332:7:91"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10190,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "uint256[6]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "uint256[6]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint",
+                              "type": "uint256"
+                            },
+                            "id": 10176,
+                            "name": "ElementaryTypeName",
+                            "src": "1349:4:91"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "36",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 6",
+                              "value": "6"
+                            },
+                            "id": 10177,
+                            "name": "Literal",
+                            "src": "1354:1:91"
+                          }
+                        ],
+                        "id": 10178,
+                        "name": "ArrayTypeName",
+                        "src": "1349:7:91"
+                      }
+                    ],
+                    "id": 10179,
+                    "name": "VariableDeclaration",
+                    "src": "1349:16:91"
+                  }
+                ],
+                "id": 10180,
+                "name": "ParameterList",
+                "src": "1298:73:91"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10190,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10181,
+                        "name": "ElementaryTypeName",
+                        "src": "1419:5:91"
+                      }
+                    ],
+                    "id": 10182,
+                    "name": "VariableDeclaration",
+                    "src": "1419:12:91"
+                  }
+                ],
+                "id": 10183,
+                "name": "ParameterList",
+                "src": "1418:14:91"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "encodeAndExit",
+                              "referencedDeclaration": 3198,
+                              "type": "function () pure"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3199,
+                                  "type": "type(library SwapABIEncoder)",
+                                  "value": "SwapABIEncoder"
+                                },
+                                "id": 10184,
+                                "name": "Identifier",
+                                "src": "1447:14:91"
+                              }
+                            ],
+                            "id": 10186,
+                            "name": "MemberAccess",
+                            "src": "1447:28:91"
+                          }
+                        ],
+                        "id": 10187,
+                        "name": "FunctionCall",
+                        "src": "1447:30:91"
+                      }
+                    ],
+                    "id": 10188,
+                    "name": "ExpressionStatement",
+                    "src": "1447:30:91"
+                  }
+                ],
+                "id": 10189,
+                "name": "Block",
+                "src": "1437:47:91"
+              }
+            ],
+            "id": 10190,
+            "name": "FunctionDefinition",
+            "src": "1277:207:91"
+          }
+        ],
+        "id": 10191,
+        "name": "ContractDefinition",
+        "src": "1243:243:91"
+      }
+    ],
+    "id": 10192,
+    "name": "SourceUnit",
+    "src": "0:1487:91"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.550Z",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "Don't include this as an internal library. This contract uses a static memory table to cache elliptic curve primitives and hashes. Calling this internally from another function will lead to memory mutation and undefined behaviour. The intended use case is to call this externally via `staticcall`. External calls to OptimizedAZTEC can be treated as pure functions as this contract contains no storage and makes no external calls (other than to precompiles) * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "Swap ABI Encoder Test"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

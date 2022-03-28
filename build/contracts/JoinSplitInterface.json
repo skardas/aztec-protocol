@@ -1,0 +1,487 @@
+{
+  "contractName": "JoinSplitInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[6]",
+          "name": "",
+          "type": "uint256[6]"
+        }
+      ],
+      "name": "validateJoinSplit",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[6]\",\"name\":\"\",\"type\":\"uint256[6]\"}],\"name\":\"validateJoinSplit\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"An interface defining the JoinSplitInterface standard.  * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"JoinSplitInterface\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/JoinSplitInterface.sol\":\"JoinSplitInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/JoinSplitInterface.sol\":{\"keccak256\":\"0xe70a23d45b128f2fab3f9ced3285f315e830d91807334f5f3ec36360013dc3c8\",\"urls\":[\"bzz-raw://bf397205030113edaef8686a9d9f08b02a849e5a0bc4506223a526b5c1093eec\",\"dweb:/ipfs/QmWLwtMaf5ZX7XGKjuuSadA2enuMNKMiFcw7RpSNzkHeF5\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n/**\n * @title JoinSplitInterface\n * @author AZTEC\n * @dev An interface defining the JoinSplitInterface standard.\n * \n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\ninterface JoinSplitInterface {\n    /* solhint-disable-next-line var-name-mixedcase */\n\n    function validateJoinSplit(\n        bytes calldata, \n        address, \n        uint[6] calldata\n    ) external pure returns (bytes memory);\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/JoinSplitInterface.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/JoinSplitInterface.sol",
+    "exportedSymbols": {
+      "JoinSplitInterface": [
+        9448
+      ]
+    },
+    "id": 9449,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9434,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:70"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title JoinSplitInterface\n@author AZTEC\n@dev An interface defining the JoinSplitInterface standard.\n\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": false,
+        "id": 9448,
+        "linearizedBaseContracts": [
+          9448
+        ],
+        "name": "JoinSplitInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 9447,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validateJoinSplit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9443,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9436,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9447,
+                  "src": "889:14:70",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9435,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "889:5:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9438,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9447,
+                  "src": "914:7:70",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9437,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "914:7:70",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9442,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9447,
+                  "src": "932:16:70",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$6_calldata_ptr",
+                    "typeString": "uint256[6]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 9439,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "932:4:70",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 9441,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "36",
+                      "id": 9440,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "937:1:70",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_6_by_1",
+                        "typeString": "int_const 6"
+                      },
+                      "value": "6"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "932:7:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$6_storage_ptr",
+                      "typeString": "uint256[6]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "879:75:70"
+            },
+            "returnParameters": {
+              "id": 9446,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9445,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9447,
+                  "src": "978:12:70",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9444,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "978:5:70",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "977:14:70"
+            },
+            "scope": 9448,
+            "src": "853:139:70",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9449,
+        "src": "762:232:70"
+      }
+    ],
+    "src": "0:995:70"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/JoinSplitInterface.sol",
+      "exportedSymbols": {
+        "JoinSplitInterface": [
+          9448
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 9434,
+        "name": "PragmaDirective",
+        "src": "0:31:70"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": "@title JoinSplitInterface\n@author AZTEC\n@dev An interface defining the JoinSplitInterface standard.\n\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            9448
+          ],
+          "name": "JoinSplitInterface",
+          "scope": 9449
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "validateJoinSplit",
+              "scope": 9448,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9447,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9435,
+                        "name": "ElementaryTypeName",
+                        "src": "889:5:70"
+                      }
+                    ],
+                    "id": 9436,
+                    "name": "VariableDeclaration",
+                    "src": "889:14:70"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9447,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9437,
+                        "name": "ElementaryTypeName",
+                        "src": "914:7:70"
+                      }
+                    ],
+                    "id": 9438,
+                    "name": "VariableDeclaration",
+                    "src": "914:7:70"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9447,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "uint256[6]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "uint256[6]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint",
+                              "type": "uint256"
+                            },
+                            "id": 9439,
+                            "name": "ElementaryTypeName",
+                            "src": "932:4:70"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "36",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 6",
+                              "value": "6"
+                            },
+                            "id": 9440,
+                            "name": "Literal",
+                            "src": "937:1:70"
+                          }
+                        ],
+                        "id": 9441,
+                        "name": "ArrayTypeName",
+                        "src": "932:7:70"
+                      }
+                    ],
+                    "id": 9442,
+                    "name": "VariableDeclaration",
+                    "src": "932:16:70"
+                  }
+                ],
+                "id": 9443,
+                "name": "ParameterList",
+                "src": "879:75:70"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 9447,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9444,
+                        "name": "ElementaryTypeName",
+                        "src": "978:5:70"
+                      }
+                    ],
+                    "id": 9445,
+                    "name": "VariableDeclaration",
+                    "src": "978:12:70"
+                  }
+                ],
+                "id": 9446,
+                "name": "ParameterList",
+                "src": "977:14:70"
+              }
+            ],
+            "id": 9447,
+            "name": "FunctionDefinition",
+            "src": "853:139:70"
+          }
+        ],
+        "id": 9448,
+        "name": "ContractDefinition",
+        "src": "762:232:70"
+      }
+    ],
+    "id": 9449,
+    "name": "SourceUnit",
+    "src": "0:995:70"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:53:21.962Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "An interface defining the JoinSplitInterface standard.  * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "JoinSplitInterface"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

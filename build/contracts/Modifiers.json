@@ -1,0 +1,547 @@
+{
+  "contractName": "Modifiers",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{},\"notice\":\"Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\"}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol\":\"Modifiers\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol\":{\"keccak256\":\"0xf1d54fb9db0e5e941ab986c021f81fe116d7718665b9cafd150142a9c195527b\",\"urls\":[\"bzz-raw://67eaf6399d8de71d6877e02bf1fdd09859c924a5a8992edd1992f8e60a88c365\",\"dweb:/ipfs/QmY8F4cpkLfJqcqj9kx8V4DLxcW3PwmgggWZxYhHiomZQB\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820da6cb4e9d71b047b0dad41478a753a874ce2e860f72c7163e3e81a06f50bdde664736f6c63430005110032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820da6cb4e9d71b047b0dad41478a753a874ce2e860f72c7163e3e81a06f50bdde664736f6c63430005110032",
+  "sourceMap": "652:262:78:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;652:262:78;;;;;;;",
+  "deployedSourceMap": "652:262:78:-;;;;;",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n\n /**\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n **/\ncontract Modifiers {\n    \n    /**\n    * @dev Check that the input address is not 0x0, and revert if it is\n    */\n    modifier checkZeroAddress(address addressToCheck) {\n        require(addressToCheck != address(0x0), 'address can not be 0x0');\n        _;\n    }\n}   \n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol",
+    "exportedSymbols": {
+      "Modifiers": [
+        9741
+      ]
+    },
+    "id": 9742,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9725,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:78"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 9741,
+        "linearizedBaseContracts": [
+          9741
+        ],
+        "name": "Modifiers",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 9739,
+              "nodeType": "Block",
+              "src": "819:93:78",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 9734,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 9730,
+                          "name": "addressToCheck",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9727,
+                          "src": "837:14:78",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "307830",
+                              "id": 9732,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "863:3:78",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0x0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 9731,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "855:7:78",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 9733,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "855:12:78",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "837:30:78",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "616464726573732063616e206e6f7420626520307830",
+                        "id": 9735,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "869:24:78",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_dfa193318676055d889a3e456f91c0f47dcf8aa6a8ee80d1fc42ab53a9a60787",
+                          "typeString": "literal_string \"address can not be 0x0\""
+                        },
+                        "value": "address can not be 0x0"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_dfa193318676055d889a3e456f91c0f47dcf8aa6a8ee80d1fc42ab53a9a60787",
+                          "typeString": "literal_string \"address can not be 0x0\""
+                        }
+                      ],
+                      "id": 9729,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        13464,
+                        13465
+                      ],
+                      "referencedDeclaration": 13465,
+                      "src": "829:7:78",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 9736,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "829:65:78",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9737,
+                  "nodeType": "ExpressionStatement",
+                  "src": "829:65:78"
+                },
+                {
+                  "id": 9738,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "904:1:78"
+                }
+              ]
+            },
+            "documentation": "@dev Check that the input address is not 0x0, and revert if it is",
+            "id": 9740,
+            "name": "checkZeroAddress",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 9728,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9727,
+                  "name": "addressToCheck",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9740,
+                  "src": "795:22:78",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9726,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "795:7:78",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "794:24:78"
+            },
+            "src": "769:143:78",
+            "visibility": "internal"
+          }
+        ],
+        "scope": 9742,
+        "src": "652:262:78"
+      }
+    ],
+    "src": "0:918:78"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/Modifiers.sol",
+      "exportedSymbols": {
+        "Modifiers": [
+          9741
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 9725,
+        "name": "PragmaDirective",
+        "src": "0:31:78"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            9741
+          ],
+          "name": "Modifiers",
+          "scope": 9742
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": "@dev Check that the input address is not 0x0, and revert if it is",
+              "name": "checkZeroAddress",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "addressToCheck",
+                      "scope": 9740,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9726,
+                        "name": "ElementaryTypeName",
+                        "src": "795:7:78"
+                      }
+                    ],
+                    "id": 9727,
+                    "name": "VariableDeclaration",
+                    "src": "795:22:78"
+                  }
+                ],
+                "id": 9728,
+                "name": "ParameterList",
+                "src": "794:24:78"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_dfa193318676055d889a3e456f91c0f47dcf8aa6a8ee80d1fc42ab53a9a60787",
+                                  "typeString": "literal_string \"address can not be 0x0\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                13464,
+                                13465
+                              ],
+                              "referencedDeclaration": 13465,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 9729,
+                            "name": "Identifier",
+                            "src": "829:7:78"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "!=",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9727,
+                                  "type": "address",
+                                  "value": "addressToCheck"
+                                },
+                                "id": 9730,
+                                "name": "Identifier",
+                                "src": "837:14:78"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "address payable",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_rational_0_by_1",
+                                          "typeString": "int_const 0"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "type(address)",
+                                      "value": "address"
+                                    },
+                                    "id": 9731,
+                                    "name": "ElementaryTypeNameExpression",
+                                    "src": "855:7:78"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "hexvalue": "307830",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "subdenomination": null,
+                                      "token": "number",
+                                      "type": "int_const 0",
+                                      "value": "0x0"
+                                    },
+                                    "id": 9732,
+                                    "name": "Literal",
+                                    "src": "863:3:78"
+                                  }
+                                ],
+                                "id": 9733,
+                                "name": "FunctionCall",
+                                "src": "855:12:78"
+                              }
+                            ],
+                            "id": 9734,
+                            "name": "BinaryOperation",
+                            "src": "837:30:78"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "616464726573732063616e206e6f7420626520307830",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"address can not be 0x0\"",
+                              "value": "address can not be 0x0"
+                            },
+                            "id": 9735,
+                            "name": "Literal",
+                            "src": "869:24:78"
+                          }
+                        ],
+                        "id": 9736,
+                        "name": "FunctionCall",
+                        "src": "829:65:78"
+                      }
+                    ],
+                    "id": 9737,
+                    "name": "ExpressionStatement",
+                    "src": "829:65:78"
+                  },
+                  {
+                    "id": 9738,
+                    "name": "PlaceholderStatement",
+                    "src": "904:1:78"
+                  }
+                ],
+                "id": 9739,
+                "name": "Block",
+                "src": "819:93:78"
+              }
+            ],
+            "id": 9740,
+            "name": "ModifierDefinition",
+            "src": "769:143:78"
+          }
+        ],
+        "id": 9741,
+        "name": "ContractDefinition",
+        "src": "652:262:78"
+      }
+    ],
+    "id": 9742,
+    "name": "SourceUnit",
+    "src": "0:918:78"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.542Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {},
+    "notice": "Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*"
+  }
+}

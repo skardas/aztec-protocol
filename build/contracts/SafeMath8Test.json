@@ -1,0 +1,1534 @@
+{
+  "contractName": "SafeMath8Test",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "a",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "b",
+          "type": "uint8"
+        }
+      ],
+      "name": "_mul",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "a",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "b",
+          "type": "uint8"
+        }
+      ],
+      "name": "_add",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "a",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint8",
+          "name": "b",
+          "type": "uint8"
+        }
+      ],
+      "name": "_sub",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"a\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"b\",\"type\":\"uint8\"}],\"name\":\"_add\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"a\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"b\",\"type\":\"uint8\"}],\"name\":\"_mul\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"a\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"b\",\"type\":\"uint8\"}],\"name\":\"_sub\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"SafeMath8Test\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/SafeMath8Test.sol\":\"SafeMath8Test\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/SafeMath8.sol\":{\"keccak256\":\"0x42879ebd1a00fcec905ce8030509827e886ef4f076debbd59da82751663eeba9\",\"urls\":[\"bzz-raw://e5d79c0c36584c0b5fb3430d91bee35625df995c2b6ea1a013b19f29a513e625\",\"dweb:/ipfs/QmWoFytXA9sJ9zSHV28ZVK8JvJok2bMJSHXHu2xABRKdcc\"]},\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/SafeMath8Test.sol\":{\"keccak256\":\"0x915b547f35c5570e7fb1cd5dd7e5aef80727c372a2d9228dcaeba0852afffc4a\",\"urls\":[\"bzz-raw://475f4ebface249431353abe0828e8c6ba28f768c4f563520b1da40bb06f256a6\",\"dweb:/ipfs/QmdUNGebZEQ6AdLo3c4kVzayD8nTyV2WXApaB8DVz6zamU\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061029e806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80633e2f03ad1461004657806373df4c23146100845780638246d678146100ac575b600080fd5b61006e6004803603604081101561005c57600080fd5b5060ff813581169160200135166100d4565b6040805160ff9092168252519081900360200190f35b61006e6004803603604081101561009a57600080fd5b5060ff813581169160200135166100f0565b61006e600480360360408110156100c257600080fd5b5060ff81358116916020013516610105565b60006100e960ff84168363ffffffff61011a16565b9392505050565b60006100e960ff84168363ffffffff61016516565b60006100e960ff84168363ffffffff6101af16565b600060ff8381169083160261010081106100e95760405162461bcd60e51b81526004018080602001828103825260248152602001806102216024913960400191505060405180910390fd5b600082820160ff80851690821610156100e95760405162461bcd60e51b81526004018080602001828103825260248152602001806101fd6024913960400191505060405180910390fd5b60008260ff168260ff1611156101f65760405162461bcd60e51b81526004018080602001828103825260258152602001806102456025913960400191505060405180910390fd5b5090039056fe75696e7438206164642074726967676572656420696e7465676572206f766572666c6f7775696e7438206d756c2074726967676572656420696e7465676572206f766572666c6f7775696e7438207375622074726967676572656420696e746567657220756e646572666c6f77a265627a7a72315820fc4d51641e73700cc6fa78b35fec634a60692b87aafb28ad8500b0f702f8c35064736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80633e2f03ad1461004657806373df4c23146100845780638246d678146100ac575b600080fd5b61006e6004803603604081101561005c57600080fd5b5060ff813581169160200135166100d4565b6040805160ff9092168252519081900360200190f35b61006e6004803603604081101561009a57600080fd5b5060ff813581169160200135166100f0565b61006e600480360360408110156100c257600080fd5b5060ff81358116916020013516610105565b60006100e960ff84168363ffffffff61011a16565b9392505050565b60006100e960ff84168363ffffffff61016516565b60006100e960ff84168363ffffffff6101af16565b600060ff8381169083160261010081106100e95760405162461bcd60e51b81526004018080602001828103825260248152602001806102216024913960400191505060405180910390fd5b600082820160ff80851690821610156100e95760405162461bcd60e51b81526004018080602001828103825260248152602001806101fd6024913960400191505060405180910390fd5b60008260ff168260ff1611156101f65760405162461bcd60e51b81526004018080602001828103825260258152602001806102456025913960400191505060405180910390fd5b5090039056fe75696e7438206164642074726967676572656420696e7465676572206f766572666c6f7775696e7438206d756c2074726967676572656420696e7465676572206f766572666c6f7775696e7438207375622074726967676572656420696e746567657220756e646572666c6f77a265627a7a72315820fc4d51641e73700cc6fa78b35fec634a60692b87aafb28ad8500b0f702f8c35064736f6c63430005110032",
+  "sourceMap": "729:354:111:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;729:354:111;;;;;;;",
+  "deployedSourceMap": "729:354:111:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;729:354:111;;;;;;;;;;;;;;;;;;;;;;;;;;;;;790:93;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;790:93:111;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;889;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;889:93:111;;;;;;;;;;;:::i;988:::-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;988:93:111;;;;;;;;;;;:::i;790:::-;843:5;867:8;:5;;;873:1;867:8;:5;:8;:::i;:::-;860:16;790:93;-1:-1:-1;;;790:93:111:o;889:::-;942:5;966:8;:5;;;972:1;966:8;:5;:8;:::i;988:93::-;1041:5;1065:8;:5;;;1071:1;1065:8;:5;:8;:::i;941:204:81:-;995:5;1037:10;1024;;;1037;;;1024:23;1069:3;1065:7;;1057:56;;;;-1:-1:-1;;;1057:56:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2040:176;2094:5;2121;;;2144:6;;;;;;;;;2136:55;;;;-1:-1:-1;;;2136:55:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1729:156;1783:5;1813:1;1808:6;;:1;:6;;;;1800:56;;;;-1:-1:-1;;;1800:56:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;1873:5:81;;;1729:156::o",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\nimport \"../../libs/SafeMath8.sol\";\n\n/**\n * @title SafeMath8Test\n * @author AZTEC\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\ncontract SafeMath8Test {\n    using SafeMath8 for uint8;\n\n    function _mul(uint8 a, uint8 b) public pure returns (uint8) {\n        return(a.mul(b));\n    }\n\n    function _add(uint8 a, uint8 b) public pure returns (uint8) {\n        return(a.add(b));\n    }\n\n    function _sub(uint8 a, uint8 b) public pure returns (uint8) {\n        return(a.sub(b));\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/SafeMath8Test.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/SafeMath8Test.sol",
+    "exportedSymbols": {
+      "SafeMath8Test": [
+        11723
+      ]
+    },
+    "id": 11724,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11670,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:111"
+      },
+      {
+        "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/SafeMath8.sol",
+        "file": "../../libs/SafeMath8.sol",
+        "id": 11671,
+        "nodeType": "ImportDirective",
+        "scope": 11724,
+        "sourceUnit": 9934,
+        "src": "33:34:111",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title SafeMath8Test\n@author AZTEC\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 11723,
+        "linearizedBaseContracts": [
+          11723
+        ],
+        "name": "SafeMath8Test",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 11674,
+            "libraryName": {
+              "contractScope": null,
+              "id": 11672,
+              "name": "SafeMath8",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9933,
+              "src": "764:9:111",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath8_$9933",
+                "typeString": "library SafeMath8"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "758:26:111",
+            "typeName": {
+              "id": 11673,
+              "name": "uint8",
+              "nodeType": "ElementaryTypeName",
+              "src": "778:5:111",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint8",
+                "typeString": "uint8"
+              }
+            }
+          },
+          {
+            "body": {
+              "id": 11689,
+              "nodeType": "Block",
+              "src": "850:33:111",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 11685,
+                            "name": "b",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11678,
+                            "src": "873:1:111",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 11683,
+                            "name": "a",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11676,
+                            "src": "867:1:111",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          },
+                          "id": 11684,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "mul",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 9872,
+                          "src": "867:5:111",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_uint8_$_t_uint8_$returns$_t_uint8_$bound_to$_t_uint8_$",
+                            "typeString": "function (uint8,uint8) pure returns (uint8)"
+                          }
+                        },
+                        "id": 11686,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "867:8:111",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        }
+                      }
+                    ],
+                    "id": 11687,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "866:10:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "functionReturnParameters": 11682,
+                  "id": 11688,
+                  "nodeType": "Return",
+                  "src": "860:16:111"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 11690,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_mul",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11679,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11676,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11690,
+                  "src": "804:7:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11675,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "804:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11678,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11690,
+                  "src": "813:7:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11677,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "813:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "803:18:111"
+            },
+            "returnParameters": {
+              "id": 11682,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11681,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11690,
+                  "src": "843:5:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11680,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "843:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "842:7:111"
+            },
+            "scope": 11723,
+            "src": "790:93:111",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 11705,
+              "nodeType": "Block",
+              "src": "949:33:111",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 11701,
+                            "name": "b",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11694,
+                            "src": "972:1:111",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 11699,
+                            "name": "a",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11692,
+                            "src": "966:1:111",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          },
+                          "id": 11700,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "add",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 9932,
+                          "src": "966:5:111",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_uint8_$_t_uint8_$returns$_t_uint8_$bound_to$_t_uint8_$",
+                            "typeString": "function (uint8,uint8) pure returns (uint8)"
+                          }
+                        },
+                        "id": 11702,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "966:8:111",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        }
+                      }
+                    ],
+                    "id": 11703,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "965:10:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "functionReturnParameters": 11698,
+                  "id": 11704,
+                  "nodeType": "Return",
+                  "src": "959:16:111"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 11706,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_add",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11695,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11692,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11706,
+                  "src": "903:7:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11691,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "903:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11694,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11706,
+                  "src": "912:7:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11693,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "912:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "902:18:111"
+            },
+            "returnParameters": {
+              "id": 11698,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11697,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11706,
+                  "src": "942:5:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11696,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "942:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "941:7:111"
+            },
+            "scope": 11723,
+            "src": "889:93:111",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 11721,
+              "nodeType": "Block",
+              "src": "1048:33:111",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 11717,
+                            "name": "b",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11710,
+                            "src": "1071:1:111",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 11715,
+                            "name": "a",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 11708,
+                            "src": "1065:1:111",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint8",
+                              "typeString": "uint8"
+                            }
+                          },
+                          "id": 11716,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sub",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 9907,
+                          "src": "1065:5:111",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_pure$_t_uint8_$_t_uint8_$returns$_t_uint8_$bound_to$_t_uint8_$",
+                            "typeString": "function (uint8,uint8) pure returns (uint8)"
+                          }
+                        },
+                        "id": 11718,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1065:8:111",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint8",
+                          "typeString": "uint8"
+                        }
+                      }
+                    ],
+                    "id": 11719,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "1064:10:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "functionReturnParameters": 11714,
+                  "id": 11720,
+                  "nodeType": "Return",
+                  "src": "1058:16:111"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 11722,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_sub",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11711,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11708,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11722,
+                  "src": "1002:7:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11707,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1002:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11710,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11722,
+                  "src": "1011:7:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11709,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1011:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1001:18:111"
+            },
+            "returnParameters": {
+              "id": 11714,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11713,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11722,
+                  "src": "1041:5:111",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 11712,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1041:5:111",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1040:7:111"
+            },
+            "scope": 11723,
+            "src": "988:93:111",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 11724,
+        "src": "729:354:111"
+      }
+    ],
+    "src": "0:1084:111"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/SafeMath8Test.sol",
+      "exportedSymbols": {
+        "SafeMath8Test": [
+          11723
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 11670,
+        "name": "PragmaDirective",
+        "src": "0:31:111"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 9934,
+          "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/SafeMath8.sol",
+          "file": "../../libs/SafeMath8.sol",
+          "scope": 11724,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 11671,
+        "name": "ImportDirective",
+        "src": "33:34:111"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title SafeMath8Test\n@author AZTEC\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            11723
+          ],
+          "name": "SafeMath8Test",
+          "scope": 11724
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "SafeMath8",
+                  "referencedDeclaration": 9933,
+                  "type": "library SafeMath8"
+                },
+                "id": 11672,
+                "name": "UserDefinedTypeName",
+                "src": "764:9:111"
+              },
+              {
+                "attributes": {
+                  "name": "uint8",
+                  "type": "uint8"
+                },
+                "id": 11673,
+                "name": "ElementaryTypeName",
+                "src": "778:5:111"
+              }
+            ],
+            "id": 11674,
+            "name": "UsingForDirective",
+            "src": "758:26:111"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_mul",
+              "scope": 11723,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "a",
+                      "scope": 11690,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11675,
+                        "name": "ElementaryTypeName",
+                        "src": "804:5:111"
+                      }
+                    ],
+                    "id": 11676,
+                    "name": "VariableDeclaration",
+                    "src": "804:7:111"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "b",
+                      "scope": 11690,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11677,
+                        "name": "ElementaryTypeName",
+                        "src": "813:5:111"
+                      }
+                    ],
+                    "id": 11678,
+                    "name": "VariableDeclaration",
+                    "src": "813:7:111"
+                  }
+                ],
+                "id": 11679,
+                "name": "ParameterList",
+                "src": "803:18:111"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 11690,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11680,
+                        "name": "ElementaryTypeName",
+                        "src": "843:5:111"
+                      }
+                    ],
+                    "id": 11681,
+                    "name": "VariableDeclaration",
+                    "src": "843:5:111"
+                  }
+                ],
+                "id": 11682,
+                "name": "ParameterList",
+                "src": "842:7:111"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 11682
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint8"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "uint8",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint8",
+                                      "typeString": "uint8"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "mul",
+                                  "referencedDeclaration": 9872,
+                                  "type": "function (uint8,uint8) pure returns (uint8)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 11676,
+                                      "type": "uint8",
+                                      "value": "a"
+                                    },
+                                    "id": 11683,
+                                    "name": "Identifier",
+                                    "src": "867:1:111"
+                                  }
+                                ],
+                                "id": 11684,
+                                "name": "MemberAccess",
+                                "src": "867:5:111"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11678,
+                                  "type": "uint8",
+                                  "value": "b"
+                                },
+                                "id": 11685,
+                                "name": "Identifier",
+                                "src": "873:1:111"
+                              }
+                            ],
+                            "id": 11686,
+                            "name": "FunctionCall",
+                            "src": "867:8:111"
+                          }
+                        ],
+                        "id": 11687,
+                        "name": "TupleExpression",
+                        "src": "866:10:111"
+                      }
+                    ],
+                    "id": 11688,
+                    "name": "Return",
+                    "src": "860:16:111"
+                  }
+                ],
+                "id": 11689,
+                "name": "Block",
+                "src": "850:33:111"
+              }
+            ],
+            "id": 11690,
+            "name": "FunctionDefinition",
+            "src": "790:93:111"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_add",
+              "scope": 11723,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "a",
+                      "scope": 11706,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11691,
+                        "name": "ElementaryTypeName",
+                        "src": "903:5:111"
+                      }
+                    ],
+                    "id": 11692,
+                    "name": "VariableDeclaration",
+                    "src": "903:7:111"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "b",
+                      "scope": 11706,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11693,
+                        "name": "ElementaryTypeName",
+                        "src": "912:5:111"
+                      }
+                    ],
+                    "id": 11694,
+                    "name": "VariableDeclaration",
+                    "src": "912:7:111"
+                  }
+                ],
+                "id": 11695,
+                "name": "ParameterList",
+                "src": "902:18:111"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 11706,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11696,
+                        "name": "ElementaryTypeName",
+                        "src": "942:5:111"
+                      }
+                    ],
+                    "id": 11697,
+                    "name": "VariableDeclaration",
+                    "src": "942:5:111"
+                  }
+                ],
+                "id": 11698,
+                "name": "ParameterList",
+                "src": "941:7:111"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 11698
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint8"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "uint8",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint8",
+                                      "typeString": "uint8"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "add",
+                                  "referencedDeclaration": 9932,
+                                  "type": "function (uint8,uint8) pure returns (uint8)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 11692,
+                                      "type": "uint8",
+                                      "value": "a"
+                                    },
+                                    "id": 11699,
+                                    "name": "Identifier",
+                                    "src": "966:1:111"
+                                  }
+                                ],
+                                "id": 11700,
+                                "name": "MemberAccess",
+                                "src": "966:5:111"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11694,
+                                  "type": "uint8",
+                                  "value": "b"
+                                },
+                                "id": 11701,
+                                "name": "Identifier",
+                                "src": "972:1:111"
+                              }
+                            ],
+                            "id": 11702,
+                            "name": "FunctionCall",
+                            "src": "966:8:111"
+                          }
+                        ],
+                        "id": 11703,
+                        "name": "TupleExpression",
+                        "src": "965:10:111"
+                      }
+                    ],
+                    "id": 11704,
+                    "name": "Return",
+                    "src": "959:16:111"
+                  }
+                ],
+                "id": 11705,
+                "name": "Block",
+                "src": "949:33:111"
+              }
+            ],
+            "id": 11706,
+            "name": "FunctionDefinition",
+            "src": "889:93:111"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_sub",
+              "scope": 11723,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "a",
+                      "scope": 11722,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11707,
+                        "name": "ElementaryTypeName",
+                        "src": "1002:5:111"
+                      }
+                    ],
+                    "id": 11708,
+                    "name": "VariableDeclaration",
+                    "src": "1002:7:111"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "b",
+                      "scope": 11722,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11709,
+                        "name": "ElementaryTypeName",
+                        "src": "1011:5:111"
+                      }
+                    ],
+                    "id": 11710,
+                    "name": "VariableDeclaration",
+                    "src": "1011:7:111"
+                  }
+                ],
+                "id": 11711,
+                "name": "ParameterList",
+                "src": "1001:18:111"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 11722,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 11712,
+                        "name": "ElementaryTypeName",
+                        "src": "1041:5:111"
+                      }
+                    ],
+                    "id": 11713,
+                    "name": "VariableDeclaration",
+                    "src": "1041:5:111"
+                  }
+                ],
+                "id": 11714,
+                "name": "ParameterList",
+                "src": "1040:7:111"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 11714
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint8"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "uint8",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint8",
+                                      "typeString": "uint8"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sub",
+                                  "referencedDeclaration": 9907,
+                                  "type": "function (uint8,uint8) pure returns (uint8)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 11708,
+                                      "type": "uint8",
+                                      "value": "a"
+                                    },
+                                    "id": 11715,
+                                    "name": "Identifier",
+                                    "src": "1065:1:111"
+                                  }
+                                ],
+                                "id": 11716,
+                                "name": "MemberAccess",
+                                "src": "1065:5:111"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11710,
+                                  "type": "uint8",
+                                  "value": "b"
+                                },
+                                "id": 11717,
+                                "name": "Identifier",
+                                "src": "1071:1:111"
+                              }
+                            ],
+                            "id": 11718,
+                            "name": "FunctionCall",
+                            "src": "1065:8:111"
+                          }
+                        ],
+                        "id": 11719,
+                        "name": "TupleExpression",
+                        "src": "1064:10:111"
+                      }
+                    ],
+                    "id": 11720,
+                    "name": "Return",
+                    "src": "1058:16:111"
+                  }
+                ],
+                "id": 11721,
+                "name": "Block",
+                "src": "1048:33:111"
+              }
+            ],
+            "id": 11722,
+            "name": "FunctionDefinition",
+            "src": "988:93:111"
+          }
+        ],
+        "id": 11723,
+        "name": "ContractDefinition",
+        "src": "729:354:111"
+      }
+    ],
+    "id": 11724,
+    "name": "SourceUnit",
+    "src": "0:1084:111"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.574Z",
+  "devdoc": {
+    "author": "AZTEC * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "SafeMath8Test"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

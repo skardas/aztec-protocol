@@ -1,0 +1,502 @@
+{
+  "contractName": "DividendInterface",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[6]",
+          "name": "",
+          "type": "uint256[6]"
+        }
+      ],
+      "name": "validateDividend",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[6]\",\"name\":\"\",\"type\":\"uint256[6]\"}],\"name\":\"validateDividend\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"An interface for the dividend validator contract * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"DividendInterface\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/DividendInterface.sol\":\"DividendInterface\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/DividendInterface.sol\":{\"keccak256\":\"0x03c33cf3dfa578729324bcd3c0e92fdafea584ac91b7ca05b4921bb197ec0a4b\",\"urls\":[\"bzz-raw://84f87de2721062c58a5e60411da573d23f25d4f9a614a57f1b6396497452642d\",\"dweb:/ipfs/QmRo6oJLjJGn9B8CDgr9uH4rbKTovn7593HfVaoF3K3HoX\"]}},\"version\":1}",
+  "bytecode": "0x61016d610026600b82828239805160001a60731461001957fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600436106100355760003560e01c8063a2ed4de41461003a575b600080fd5b6100b9600480360361010081101561005157600080fd5b81019060208101813564010000000081111561006c57600080fd5b82018360208201111561007e57600080fd5b803590602001918460018302840111640100000000831117156100a057600080fd5b91935091506001600160a01b038135169060200161012e565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100f35781810151838201526020016100db565b50505050905090810190601f1680156101205780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606094935050505056fea265627a7a7231582017b24b4c4c347ac15f86191c3b5f94c3583e6b2cc5190334c754640468c8f26164736f6c63430005110032",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600436106100355760003560e01c8063a2ed4de41461003a575b600080fd5b6100b9600480360361010081101561005157600080fd5b81019060208101813564010000000081111561006c57600080fd5b82018360208201111561007e57600080fd5b803590602001918460018302840111640100000000831117156100a057600080fd5b91935091506001600160a01b038135169060200161012e565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100f35781810151838201526020016100db565b50505050905090810190601f1680156101205780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606094935050505056fea265627a7a7231582017b24b4c4c347ac15f86191c3b5f94c3583e6b2cc5190334c754640468c8f26164736f6c63430005110032",
+  "sourceMap": "754:200:59:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "754:200:59:-;;;;;;;;;;;;;;;;;;;;;;;;786:166;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;786:166:59;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;786:166:59;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;786:166:59;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;786:166:59;;-1:-1:-1;786:166:59;-1:-1:-1;;;;;;786:166:59;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;786:166:59;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;932:12;786:166;;;;;;:::o",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n/**\n * @title DividendInterface\n * @author AZTEC\n * @dev An interface for the dividend validator contract\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\nlibrary DividendInterface {\n    function validateDividend(\n        bytes calldata,\n        address,\n        uint[6] calldata\n    )\n        external\n        pure\n        returns (bytes memory)\n    {}\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/DividendInterface.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/DividendInterface.sol",
+    "exportedSymbols": {
+      "DividendInterface": [
+        8168
+      ]
+    },
+    "id": 8169,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8153,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:59"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": "@title DividendInterface\n@author AZTEC\n@dev An interface for the dividend validator contract\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 8168,
+        "linearizedBaseContracts": [
+          8168
+        ],
+        "name": "DividendInterface",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 8166,
+              "nodeType": "Block",
+              "src": "950:2:59",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 8167,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validateDividend",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8162,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8155,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8167,
+                  "src": "821:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8154,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "821:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8157,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8167,
+                  "src": "845:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8156,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "845:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8161,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8167,
+                  "src": "862:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$6_calldata_ptr",
+                    "typeString": "uint256[6]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 8158,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "862:4:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 8160,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "36",
+                      "id": 8159,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "867:1:59",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_6_by_1",
+                        "typeString": "int_const 6"
+                      },
+                      "value": "6"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "862:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$6_storage_ptr",
+                      "typeString": "uint256[6]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "811:73:59"
+            },
+            "returnParameters": {
+              "id": 8165,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8164,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8167,
+                  "src": "932:12:59",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8163,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "932:5:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "931:14:59"
+            },
+            "scope": 8168,
+            "src": "786:166:59",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 8169,
+        "src": "754:200:59"
+      }
+    ],
+    "src": "0:955:59"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/DividendInterface.sol",
+      "exportedSymbols": {
+        "DividendInterface": [
+          8168
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 8153,
+        "name": "PragmaDirective",
+        "src": "0:31:59"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": "@title DividendInterface\n@author AZTEC\n@dev An interface for the dividend validator contract\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            8168
+          ],
+          "name": "DividendInterface",
+          "scope": 8169
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "validateDividend",
+              "scope": 8168,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 8167,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8154,
+                        "name": "ElementaryTypeName",
+                        "src": "821:5:59"
+                      }
+                    ],
+                    "id": 8155,
+                    "name": "VariableDeclaration",
+                    "src": "821:14:59"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 8167,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8156,
+                        "name": "ElementaryTypeName",
+                        "src": "845:7:59"
+                      }
+                    ],
+                    "id": 8157,
+                    "name": "VariableDeclaration",
+                    "src": "845:7:59"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 8167,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "uint256[6]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "uint256[6]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint",
+                              "type": "uint256"
+                            },
+                            "id": 8158,
+                            "name": "ElementaryTypeName",
+                            "src": "862:4:59"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "36",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 6",
+                              "value": "6"
+                            },
+                            "id": 8159,
+                            "name": "Literal",
+                            "src": "867:1:59"
+                          }
+                        ],
+                        "id": 8160,
+                        "name": "ArrayTypeName",
+                        "src": "862:7:59"
+                      }
+                    ],
+                    "id": 8161,
+                    "name": "VariableDeclaration",
+                    "src": "862:16:59"
+                  }
+                ],
+                "id": 8162,
+                "name": "ParameterList",
+                "src": "811:73:59"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 8167,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8163,
+                        "name": "ElementaryTypeName",
+                        "src": "932:5:59"
+                      }
+                    ],
+                    "id": 8164,
+                    "name": "VariableDeclaration",
+                    "src": "932:12:59"
+                  }
+                ],
+                "id": 8165,
+                "name": "ParameterList",
+                "src": "931:14:59"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8166,
+                "name": "Block",
+                "src": "950:2:59"
+              }
+            ],
+            "id": 8167,
+            "name": "FunctionDefinition",
+            "src": "786:166:59"
+          }
+        ],
+        "id": 8168,
+        "name": "ContractDefinition",
+        "src": "754:200:59"
+      }
+    ],
+    "id": 8169,
+    "name": "SourceUnit",
+    "src": "0:955:59"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:55:31.737Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "An interface for the dividend validator contract * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "DividendInterface"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

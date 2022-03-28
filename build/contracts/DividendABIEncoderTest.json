@@ -1,0 +1,638 @@
+{
+  "contractName": "DividendABIEncoderTest",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256[6]",
+          "name": "",
+          "type": "uint256[6]"
+        }
+      ],
+      "name": "validateDividend",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256[6]\",\"name\":\"\",\"type\":\"uint256[6]\"}],\"name\":\"validateDividend\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"Dividend computation ABI Encoder Test Don't include this as an internal library. This contract uses a static memory table to cache elliptic curve primitives and hashes. Calling this internally from another function will lead to memory mutation and undefined behaviour. The intended use case is to call this externally via `staticcall`. External calls to OptimizedAZTEC can be treated as pure functions as this contract contains no storage and makes no external calls (other than to precompiles) * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"DividendABIEncoderTest\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/dividend/DividendABIEncoderTest.sol\":\"DividendABIEncoderTest\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/validators/dividend/DividendABIEncoder.sol\":{\"keccak256\":\"0xb11b2e8cabc3e10765078cbe642a0e51d9392692494b9624c2bd3490573cb332\",\"urls\":[\"bzz-raw://5b7e205288f10abd91b972381d1c3a91cd1de434894428fde10246851e2e02f6\",\"dweb:/ipfs/QmZ8GoqrRvrnizQPfpLEuQyaASuBgG88unaxQ5seazQ1Q7\"]},\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/dividend/DividendABIEncoderTest.sol\":{\"keccak256\":\"0x10f0e70e35f675d8e25ede547fb7aff588986b3c1b03a3799415a7cdadf82fba\",\"urls\":[\"bzz-raw://aa1c6601933f77b59ab1e70459d1aa6d26107430566837126af5fef18c6ce300\",\"dweb:/ipfs/Qmeg4biq9C39c7spKV5vJjmmmyUXf4phF1PZHNbtD6Pue3\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061036e806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c8063a2ed4de414610030575b600080fd5b6100af600480360361010081101561004757600080fd5b81019060208101813564010000000081111561006257600080fd5b82018360208201111561007457600080fd5b8035906020019184600183028401116401000000008311171561009657600080fd5b91935091506001600160a01b0381351690602001610124565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100e95781810151838201526020016100d1565b50505050905090810190601f1680156101165780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606061012e610136565b949350505050565b6101843561010401803560016101a435610124016101c435610124016101e4356101440160016101a05260606101c05260c0610200526000610240526000806102605261012435610280526102a0856020820152602086026102e00160005b878110156102285760c0810260208b0101600160005260806040820160203760c08352600160208401528735604084015260a0600020606084015260406080840152600160ff1b60016060830135160260408201351760a0840152600160ff1b600160a0830135160260808201351760c08401528383036020830260408601015260e08301925050600181019050610195565b50601f1982820390810190925260c0909101610220528587036020828101829052028101604001865b8881101561030a5760c0810260208b01016020898303028601358060408803013560016000526080604084016020378060c00185526001602086015260208b850302890135604086015260a06000206060860152806040016080860152600160ff1b600160405116026020511760a0860152600160ff1b600160805116026060511760c08601528060208903830160e087013785850360208c860302604088010152602085510185019450505050600181019050610251565b5060208282030382526102a081038060a0016101e0528061010001610180526020610160528061014001610160f3fea265627a7a72315820ea92f897b994aaf6dbf1afce09f50c81a640ffc60eea127d8679e1a62acadced64736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c8063a2ed4de414610030575b600080fd5b6100af600480360361010081101561004757600080fd5b81019060208101813564010000000081111561006257600080fd5b82018360208201111561007457600080fd5b8035906020019184600183028401116401000000008311171561009657600080fd5b91935091506001600160a01b0381351690602001610124565b6040805160208082528351818301528351919283929083019185019080838360005b838110156100e95781810151838201526020016100d1565b50505050905090810190601f1680156101165780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b606061012e610136565b949350505050565b6101843561010401803560016101a435610124016101c435610124016101e4356101440160016101a05260606101c05260c0610200526000610240526000806102605261012435610280526102a0856020820152602086026102e00160005b878110156102285760c0810260208b0101600160005260806040820160203760c08352600160208401528735604084015260a0600020606084015260406080840152600160ff1b60016060830135160260408201351760a0840152600160ff1b600160a0830135160260808201351760c08401528383036020830260408601015260e08301925050600181019050610195565b50601f1982820390810190925260c0909101610220528587036020828101829052028101604001865b8881101561030a5760c0810260208b01016020898303028601358060408803013560016000526080604084016020378060c00185526001602086015260208b850302890135604086015260a06000206060860152806040016080860152600160ff1b600160405116026020511760a0860152600160ff1b600160805116026060511760c08601528060208903830160e087013785850360208c860302604088010152602085510185019450505050600181019050610251565b5060208282030382526102a081038060a0016101e0528061010001610180526020610160528061014001610160f3fea265627a7a72315820ea92f897b994aaf6dbf1afce09f50c81a640ffc60eea127d8679e1a62acadced64736f6c63430005110032",
+  "sourceMap": "1293:255:86:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1293:255:86;;;;;;;",
+  "deployedSourceMap": "1293:255:86:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1293:255:86;;;;;;;;;;;;;;;;;;;1331:215;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;1331:215:86;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;1331:215:86;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1331:215:86;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1331:215:86;;-1:-1:-1;1331:215:86;-1:-1:-1;;;;;;1331:215:86;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;1331:215:86;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1477:12;1505:34;:32;:34::i;:::-;1331:215;;;;;;:::o;2065:9189:21:-;2214:5;2201:19;2194:5;2190:31;2256:5;2243:19;2284:1;2341:5;2328:19;2321:5;2317:31;2442:5;2429:19;2422:5;2418:31;2539:5;2526:19;2519:5;2515:31;4508:4;4501:5;4494:19;4587:4;4580:5;4573:19;4721:4;4714:5;4707:19;4860:4;4853:5;4846:19;5081:1;5109:7;5102:5;5095:22;5191:5;5178:19;5171:5;5164:34;5228:5;5329:1;5322:4;5312:8;5308:19;5301:30;5498:4;5495:1;5491:12;5484:5;5480:24;5533:1;5518:2088;5543:1;5540;5537:8;5518:2088;;;5632:4;5629:1;5625:12;5618:4;5611:5;5607:16;5603:35;5717:4;5711;5704:18;5807:4;5800;5789:9;5785:20;5779:4;5766:46;5905:4;5902:1;5895:15;6006:4;5999;5996:1;5992:12;5985:26;6112:11;6099:25;6092:4;6089:1;6085:12;6078:47;6229:4;6223;6213:21;6206:4;6203:1;6199:12;6192:43;6357:4;6350;6347:1;6343:12;6336:26;-1:-1:-1;;;6674:4:21;6666;6655:9;6651:20;6638:34;6634:45;6601:200;6569:4;6558:9;6554:20;6541:34;6513:310;6486:4;6483:1;6479:12;6451:390;-1:-1:-1;;;7153:4:21;7145;7134:9;7130:20;7117:34;7113:45;7080:200;7048:4;7037:9;7033:20;7020:34;6992:310;6965:4;6962:1;6958:12;6930:390;7475:8;7472:1;7468:16;7460:4;7457:1;7453:12;7446:4;7436:8;7432:19;7428:38;7421:64;7587:4;7584:1;7580:12;7575:17;;5568:2038;5560:4;5557:1;5553:12;5548:17;;5518:2088;;;-1:-1:-1;;;7775:16:21;;;7771:27;;;7754:45;;;7830:4;7826:27;;;7819:5;7812:42;7968:9;;;7793:4;7947:19;;;7940:38;;;8045:20;8028:39;;8039:4;8028:39;7975:1;8109:2474;8134:1;8131;8128:8;8109:2474;;;8257:4;8254:1;8250:12;8243:4;8236:5;8232:16;8228:35;8386:4;8382:1;8379;8375:9;8371:20;8361:8;8357:35;8344:49;8510:13;8503:4;8493:8;8489:19;8485:39;8472:53;8556:4;8550;8543:18;8695:4;8688;8677:9;8673:20;8667:4;8654:46;8802:14;8796:4;8792:25;8789:1;8782:36;8914:4;8907;8904:1;8900:12;8893:26;9064:4;9060:1;9057;9053:9;9049:20;9035:12;9031:39;9018:53;9011:4;9008:1;9004:12;8997:75;9161:4;9155;9145:21;9138:4;9135:1;9131:12;9124:43;9275:14;9269:4;9265:25;9258:4;9255:1;9251:12;9244:47;-1:-1:-1;;;9557:4:21;9550;9544:11;9540:22;9507:177;9476:4;9470:11;9442:264;9415:4;9412:1;9408:12;9380:344;-1:-1:-1;;;9970:4:21;9963;9957:11;9953:22;9924:165;9897:4;9891:11;9867:240;9844:4;9841:1;9837:12;9813:312;10259:14;10251:4;10241:8;10237:19;10222:13;10218:39;10211:4;10208:1;10204:12;10191:83;10437:8;10434:1;10430:16;10422:4;10418:1;10415;10411:9;10407:20;10400:4;10390:8;10386:19;10382:46;10375:72;10563:4;10559:1;10553:8;10549:19;10546:1;10542:27;10537:32;;8159:2424;;;8151:4;8148:1;8144:12;8139:17;;8109:2474;;;8113:14;10705:4;10694:8;10691:1;10687:16;10683:27;10673:8;10666:45;10805:5;10802:1;10798:13;11018:11;11012:4;11008:22;11001:5;10994:37;11069:11;11062:5;11058:23;11051:5;11044:38;11151:4;11144:5;11137:19;11194:11;11187:5;11183:23;11176:5;11169:38",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\nimport \"../../../../ACE/validators/dividend/DividendABIEncoder.sol\";\n\n/**\n * @title DividendABIEncoderTest\n * @author AZTEC\n * @dev Dividend computation ABI Encoder Test\n * Don't include this as an internal library. This contract uses a static memory table to cache\n * elliptic curve primitives and hashes.\n * Calling this internally from another function will lead to memory mutation and undefined behaviour.\n * The intended use case is to call this externally via `staticcall`.\n * External calls to OptimizedAZTEC can be treated as pure functions as this contract contains no\n * storage and makes no external calls (other than to precompiles)\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\ncontract DividendABIEncoderTest {\n    function validateDividend(\n        bytes calldata,\n        address,\n        uint[6] calldata\n    )\n        external\n        pure\n        returns (bytes memory)\n    {\n        DividendABIEncoder.encodeAndExit();\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/dividend/DividendABIEncoderTest.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/dividend/DividendABIEncoderTest.sol",
+    "exportedSymbols": {
+      "DividendABIEncoderTest": [
+        10074
+      ]
+    },
+    "id": 10075,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10053,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:86"
+      },
+      {
+        "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/validators/dividend/DividendABIEncoder.sol",
+        "file": "../../../../ACE/validators/dividend/DividendABIEncoder.sol",
+        "id": 10054,
+        "nodeType": "ImportDirective",
+        "scope": 10075,
+        "sourceUnit": 3083,
+        "src": "33:68:86",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title DividendABIEncoderTest\n@author AZTEC\n@dev Dividend computation ABI Encoder Test\nDon't include this as an internal library. This contract uses a static memory table to cache\nelliptic curve primitives and hashes.\nCalling this internally from another function will lead to memory mutation and undefined behaviour.\nThe intended use case is to call this externally via `staticcall`.\nExternal calls to OptimizedAZTEC can be treated as pure functions as this contract contains no\nstorage and makes no external calls (other than to precompiles)\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 10074,
+        "linearizedBaseContracts": [
+          10074
+        ],
+        "name": "DividendABIEncoderTest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 10072,
+              "nodeType": "Block",
+              "src": "1495:51:86",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 10067,
+                        "name": "DividendABIEncoder",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3082,
+                        "src": "1505:18:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_DividendABIEncoder_$3082_$",
+                          "typeString": "type(library DividendABIEncoder)"
+                        }
+                      },
+                      "id": 10069,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "encodeAndExit",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 3081,
+                      "src": "1505:32:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$__$returns$__$",
+                        "typeString": "function () pure"
+                      }
+                    },
+                    "id": 10070,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1505:34:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 10071,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1505:34:86"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 10073,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "validateDividend",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10063,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10056,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10073,
+                  "src": "1366:14:86",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10055,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1366:5:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10058,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10073,
+                  "src": "1390:7:86",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10057,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1390:7:86",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10062,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10073,
+                  "src": "1407:16:86",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint256_$6_calldata_ptr",
+                    "typeString": "uint256[6]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 10059,
+                      "name": "uint",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1407:4:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "id": 10061,
+                    "length": {
+                      "argumentTypes": null,
+                      "hexValue": "36",
+                      "id": 10060,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "1412:1:86",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_6_by_1",
+                        "typeString": "int_const 6"
+                      },
+                      "value": "6"
+                    },
+                    "nodeType": "ArrayTypeName",
+                    "src": "1407:7:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_uint256_$6_storage_ptr",
+                      "typeString": "uint256[6]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1356:73:86"
+            },
+            "returnParameters": {
+              "id": 10066,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10065,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10073,
+                  "src": "1477:12:86",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10064,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1477:5:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1476:14:86"
+            },
+            "scope": 10074,
+            "src": "1331:215:86",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10075,
+        "src": "1293:255:86"
+      }
+    ],
+    "src": "0:1549:86"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/ACE/validators/dividend/DividendABIEncoderTest.sol",
+      "exportedSymbols": {
+        "DividendABIEncoderTest": [
+          10074
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 10053,
+        "name": "PragmaDirective",
+        "src": "0:31:86"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3083,
+          "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/ACE/validators/dividend/DividendABIEncoder.sol",
+          "file": "../../../../ACE/validators/dividend/DividendABIEncoder.sol",
+          "scope": 10075,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 10054,
+        "name": "ImportDirective",
+        "src": "33:68:86"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title DividendABIEncoderTest\n@author AZTEC\n@dev Dividend computation ABI Encoder Test\nDon't include this as an internal library. This contract uses a static memory table to cache\nelliptic curve primitives and hashes.\nCalling this internally from another function will lead to memory mutation and undefined behaviour.\nThe intended use case is to call this externally via `staticcall`.\nExternal calls to OptimizedAZTEC can be treated as pure functions as this contract contains no\nstorage and makes no external calls (other than to precompiles)\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            10074
+          ],
+          "name": "DividendABIEncoderTest",
+          "scope": 10075
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "validateDividend",
+              "scope": 10074,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10073,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10055,
+                        "name": "ElementaryTypeName",
+                        "src": "1366:5:86"
+                      }
+                    ],
+                    "id": 10056,
+                    "name": "VariableDeclaration",
+                    "src": "1366:14:86"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10073,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 10057,
+                        "name": "ElementaryTypeName",
+                        "src": "1390:7:86"
+                      }
+                    ],
+                    "id": 10058,
+                    "name": "VariableDeclaration",
+                    "src": "1390:7:86"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10073,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "uint256[6]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "type": "uint256[6]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "uint",
+                              "type": "uint256"
+                            },
+                            "id": 10059,
+                            "name": "ElementaryTypeName",
+                            "src": "1407:4:86"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "36",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 6",
+                              "value": "6"
+                            },
+                            "id": 10060,
+                            "name": "Literal",
+                            "src": "1412:1:86"
+                          }
+                        ],
+                        "id": 10061,
+                        "name": "ArrayTypeName",
+                        "src": "1407:7:86"
+                      }
+                    ],
+                    "id": 10062,
+                    "name": "VariableDeclaration",
+                    "src": "1407:16:86"
+                  }
+                ],
+                "id": 10063,
+                "name": "ParameterList",
+                "src": "1356:73:86"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10073,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 10064,
+                        "name": "ElementaryTypeName",
+                        "src": "1477:5:86"
+                      }
+                    ],
+                    "id": 10065,
+                    "name": "VariableDeclaration",
+                    "src": "1477:12:86"
+                  }
+                ],
+                "id": 10066,
+                "name": "ParameterList",
+                "src": "1476:14:86"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "encodeAndExit",
+                              "referencedDeclaration": 3081,
+                              "type": "function () pure"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3082,
+                                  "type": "type(library DividendABIEncoder)",
+                                  "value": "DividendABIEncoder"
+                                },
+                                "id": 10067,
+                                "name": "Identifier",
+                                "src": "1505:18:86"
+                              }
+                            ],
+                            "id": 10069,
+                            "name": "MemberAccess",
+                            "src": "1505:32:86"
+                          }
+                        ],
+                        "id": 10070,
+                        "name": "FunctionCall",
+                        "src": "1505:34:86"
+                      }
+                    ],
+                    "id": 10071,
+                    "name": "ExpressionStatement",
+                    "src": "1505:34:86"
+                  }
+                ],
+                "id": 10072,
+                "name": "Block",
+                "src": "1495:51:86"
+              }
+            ],
+            "id": 10073,
+            "name": "FunctionDefinition",
+            "src": "1331:215:86"
+          }
+        ],
+        "id": 10074,
+        "name": "ContractDefinition",
+        "src": "1293:255:86"
+      }
+    ],
+    "id": 10075,
+    "name": "SourceUnit",
+    "src": "0:1549:86"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.547Z",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "Dividend computation ABI Encoder Test Don't include this as an internal library. This contract uses a static memory table to cache elliptic curve primitives and hashes. Calling this internally from another function will lead to memory mutation and undefined behaviour. The intended use case is to call this externally via `staticcall`. External calls to OptimizedAZTEC can be treated as pure functions as this contract contains no storage and makes no external calls (other than to precompiles) * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "DividendABIEncoderTest"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

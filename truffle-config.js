@@ -5,10 +5,10 @@ const { CoverageSubprovider } = require('@0x/sol-coverage');
 const { ProfilerSubprovider } = require('@0x/sol-profiler');
 const { RevertTraceSubprovider, TruffleArtifactAdapter } = require('@0x/sol-trace');
 const { GanacheSubprovider } = require('@0x/subproviders');
-const HDWalletProvider = require('truffle-hdwallet-provider');
-const Web3 = require('web3');
+ const Web3 = require('web3');
 const ProviderEngine = require('web3-provider-engine');
 const { toWei, toHex } = require('web3-utils');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const compilerConfig = require('./compiler');
 

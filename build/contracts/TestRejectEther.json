@@ -1,0 +1,122 @@
+{
+  "contractName": "TestRejectEther",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/TestRejectEther.sol\":\"TestRejectEther\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/TestRejectEther.sol\":{\"keccak256\":\"0xe73119c0ad61cb433321a8e1d70c806b6c3750569001147c6461c27898b33306\",\"urls\":[\"bzz-raw://a839b062642759ad23727d2bca0d06ae0c0b4df0d9e2456fc0084a6de64ea07d\",\"dweb:/ipfs/QmdkLGcV2aGCcHoizYzeTpAYkzMhiFa691wf8iRMk2XRY2\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603e80601d6000396000f3fe6080604052600080fdfea265627a7a72315820bef39a0b482c4bb6668b8f7e178aa301b252b76c74d8627078486b423e13c37f64736f6c63430005110032",
+  "deployedBytecode": "0x6080604052600080fdfea265627a7a72315820bef39a0b482c4bb6668b8f7e178aa301b252b76c74d8627078486b423e13c37f64736f6c63430005110032",
+  "sourceMap": "649:27:104:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;649:27:104;;;;;;;",
+  "deployedSourceMap": "649:27:104:-;;;;;",
+  "source": "/*\n\n  Copyright 2018 ZeroEx Intl.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity >=0.5.0 <0.6.0;\n\n\n// solhint-disable no-empty-blocks\ncontract TestRejectEther {}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/TestRejectEther.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/TestRejectEther.sol",
+    "exportedSymbols": {
+      "TestRejectEther": [
+        11371
+      ]
+    },
+    "id": 11372,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11370,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "580:31:104"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 11371,
+        "linearizedBaseContracts": [
+          11371
+        ],
+        "name": "TestRejectEther",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 11372,
+        "src": "649:27:104"
+      }
+    ],
+    "src": "580:97:104"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/TestRejectEther.sol",
+      "exportedSymbols": {
+        "TestRejectEther": [
+          11371
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 11370,
+        "name": "PragmaDirective",
+        "src": "580:31:104"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            11371
+          ],
+          "name": "TestRejectEther",
+          "nodes": [
+            null
+          ],
+          "scope": 11372
+        },
+        "id": 11371,
+        "name": "ContractDefinition",
+        "src": "649:27:104"
+      }
+    ],
+    "id": 11372,
+    "name": "SourceUnit",
+    "src": "580:97:104"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.569Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

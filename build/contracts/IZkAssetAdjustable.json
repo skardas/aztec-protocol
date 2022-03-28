@@ -1,0 +1,4784 @@
+{
+  "contractName": "IZkAssetAdjustable",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "ConvertTokens",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "noteHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "metadata",
+          "type": "bytes"
+        }
+      ],
+      "name": "CreateNote",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "noteRegistryId",
+          "type": "uint256"
+        }
+      ],
+      "name": "CreateNoteRegistry",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "aceAddress",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "linkedTokenAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "scalingFactor",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bool",
+          "name": "_canAdjustSupply",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_canConvert",
+          "type": "bool"
+        }
+      ],
+      "name": "CreateZkAsset",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "noteHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "DestroyNote",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "RedeemTokens",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "noteHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "metadata",
+          "type": "bytes"
+        }
+      ],
+      "name": "UpdateNoteMetaData",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "noteHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "noteData",
+          "type": "bytes"
+        }
+      ],
+      "name": "UpdateTotalBurned",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "noteHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "metaData",
+          "type": "bytes"
+        }
+      ],
+      "name": "UpdateTotalMinted",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "_noteHashes",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "internalType": "bool[]",
+          "name": "_spenderApprovals",
+          "type": "bool[]"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_batchSignature",
+          "type": "bytes"
+        }
+      ],
+      "name": "batchConfidentialApprove",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_noteHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "_spenderApproval",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "confidentialApprove",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "_proof",
+          "type": "uint24"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_proofData",
+          "type": "bytes"
+        }
+      ],
+      "name": "confidentialBurn",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "_proof",
+          "type": "uint24"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_proofData",
+          "type": "bytes"
+        }
+      ],
+      "name": "confidentialMint",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "_proof",
+          "type": "uint24"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_proofOutput",
+          "type": "bytes"
+        }
+      ],
+      "name": "confidentialTransferFrom",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "_proofId",
+          "type": "uint24"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_proofData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_signatures",
+          "type": "bytes"
+        }
+      ],
+      "name": "confidentialTransfer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "_proofData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_signatures",
+          "type": "bytes"
+        }
+      ],
+      "name": "confidentialTransfer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "_epoch",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_proofs",
+          "type": "uint256"
+        }
+      ],
+      "name": "setProofs",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "_proof",
+          "type": "uint24"
+        }
+      ],
+      "name": "supportsProof",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "noteHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "metaData",
+          "type": "bytes"
+        }
+      ],
+      "name": "updateNoteMetaData",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "_factoryId",
+          "type": "uint24"
+        }
+      ],
+      "name": "upgradeRegistryVersion",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"ConvertTokens\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"noteHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"name\":\"CreateNote\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"noteRegistryId\",\"type\":\"uint256\"}],\"name\":\"CreateNoteRegistry\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"aceAddress\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"linkedTokenAddress\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"scalingFactor\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"bool\",\"name\":\"_canAdjustSupply\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"_canConvert\",\"type\":\"bool\"}],\"name\":\"CreateZkAsset\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"noteHash\",\"type\":\"bytes32\"}],\"name\":\"DestroyNote\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"RedeemTokens\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"noteHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"metadata\",\"type\":\"bytes\"}],\"name\":\"UpdateNoteMetaData\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"noteHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"noteData\",\"type\":\"bytes\"}],\"name\":\"UpdateTotalBurned\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"noteHash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"metaData\",\"type\":\"bytes\"}],\"name\":\"UpdateTotalMinted\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes32[]\",\"name\":\"_noteHashes\",\"type\":\"bytes32[]\"},{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"bool[]\",\"name\":\"_spenderApprovals\",\"type\":\"bool[]\"},{\"internalType\":\"bytes\",\"name\":\"_batchSignature\",\"type\":\"bytes\"}],\"name\":\"batchConfidentialApprove\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_noteHash\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_spenderApproval\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"_signature\",\"type\":\"bytes\"}],\"name\":\"confidentialApprove\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint24\",\"name\":\"_proof\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"_proofData\",\"type\":\"bytes\"}],\"name\":\"confidentialBurn\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint24\",\"name\":\"_proof\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"_proofData\",\"type\":\"bytes\"}],\"name\":\"confidentialMint\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint24\",\"name\":\"_proofId\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"_proofData\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"_signatures\",\"type\":\"bytes\"}],\"name\":\"confidentialTransfer\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_proofData\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"_signatures\",\"type\":\"bytes\"}],\"name\":\"confidentialTransfer\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint24\",\"name\":\"_proof\",\"type\":\"uint24\"},{\"internalType\":\"bytes\",\"name\":\"_proofOutput\",\"type\":\"bytes\"}],\"name\":\"confidentialTransferFrom\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"_epoch\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_proofs\",\"type\":\"uint256\"}],\"name\":\"setProofs\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint24\",\"name\":\"_proof\",\"type\":\"uint24\"}],\"name\":\"supportsProof\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"noteHash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"metaData\",\"type\":\"bytes\"}],\"name\":\"updateNoteMetaData\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint24\",\"name\":\"_factoryId\",\"type\":\"uint24\"}],\"name\":\"upgradeRegistryVersion\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"An interface defining the ZkAssetAdjustable standard. * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{\"batchConfidentialApprove(bytes32[],address,bool[],bytes)\":{\"details\":\"Note owner can approve a third party address, such as a smart contract, to spend multiple notes on their behalf. This allows a batch approval of notes to be performed, rather than individually for each note via confidentialApprove(). \",\"params\":{\"_batchSignature\":\"- ECDSA signature over the notes, approving them to be spent\",\"_noteHashes\":\"- array of the keccak256 hashes of notes, due to be spent\",\"_spender\":\"- address being approved to spend the notes\",\"_spenderApprovals\":\"- array of approvals, defining whether the _spender being approved or revoked permission to spend the relevant note. True if approval granted, false if revoked\"}},\"confidentialApprove(bytes32,address,bool,bytes)\":{\"details\":\"Note owner approving a third party, another address, to spend the note on owner's behalf. This is necessary to allow the confidentialTransferFrom() method to be called\",\"params\":{\"_noteHash\":\"- keccak256 hash of the note coordinates (gamma and sigma)\",\"_signature\":\"- ECDSA signature from the note owner that validates the confidentialApprove() instruction\",\"_spender\":\"- address being approved to spend the note\",\"_spenderApproval\":\"- defines whether the _spender address is being approved to spend the note, or if permission is being revoked. True if approved, false if not approved\"}},\"confidentialBurn(uint24,bytes)\":{\"details\":\"Executes a confidential burning procedure, dependent on the provided proofData being succesfully validated by the zero-knowledge validator\",\"params\":{\"_proof\":\"- uint24 variable which acts as a unique identifier for the proof which _proofOutput is being submitted. _proof contains three concatenated uint8 variables: 1) epoch number 2) category number 3) ID number for the proof\",\"_proofData\":\"- bytes array of proof data, outputted from a proof construction\"}},\"confidentialMint(uint24,bytes)\":{\"details\":\"Executes a confidential minting procedure, dependent on the provided proofData being succesfully validated by the zero-knowledge validator\",\"params\":{\"_proof\":\"- uint24 variable which acts as a unique identifier for the proof which _proofOutput is being submitted. _proof contains three concatenated uint8 variables: 1) epoch number 2) category number 3) ID number for the proof\",\"_proofData\":\"- bytes array of proof data, outputted from a proof construction\"}},\"confidentialTransfer(bytes,bytes)\":{\"details\":\"Executes a basic unilateral, confidential transfer of AZTEC notes Will submit _proofData to the validateProof() function of the Cryptography Engine.    * Upon successfull verification, it will update note registry state - creating output notes and destroying input notes.\",\"params\":{\"_proofData\":\"- bytes variable outputted from a proof verification contract, representing transfer instructions for the ACE\",\"_signatures\":\"- array of the ECDSA signatures over all inputNotes\"}},\"confidentialTransfer(uint24,bytes,bytes)\":{\"details\":\"Executes a basic unilateral, confidential transfer of AZTEC notes Will submit _proofData to the validateProof() function of the Cryptography Engine.    * Upon successfull verification, it will update note registry state - creating output notes and destroying input notes.\",\"params\":{\"_proofData\":\"- bytes variable outputted from a proof verification contract, representing transfer instructions for the ACE\",\"_proofId\":\"- id of proof to be validated. Needs to be a balanced proof.\",\"_signatures\":\"- array of the ECDSA signatures over all inputNotes\"}},\"confidentialTransferFrom(uint24,bytes)\":{\"details\":\"Executes a value transfer mediated by smart contracts. The method is supplied with transfer instructions represented by a bytes _proofOutput argument that was outputted from a proof verification contract.\",\"params\":{\"_proof\":\"- uint24 variable which acts as a unique identifier for the proof which _proofOutput is being submitted. _proof contains three concatenated uint8 variables: 1) epoch number 2) category number 3) ID number for the proof\",\"_proofOutput\":\"- output of a zero-knowledge proof validation contract. Represents transfer instructions for the ACE\"}},\"setProofs(uint8,uint256)\":{\"details\":\"Set which proofs this asset is able to listen to and validate\",\"params\":{\"_epoch\":\"epoch number to which the proof belongs\",\"_proofs\":\"proofs for which the asset will listen to\"}},\"supportsProof(uint24)\":{\"details\":\"Return whether the proof is supported or not by this asset. Note that we have    to subtract 1 from the proof id because the original representation is uint8,    but here that id is considered to be an exponent\",\"params\":{\"_proof\":\"- unique identifier specifying the proof to be checked as to whether it is                supported by the asset\"},\"return\":\"boolean defining whether the asset supports the proof specified by _proof input\"},\"updateNoteMetaData(bytes32,bytes)\":{\"details\":\"Update the metadata of a note that already exists in storage. \",\"params\":{\"metaData\":\"- metadata to update the note with\",\"noteHash\":\"- hash of a note, used as a unique identifier for the note\"}},\"upgradeRegistryVersion(uint24)\":{\"details\":\"Upgrade the note registry of this asset, by pointing it to a new factory\",\"params\":{\"_factoryId\":\"- the ID of the factory which will supply the upgraded behaviour contracts\"}}},\"title\":\"IZkAssetAdjustable\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IZkAssetAdjustable.sol\":\"IZkAssetAdjustable\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IZkAssetAdjustable.sol\":{\"keccak256\":\"0xbd515356c904fef181aeb87c439d96e1013c371bffe079b467d4a7eb11359a70\",\"urls\":[\"bzz-raw://460c07f2b72ca203ddde1b7f3173d8e48a465656d57c0c3f3361598bc552b87d\",\"dweb:/ipfs/QmX9yn2GFVmjhG6Q9MnNqVkPJmvWHse9MrFdtPeFteTDKm\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "\n\npragma solidity >=0.5.0 <0.6.0;\n\n/**\n * @title IZkAssetAdjustable\n * @author AZTEC\n * @dev An interface defining the ZkAssetAdjustable standard.\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\n\ninterface IZkAssetAdjustable {\n    /**\n     * @dev Note owner can approve a third party address, such as a smart contract,\n     * to spend multiple notes on their behalf. This allows a batch approval of notes\n     * to be performed, rather than individually for each note via confidentialApprove(). \n     *\n     * @param _noteHashes - array of the keccak256 hashes of notes, due to be spent\n     * @param _spender - address being approved to spend the notes\n     * @param _spenderApprovals - array of approvals, defining whether the _spender being approved or revoked permission\n     * to spend the relevant note. True if approval granted, false if revoked\n     * @param _batchSignature - ECDSA signature over the notes, approving them to be spent\n     */\n    function batchConfidentialApprove(\n        bytes32[] calldata _noteHashes,\n        address _spender,\n        bool[] calldata _spenderApprovals,\n        bytes calldata _batchSignature\n    ) external;\n\n    /**\n    * @dev Note owner approving a third party, another address, to spend the note on\n    * owner's behalf. This is necessary to allow the confidentialTransferFrom() method\n    * to be called\n    *\n    * @param _noteHash - keccak256 hash of the note coordinates (gamma and sigma)\n    * @param _spender - address being approved to spend the note\n    * @param _spenderApproval - defines whether the _spender address is being approved to spend the\n    * note, or if permission is being revoked. True if approved, false if not approved\n    * @param _signature - ECDSA signature from the note owner that validates the\n    * confidentialApprove() instruction\n    */ \n    function confidentialApprove(\n        bytes32 _noteHash,\n        address _spender,\n        bool _spenderApproval,\n        bytes calldata _signature\n    ) external;\n\n    /**\n    * @dev Executes a confidential burning procedure, dependent on the provided proofData\n    * being succesfully validated by the zero-knowledge validator\n    *\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n    * _proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n    * 1) epoch number 2) category number 3) ID number for the proof\n    * @param _proofData - bytes array of proof data, outputted from a proof construction\n    */\n    function confidentialBurn(uint24 _proof, bytes calldata _proofData) external;\n\n    /**\n    * @dev Executes a confidential minting procedure, dependent on the provided proofData\n    * being succesfully validated by the zero-knowledge validator\n    *\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n    * _proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n    * 1) epoch number 2) category number 3) ID number for the proof\n    * @param _proofData - bytes array of proof data, outputted from a proof construction\n    */\n    function confidentialMint(uint24 _proof, bytes calldata _proofData) external;\n\n\n    /**\n    * @dev Executes a value transfer mediated by smart contracts. The method is supplied with\n    * transfer instructions represented by a bytes _proofOutput argument that was outputted\n    * from a proof verification contract.\n    *\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n    * _proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n    * 1) epoch number 2) category number 3) ID number for the proof\n    * @param _proofOutput - output of a zero-knowledge proof validation contract. Represents\n    * transfer instructions for the ACE\n    */\n    function confidentialTransferFrom(uint24 _proof, bytes calldata _proofOutput) external;\n    \n\n    /**\n    * @dev Executes a basic unilateral, confidential transfer of AZTEC notes\n    * Will submit _proofData to the validateProof() function of the Cryptography Engine.\n    *\n    * Upon successfull verification, it will update note registry state - creating output notes and\n    * destroying input notes.\n    *\n    * @param _proofData - bytes variable outputted from a proof verification contract, representing\n    * transfer instructions for the ACE\n    * @param _signatures - array of the ECDSA signatures over all inputNotes\n    */\n    function confidentialTransfer(bytes calldata _proofData, bytes calldata _signatures) external;\n\n    /**\n    * @dev Executes a basic unilateral, confidential transfer of AZTEC notes\n    * Will submit _proofData to the validateProof() function of the Cryptography Engine.\n    *\n    * Upon successfull verification, it will update note registry state - creating output notes and\n    * destroying input notes.\n    *\n    * @param _proofId - id of proof to be validated. Needs to be a balanced proof.\n    * @param _proofData - bytes variable outputted from a proof verification contract, representing\n    * transfer instructions for the ACE\n    * @param _signatures - array of the ECDSA signatures over all inputNotes\n    */\n    function confidentialTransfer(uint24 _proofId, bytes calldata _proofData, bytes calldata _signatures) external;\n\n    function isOwner() external view returns (bool);\n\n    function owner() external returns (address);\n\n    function renounceOwnership() external;\n\n    /**\n    * @dev Set which proofs this asset is able to listen to and validate\n    * @param _epoch  epoch number to which the proof belongs\n    * @param _proofs proofs for which the asset will listen to\n    */\n    function setProofs(\n        uint8 _epoch,\n        uint256 _proofs\n    ) external;\n\n    /**\n    * @dev Return whether the proof is supported or not by this asset. Note that we have\n    *     to subtract 1 from the proof id because the original representation is uint8,\n    *     but here that id is considered to be an exponent\n    *\n    * @param _proof - unique identifier specifying the proof to be checked as to whether it is\n    *                 supported by the asset\n    * @return boolean defining whether the asset supports the proof specified by _proof input\n    */\n    function supportsProof(uint24 _proof) external view returns (bool);\n\n    function transferOwnership(address newOwner) external;\n\n    /**\n    * @dev Update the metadata of a note that already exists in storage. \n    * @param noteHash - hash of a note, used as a unique identifier for the note\n    * @param metaData - metadata to update the note with\n    */\n    function updateNoteMetaData(bytes32 noteHash, bytes calldata metaData) external;\n\n    /**\n    * @dev Upgrade the note registry of this asset, by pointing it to a new factory\n    *\n    * @param _factoryId - the ID of the factory which will supply the upgraded behaviour contracts\n    */\n    function upgradeRegistryVersion(uint24 _factoryId) external;\n\n    event CreateZkAsset(\n        address indexed aceAddress,\n        address indexed linkedTokenAddress,\n        uint256 scalingFactor,\n        bool indexed _canAdjustSupply,\n        bool _canConvert\n    );\n\n    event CreateNoteRegistry(uint256 noteRegistryId);\n\n    event CreateNote(address indexed owner, bytes32 indexed noteHash, bytes metadata);\n\n    event DestroyNote(address indexed owner, bytes32 indexed noteHash);\n\n    event ConvertTokens(address indexed owner, uint256 value);\n\n    event RedeemTokens(address indexed owner, uint256 value);\n    \n    event UpdateNoteMetaData(address indexed owner, bytes32 indexed noteHash, bytes metadata);\n\n    event UpdateTotalBurned(bytes32 noteHash, bytes noteData);\n\n    event UpdateTotalMinted(bytes32 noteHash, bytes metaData);\n}\n\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IZkAssetAdjustable.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IZkAssetAdjustable.sol",
+    "exportedSymbols": {
+      "IZkAssetAdjustable": [
+        8944
+      ]
+    },
+    "id": 8945,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8776,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "2:31:65"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": "@title IZkAssetAdjustable\n@author AZTEC\n@dev An interface defining the ZkAssetAdjustable standard.\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": false,
+        "id": 8944,
+        "linearizedBaseContracts": [
+          8944
+        ],
+        "name": "IZkAssetAdjustable",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Note owner can approve a third party address, such as a smart contract,\nto spend multiple notes on their behalf. This allows a batch approval of notes\nto be performed, rather than individually for each note via confidentialApprove(). \n     * @param _noteHashes - array of the keccak256 hashes of notes, due to be spent\n@param _spender - address being approved to spend the notes\n@param _spenderApprovals - array of approvals, defining whether the _spender being approved or revoked permission\nto spend the relevant note. True if approval granted, false if revoked\n@param _batchSignature - ECDSA signature over the notes, approving them to be spent",
+            "id": 8789,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "batchConfidentialApprove",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8787,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8779,
+                  "name": "_noteHashes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8789,
+                  "src": "1566:30:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_calldata_ptr",
+                    "typeString": "bytes32[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 8777,
+                      "name": "bytes32",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1566:7:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "id": 8778,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1566:9:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                      "typeString": "bytes32[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8781,
+                  "name": "_spender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8789,
+                  "src": "1606:16:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8780,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1606:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8784,
+                  "name": "_spenderApprovals",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8789,
+                  "src": "1632:33:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bool_$dyn_calldata_ptr",
+                    "typeString": "bool[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 8782,
+                      "name": "bool",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1632:4:65",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "id": 8783,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1632:6:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_bool_$dyn_storage_ptr",
+                      "typeString": "bool[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8786,
+                  "name": "_batchSignature",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8789,
+                  "src": "1675:30:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8785,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1675:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1556:155:65"
+            },
+            "returnParameters": {
+              "id": 8788,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1720:0:65"
+            },
+            "scope": 8944,
+            "src": "1523:198:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Note owner approving a third party, another address, to spend the note on\nowner's behalf. This is necessary to allow the confidentialTransferFrom() method\nto be called\n    * @param _noteHash - keccak256 hash of the note coordinates (gamma and sigma)\n@param _spender - address being approved to spend the note\n@param _spenderApproval - defines whether the _spender address is being approved to spend the\nnote, or if permission is being revoked. True if approved, false if not approved\n@param _signature - ECDSA signature from the note owner that validates the\nconfidentialApprove() instruction",
+            "id": 8800,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confidentialApprove",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8798,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8791,
+                  "name": "_noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8800,
+                  "src": "2433:17:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8790,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2433:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8793,
+                  "name": "_spender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8800,
+                  "src": "2460:16:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8792,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2460:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8795,
+                  "name": "_spenderApproval",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8800,
+                  "src": "2486:21:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8794,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2486:4:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8797,
+                  "name": "_signature",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8800,
+                  "src": "2517:25:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8796,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2517:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2423:125:65"
+            },
+            "returnParameters": {
+              "id": 8799,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2557:0:65"
+            },
+            "scope": 8944,
+            "src": "2395:163:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Executes a confidential burning procedure, dependent on the provided proofData\nbeing succesfully validated by the zero-knowledge validator\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n_proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n1) epoch number 2) category number 3) ID number for the proof\n@param _proofData - bytes array of proof data, outputted from a proof construction",
+            "id": 8807,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confidentialBurn",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8805,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8802,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8807,
+                  "src": "3107:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 8801,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3107:6:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8804,
+                  "name": "_proofData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8807,
+                  "src": "3122:25:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8803,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3122:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3106:42:65"
+            },
+            "returnParameters": {
+              "id": 8806,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3157:0:65"
+            },
+            "scope": 8944,
+            "src": "3081:77:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Executes a confidential minting procedure, dependent on the provided proofData\nbeing succesfully validated by the zero-knowledge validator\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n_proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n1) epoch number 2) category number 3) ID number for the proof\n@param _proofData - bytes array of proof data, outputted from a proof construction",
+            "id": 8814,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confidentialMint",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8812,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8809,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8814,
+                  "src": "3707:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 8808,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3707:6:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8811,
+                  "name": "_proofData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8814,
+                  "src": "3722:25:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8810,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3722:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3706:42:65"
+            },
+            "returnParameters": {
+              "id": 8813,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3757:0:65"
+            },
+            "scope": 8944,
+            "src": "3681:77:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Executes a value transfer mediated by smart contracts. The method is supplied with\ntransfer instructions represented by a bytes _proofOutput argument that was outputted\nfrom a proof verification contract.\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n_proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n1) epoch number 2) category number 3) ID number for the proof\n@param _proofOutput - output of a zero-knowledge proof validation contract. Represents\ntransfer instructions for the ACE",
+            "id": 8821,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confidentialTransferFrom",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8819,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8816,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8821,
+                  "src": "4432:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 8815,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4432:6:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8818,
+                  "name": "_proofOutput",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8821,
+                  "src": "4447:27:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8817,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4447:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4431:44:65"
+            },
+            "returnParameters": {
+              "id": 8820,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "4484:0:65"
+            },
+            "scope": 8944,
+            "src": "4398:87:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Executes a basic unilateral, confidential transfer of AZTEC notes\nWill submit _proofData to the validateProof() function of the Cryptography Engine.\n    * Upon successfull verification, it will update note registry state - creating output notes and\ndestroying input notes.\n    * @param _proofData - bytes variable outputted from a proof verification contract, representing\ntransfer instructions for the ACE\n@param _signatures - array of the ECDSA signatures over all inputNotes",
+            "id": 8828,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confidentialTransfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8826,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8823,
+                  "name": "_proofData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8828,
+                  "src": "5066:25:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8822,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5066:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8825,
+                  "name": "_signatures",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8828,
+                  "src": "5093:26:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8824,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5093:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5065:55:65"
+            },
+            "returnParameters": {
+              "id": 8827,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5129:0:65"
+            },
+            "scope": 8944,
+            "src": "5036:94:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Executes a basic unilateral, confidential transfer of AZTEC notes\nWill submit _proofData to the validateProof() function of the Cryptography Engine.\n    * Upon successfull verification, it will update note registry state - creating output notes and\ndestroying input notes.\n    * @param _proofId - id of proof to be validated. Needs to be a balanced proof.\n@param _proofData - bytes variable outputted from a proof verification contract, representing\ntransfer instructions for the ACE\n@param _signatures - array of the ECDSA signatures over all inputNotes",
+            "id": 8837,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "confidentialTransfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8835,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8830,
+                  "name": "_proofId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8837,
+                  "src": "5789:15:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 8829,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5789:6:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8832,
+                  "name": "_proofData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8837,
+                  "src": "5806:25:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8831,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5806:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8834,
+                  "name": "_signatures",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8837,
+                  "src": "5833:26:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8833,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5833:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5788:72:65"
+            },
+            "returnParameters": {
+              "id": 8836,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5869:0:65"
+            },
+            "scope": 8944,
+            "src": "5759:111:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8842,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8838,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5892:2:65"
+            },
+            "returnParameters": {
+              "id": 8841,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8840,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8842,
+                  "src": "5918:4:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8839,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5918:4:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5917:6:65"
+            },
+            "scope": 8944,
+            "src": "5876:48:65",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8847,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "owner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8843,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "5944:2:65"
+            },
+            "returnParameters": {
+              "id": 8846,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8845,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8847,
+                  "src": "5965:7:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8844,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5965:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5964:9:65"
+            },
+            "scope": 8944,
+            "src": "5930:44:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8850,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "renounceOwnership",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8848,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6006:2:65"
+            },
+            "returnParameters": {
+              "id": 8849,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6017:0:65"
+            },
+            "scope": 8944,
+            "src": "5980:38:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Set which proofs this asset is able to listen to and validate\n@param _epoch  epoch number to which the proof belongs\n@param _proofs proofs for which the asset will listen to",
+            "id": 8857,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setProofs",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8855,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8852,
+                  "name": "_epoch",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "6264:12:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 8851,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6264:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8854,
+                  "name": "_proofs",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8857,
+                  "src": "6286:15:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8853,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6286:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6254:53:65"
+            },
+            "returnParameters": {
+              "id": 8856,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6316:0:65"
+            },
+            "scope": 8944,
+            "src": "6236:81:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Return whether the proof is supported or not by this asset. Note that we have\n    to subtract 1 from the proof id because the original representation is uint8,\n    but here that id is considered to be an exponent\n    * @param _proof - unique identifier specifying the proof to be checked as to whether it is\n                supported by the asset\n@return boolean defining whether the asset supports the proof specified by _proof input",
+            "id": 8864,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "supportsProof",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8860,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8859,
+                  "name": "_proof",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8864,
+                  "src": "6837:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 8858,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6837:6:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6836:15:65"
+            },
+            "returnParameters": {
+              "id": 8863,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8862,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8864,
+                  "src": "6875:4:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8861,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6875:4:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6874:6:65"
+            },
+            "scope": 8944,
+            "src": "6814:67:65",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 8869,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferOwnership",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8867,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8866,
+                  "name": "newOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8869,
+                  "src": "6914:16:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8865,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6914:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6913:18:65"
+            },
+            "returnParameters": {
+              "id": 8868,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "6940:0:65"
+            },
+            "scope": 8944,
+            "src": "6887:54:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Update the metadata of a note that already exists in storage. \n@param noteHash - hash of a note, used as a unique identifier for the note\n@param metaData - metadata to update the note with",
+            "id": 8876,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateNoteMetaData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8874,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8871,
+                  "name": "noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8876,
+                  "src": "7202:16:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8870,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7202:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8873,
+                  "name": "metaData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8876,
+                  "src": "7220:23:65",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8872,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7220:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7201:43:65"
+            },
+            "returnParameters": {
+              "id": 8875,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "7253:0:65"
+            },
+            "scope": 8944,
+            "src": "7174:80:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Upgrade the note registry of this asset, by pointing it to a new factory\n    * @param _factoryId - the ID of the factory which will supply the upgraded behaviour contracts",
+            "id": 8881,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "upgradeRegistryVersion",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 8879,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8878,
+                  "name": "_factoryId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8881,
+                  "src": "7496:17:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint24",
+                    "typeString": "uint24"
+                  },
+                  "typeName": {
+                    "id": 8877,
+                    "name": "uint24",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7496:6:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint24",
+                      "typeString": "uint24"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7495:19:65"
+            },
+            "returnParameters": {
+              "id": 8880,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "7523:0:65"
+            },
+            "scope": 8944,
+            "src": "7464:60:65",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8893,
+            "name": "CreateZkAsset",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8892,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8883,
+                  "indexed": true,
+                  "name": "aceAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "7559:26:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8882,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7559:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8885,
+                  "indexed": true,
+                  "name": "linkedTokenAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "7595:34:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8884,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7595:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8887,
+                  "indexed": false,
+                  "name": "scalingFactor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "7639:21:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8886,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7639:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8889,
+                  "indexed": true,
+                  "name": "_canAdjustSupply",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "7670:29:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8888,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7670:4:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8891,
+                  "indexed": false,
+                  "name": "_canConvert",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8893,
+                  "src": "7709:16:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 8890,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7709:4:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7549:182:65"
+            },
+            "src": "7530:202:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8897,
+            "name": "CreateNoteRegistry",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8896,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8895,
+                  "indexed": false,
+                  "name": "noteRegistryId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8897,
+                  "src": "7763:22:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8894,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7763:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7762:24:65"
+            },
+            "src": "7738:49:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8905,
+            "name": "CreateNote",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8904,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8899,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8905,
+                  "src": "7810:21:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8898,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7810:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8901,
+                  "indexed": true,
+                  "name": "noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8905,
+                  "src": "7833:24:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8900,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7833:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8903,
+                  "indexed": false,
+                  "name": "metadata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8905,
+                  "src": "7859:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8902,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7859:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7809:65:65"
+            },
+            "src": "7793:82:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8911,
+            "name": "DestroyNote",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8910,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8907,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8911,
+                  "src": "7899:21:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8906,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7899:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8909,
+                  "indexed": true,
+                  "name": "noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8911,
+                  "src": "7922:24:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8908,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7922:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7898:49:65"
+            },
+            "src": "7881:67:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8917,
+            "name": "ConvertTokens",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8916,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8913,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8917,
+                  "src": "7974:21:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8912,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7974:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8915,
+                  "indexed": false,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8917,
+                  "src": "7997:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8914,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "7997:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "7973:38:65"
+            },
+            "src": "7954:58:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8923,
+            "name": "RedeemTokens",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8922,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8919,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8923,
+                  "src": "8037:21:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8918,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8037:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8921,
+                  "indexed": false,
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8923,
+                  "src": "8060:13:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8920,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8060:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "8036:38:65"
+            },
+            "src": "8018:57:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8931,
+            "name": "UpdateNoteMetaData",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8930,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8925,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8931,
+                  "src": "8110:21:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 8924,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8110:7:65",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8927,
+                  "indexed": true,
+                  "name": "noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8931,
+                  "src": "8133:24:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8926,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8133:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8929,
+                  "indexed": false,
+                  "name": "metadata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8931,
+                  "src": "8159:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8928,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8159:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "8109:65:65"
+            },
+            "src": "8085:90:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8937,
+            "name": "UpdateTotalBurned",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8936,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8933,
+                  "indexed": false,
+                  "name": "noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8937,
+                  "src": "8205:16:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8932,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8205:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8935,
+                  "indexed": false,
+                  "name": "noteData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8937,
+                  "src": "8223:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8934,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8223:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "8204:34:65"
+            },
+            "src": "8181:58:65"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 8943,
+            "name": "UpdateTotalMinted",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 8942,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8939,
+                  "indexed": false,
+                  "name": "noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8943,
+                  "src": "8269:16:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 8938,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8269:7:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 8941,
+                  "indexed": false,
+                  "name": "metaData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 8943,
+                  "src": "8287:14:65",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 8940,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "8287:5:65",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "8268:34:65"
+            },
+            "src": "8245:58:65"
+          }
+        ],
+        "scope": 8945,
+        "src": "763:7542:65"
+      }
+    ],
+    "src": "2:8305:65"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/interfaces/IZkAssetAdjustable.sol",
+      "exportedSymbols": {
+        "IZkAssetAdjustable": [
+          8944
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 8776,
+        "name": "PragmaDirective",
+        "src": "2:31:65"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": "@title IZkAssetAdjustable\n@author AZTEC\n@dev An interface defining the ZkAssetAdjustable standard.\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            8944
+          ],
+          "name": "IZkAssetAdjustable",
+          "scope": 8945
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Note owner can approve a third party address, such as a smart contract,\nto spend multiple notes on their behalf. This allows a batch approval of notes\nto be performed, rather than individually for each note via confidentialApprove(). \n     * @param _noteHashes - array of the keccak256 hashes of notes, due to be spent\n@param _spender - address being approved to spend the notes\n@param _spenderApprovals - array of approvals, defining whether the _spender being approved or revoked permission\nto spend the relevant note. True if approval granted, false if revoked\n@param _batchSignature - ECDSA signature over the notes, approving them to be spent",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "batchConfidentialApprove",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_noteHashes",
+                      "scope": 8789,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes32[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "bytes32[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bytes32",
+                              "type": "bytes32"
+                            },
+                            "id": 8777,
+                            "name": "ElementaryTypeName",
+                            "src": "1566:7:65"
+                          }
+                        ],
+                        "id": 8778,
+                        "name": "ArrayTypeName",
+                        "src": "1566:9:65"
+                      }
+                    ],
+                    "id": 8779,
+                    "name": "VariableDeclaration",
+                    "src": "1566:30:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_spender",
+                      "scope": 8789,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8780,
+                        "name": "ElementaryTypeName",
+                        "src": "1606:7:65"
+                      }
+                    ],
+                    "id": 8781,
+                    "name": "VariableDeclaration",
+                    "src": "1606:16:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_spenderApprovals",
+                      "scope": 8789,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bool[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "bool[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bool",
+                              "type": "bool"
+                            },
+                            "id": 8782,
+                            "name": "ElementaryTypeName",
+                            "src": "1632:4:65"
+                          }
+                        ],
+                        "id": 8783,
+                        "name": "ArrayTypeName",
+                        "src": "1632:6:65"
+                      }
+                    ],
+                    "id": 8784,
+                    "name": "VariableDeclaration",
+                    "src": "1632:33:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_batchSignature",
+                      "scope": 8789,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8785,
+                        "name": "ElementaryTypeName",
+                        "src": "1675:5:65"
+                      }
+                    ],
+                    "id": 8786,
+                    "name": "VariableDeclaration",
+                    "src": "1675:30:65"
+                  }
+                ],
+                "id": 8787,
+                "name": "ParameterList",
+                "src": "1556:155:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8788,
+                "name": "ParameterList",
+                "src": "1720:0:65"
+              }
+            ],
+            "id": 8789,
+            "name": "FunctionDefinition",
+            "src": "1523:198:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Note owner approving a third party, another address, to spend the note on\nowner's behalf. This is necessary to allow the confidentialTransferFrom() method\nto be called\n    * @param _noteHash - keccak256 hash of the note coordinates (gamma and sigma)\n@param _spender - address being approved to spend the note\n@param _spenderApproval - defines whether the _spender address is being approved to spend the\nnote, or if permission is being revoked. True if approved, false if not approved\n@param _signature - ECDSA signature from the note owner that validates the\nconfidentialApprove() instruction",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "confidentialApprove",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_noteHash",
+                      "scope": 8800,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8790,
+                        "name": "ElementaryTypeName",
+                        "src": "2433:7:65"
+                      }
+                    ],
+                    "id": 8791,
+                    "name": "VariableDeclaration",
+                    "src": "2433:17:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_spender",
+                      "scope": 8800,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8792,
+                        "name": "ElementaryTypeName",
+                        "src": "2460:7:65"
+                      }
+                    ],
+                    "id": 8793,
+                    "name": "VariableDeclaration",
+                    "src": "2460:16:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_spenderApproval",
+                      "scope": 8800,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 8794,
+                        "name": "ElementaryTypeName",
+                        "src": "2486:4:65"
+                      }
+                    ],
+                    "id": 8795,
+                    "name": "VariableDeclaration",
+                    "src": "2486:21:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_signature",
+                      "scope": 8800,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8796,
+                        "name": "ElementaryTypeName",
+                        "src": "2517:5:65"
+                      }
+                    ],
+                    "id": 8797,
+                    "name": "VariableDeclaration",
+                    "src": "2517:25:65"
+                  }
+                ],
+                "id": 8798,
+                "name": "ParameterList",
+                "src": "2423:125:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8799,
+                "name": "ParameterList",
+                "src": "2557:0:65"
+              }
+            ],
+            "id": 8800,
+            "name": "FunctionDefinition",
+            "src": "2395:163:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Executes a confidential burning procedure, dependent on the provided proofData\nbeing succesfully validated by the zero-knowledge validator\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n_proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n1) epoch number 2) category number 3) ID number for the proof\n@param _proofData - bytes array of proof data, outputted from a proof construction",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "confidentialBurn",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proof",
+                      "scope": 8807,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 8801,
+                        "name": "ElementaryTypeName",
+                        "src": "3107:6:65"
+                      }
+                    ],
+                    "id": 8802,
+                    "name": "VariableDeclaration",
+                    "src": "3107:13:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofData",
+                      "scope": 8807,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8803,
+                        "name": "ElementaryTypeName",
+                        "src": "3122:5:65"
+                      }
+                    ],
+                    "id": 8804,
+                    "name": "VariableDeclaration",
+                    "src": "3122:25:65"
+                  }
+                ],
+                "id": 8805,
+                "name": "ParameterList",
+                "src": "3106:42:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8806,
+                "name": "ParameterList",
+                "src": "3157:0:65"
+              }
+            ],
+            "id": 8807,
+            "name": "FunctionDefinition",
+            "src": "3081:77:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Executes a confidential minting procedure, dependent on the provided proofData\nbeing succesfully validated by the zero-knowledge validator\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n_proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n1) epoch number 2) category number 3) ID number for the proof\n@param _proofData - bytes array of proof data, outputted from a proof construction",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "confidentialMint",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proof",
+                      "scope": 8814,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 8808,
+                        "name": "ElementaryTypeName",
+                        "src": "3707:6:65"
+                      }
+                    ],
+                    "id": 8809,
+                    "name": "VariableDeclaration",
+                    "src": "3707:13:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofData",
+                      "scope": 8814,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8810,
+                        "name": "ElementaryTypeName",
+                        "src": "3722:5:65"
+                      }
+                    ],
+                    "id": 8811,
+                    "name": "VariableDeclaration",
+                    "src": "3722:25:65"
+                  }
+                ],
+                "id": 8812,
+                "name": "ParameterList",
+                "src": "3706:42:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8813,
+                "name": "ParameterList",
+                "src": "3757:0:65"
+              }
+            ],
+            "id": 8814,
+            "name": "FunctionDefinition",
+            "src": "3681:77:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Executes a value transfer mediated by smart contracts. The method is supplied with\ntransfer instructions represented by a bytes _proofOutput argument that was outputted\nfrom a proof verification contract.\n    * @param _proof - uint24 variable which acts as a unique identifier for the proof which\n_proofOutput is being submitted. _proof contains three concatenated uint8 variables:\n1) epoch number 2) category number 3) ID number for the proof\n@param _proofOutput - output of a zero-knowledge proof validation contract. Represents\ntransfer instructions for the ACE",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "confidentialTransferFrom",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proof",
+                      "scope": 8821,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 8815,
+                        "name": "ElementaryTypeName",
+                        "src": "4432:6:65"
+                      }
+                    ],
+                    "id": 8816,
+                    "name": "VariableDeclaration",
+                    "src": "4432:13:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofOutput",
+                      "scope": 8821,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8817,
+                        "name": "ElementaryTypeName",
+                        "src": "4447:5:65"
+                      }
+                    ],
+                    "id": 8818,
+                    "name": "VariableDeclaration",
+                    "src": "4447:27:65"
+                  }
+                ],
+                "id": 8819,
+                "name": "ParameterList",
+                "src": "4431:44:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8820,
+                "name": "ParameterList",
+                "src": "4484:0:65"
+              }
+            ],
+            "id": 8821,
+            "name": "FunctionDefinition",
+            "src": "4398:87:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Executes a basic unilateral, confidential transfer of AZTEC notes\nWill submit _proofData to the validateProof() function of the Cryptography Engine.\n    * Upon successfull verification, it will update note registry state - creating output notes and\ndestroying input notes.\n    * @param _proofData - bytes variable outputted from a proof verification contract, representing\ntransfer instructions for the ACE\n@param _signatures - array of the ECDSA signatures over all inputNotes",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "confidentialTransfer",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofData",
+                      "scope": 8828,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8822,
+                        "name": "ElementaryTypeName",
+                        "src": "5066:5:65"
+                      }
+                    ],
+                    "id": 8823,
+                    "name": "VariableDeclaration",
+                    "src": "5066:25:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_signatures",
+                      "scope": 8828,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8824,
+                        "name": "ElementaryTypeName",
+                        "src": "5093:5:65"
+                      }
+                    ],
+                    "id": 8825,
+                    "name": "VariableDeclaration",
+                    "src": "5093:26:65"
+                  }
+                ],
+                "id": 8826,
+                "name": "ParameterList",
+                "src": "5065:55:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8827,
+                "name": "ParameterList",
+                "src": "5129:0:65"
+              }
+            ],
+            "id": 8828,
+            "name": "FunctionDefinition",
+            "src": "5036:94:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Executes a basic unilateral, confidential transfer of AZTEC notes\nWill submit _proofData to the validateProof() function of the Cryptography Engine.\n    * Upon successfull verification, it will update note registry state - creating output notes and\ndestroying input notes.\n    * @param _proofId - id of proof to be validated. Needs to be a balanced proof.\n@param _proofData - bytes variable outputted from a proof verification contract, representing\ntransfer instructions for the ACE\n@param _signatures - array of the ECDSA signatures over all inputNotes",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "confidentialTransfer",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofId",
+                      "scope": 8837,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 8829,
+                        "name": "ElementaryTypeName",
+                        "src": "5789:6:65"
+                      }
+                    ],
+                    "id": 8830,
+                    "name": "VariableDeclaration",
+                    "src": "5789:15:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofData",
+                      "scope": 8837,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8831,
+                        "name": "ElementaryTypeName",
+                        "src": "5806:5:65"
+                      }
+                    ],
+                    "id": 8832,
+                    "name": "VariableDeclaration",
+                    "src": "5806:25:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_signatures",
+                      "scope": 8837,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8833,
+                        "name": "ElementaryTypeName",
+                        "src": "5833:5:65"
+                      }
+                    ],
+                    "id": 8834,
+                    "name": "VariableDeclaration",
+                    "src": "5833:26:65"
+                  }
+                ],
+                "id": 8835,
+                "name": "ParameterList",
+                "src": "5788:72:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8836,
+                "name": "ParameterList",
+                "src": "5869:0:65"
+              }
+            ],
+            "id": 8837,
+            "name": "FunctionDefinition",
+            "src": "5759:111:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "isOwner",
+              "scope": 8944,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8838,
+                "name": "ParameterList",
+                "src": "5892:2:65"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 8842,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 8839,
+                        "name": "ElementaryTypeName",
+                        "src": "5918:4:65"
+                      }
+                    ],
+                    "id": 8840,
+                    "name": "VariableDeclaration",
+                    "src": "5918:4:65"
+                  }
+                ],
+                "id": 8841,
+                "name": "ParameterList",
+                "src": "5917:6:65"
+              }
+            ],
+            "id": 8842,
+            "name": "FunctionDefinition",
+            "src": "5876:48:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "owner",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8843,
+                "name": "ParameterList",
+                "src": "5944:2:65"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 8847,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8844,
+                        "name": "ElementaryTypeName",
+                        "src": "5965:7:65"
+                      }
+                    ],
+                    "id": 8845,
+                    "name": "VariableDeclaration",
+                    "src": "5965:7:65"
+                  }
+                ],
+                "id": 8846,
+                "name": "ParameterList",
+                "src": "5964:9:65"
+              }
+            ],
+            "id": 8847,
+            "name": "FunctionDefinition",
+            "src": "5930:44:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "renounceOwnership",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8848,
+                "name": "ParameterList",
+                "src": "6006:2:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8849,
+                "name": "ParameterList",
+                "src": "6017:0:65"
+              }
+            ],
+            "id": 8850,
+            "name": "FunctionDefinition",
+            "src": "5980:38:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Set which proofs this asset is able to listen to and validate\n@param _epoch  epoch number to which the proof belongs\n@param _proofs proofs for which the asset will listen to",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setProofs",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_epoch",
+                      "scope": 8857,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint8",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 8851,
+                        "name": "ElementaryTypeName",
+                        "src": "6264:5:65"
+                      }
+                    ],
+                    "id": 8852,
+                    "name": "VariableDeclaration",
+                    "src": "6264:12:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofs",
+                      "scope": 8857,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 8853,
+                        "name": "ElementaryTypeName",
+                        "src": "6286:7:65"
+                      }
+                    ],
+                    "id": 8854,
+                    "name": "VariableDeclaration",
+                    "src": "6286:15:65"
+                  }
+                ],
+                "id": 8855,
+                "name": "ParameterList",
+                "src": "6254:53:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8856,
+                "name": "ParameterList",
+                "src": "6316:0:65"
+              }
+            ],
+            "id": 8857,
+            "name": "FunctionDefinition",
+            "src": "6236:81:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Return whether the proof is supported or not by this asset. Note that we have\n    to subtract 1 from the proof id because the original representation is uint8,\n    but here that id is considered to be an exponent\n    * @param _proof - unique identifier specifying the proof to be checked as to whether it is\n                supported by the asset\n@return boolean defining whether the asset supports the proof specified by _proof input",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "supportsProof",
+              "scope": 8944,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proof",
+                      "scope": 8864,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 8858,
+                        "name": "ElementaryTypeName",
+                        "src": "6837:6:65"
+                      }
+                    ],
+                    "id": 8859,
+                    "name": "VariableDeclaration",
+                    "src": "6837:13:65"
+                  }
+                ],
+                "id": 8860,
+                "name": "ParameterList",
+                "src": "6836:15:65"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 8864,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 8861,
+                        "name": "ElementaryTypeName",
+                        "src": "6875:4:65"
+                      }
+                    ],
+                    "id": 8862,
+                    "name": "VariableDeclaration",
+                    "src": "6875:4:65"
+                  }
+                ],
+                "id": 8863,
+                "name": "ParameterList",
+                "src": "6874:6:65"
+              }
+            ],
+            "id": 8864,
+            "name": "FunctionDefinition",
+            "src": "6814:67:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "transferOwnership",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newOwner",
+                      "scope": 8869,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8865,
+                        "name": "ElementaryTypeName",
+                        "src": "6914:7:65"
+                      }
+                    ],
+                    "id": 8866,
+                    "name": "VariableDeclaration",
+                    "src": "6914:16:65"
+                  }
+                ],
+                "id": 8867,
+                "name": "ParameterList",
+                "src": "6913:18:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8868,
+                "name": "ParameterList",
+                "src": "6940:0:65"
+              }
+            ],
+            "id": 8869,
+            "name": "FunctionDefinition",
+            "src": "6887:54:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Update the metadata of a note that already exists in storage. \n@param noteHash - hash of a note, used as a unique identifier for the note\n@param metaData - metadata to update the note with",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "updateNoteMetaData",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "noteHash",
+                      "scope": 8876,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8870,
+                        "name": "ElementaryTypeName",
+                        "src": "7202:7:65"
+                      }
+                    ],
+                    "id": 8871,
+                    "name": "VariableDeclaration",
+                    "src": "7202:16:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "metaData",
+                      "scope": 8876,
+                      "stateVariable": false,
+                      "storageLocation": "calldata",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8872,
+                        "name": "ElementaryTypeName",
+                        "src": "7220:5:65"
+                      }
+                    ],
+                    "id": 8873,
+                    "name": "VariableDeclaration",
+                    "src": "7220:23:65"
+                  }
+                ],
+                "id": 8874,
+                "name": "ParameterList",
+                "src": "7201:43:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8875,
+                "name": "ParameterList",
+                "src": "7253:0:65"
+              }
+            ],
+            "id": 8876,
+            "name": "FunctionDefinition",
+            "src": "7174:80:65"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "documentation": "@dev Upgrade the note registry of this asset, by pointing it to a new factory\n    * @param _factoryId - the ID of the factory which will supply the upgraded behaviour contracts",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "upgradeRegistryVersion",
+              "scope": 8944,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_factoryId",
+                      "scope": 8881,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint24",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint24",
+                          "type": "uint24"
+                        },
+                        "id": 8877,
+                        "name": "ElementaryTypeName",
+                        "src": "7496:6:65"
+                      }
+                    ],
+                    "id": 8878,
+                    "name": "VariableDeclaration",
+                    "src": "7496:17:65"
+                  }
+                ],
+                "id": 8879,
+                "name": "ParameterList",
+                "src": "7495:19:65"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8880,
+                "name": "ParameterList",
+                "src": "7523:0:65"
+              }
+            ],
+            "id": 8881,
+            "name": "FunctionDefinition",
+            "src": "7464:60:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "CreateZkAsset"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "aceAddress",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8882,
+                        "name": "ElementaryTypeName",
+                        "src": "7559:7:65"
+                      }
+                    ],
+                    "id": 8883,
+                    "name": "VariableDeclaration",
+                    "src": "7559:26:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "linkedTokenAddress",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8884,
+                        "name": "ElementaryTypeName",
+                        "src": "7595:7:65"
+                      }
+                    ],
+                    "id": 8885,
+                    "name": "VariableDeclaration",
+                    "src": "7595:34:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "scalingFactor",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 8886,
+                        "name": "ElementaryTypeName",
+                        "src": "7639:7:65"
+                      }
+                    ],
+                    "id": 8887,
+                    "name": "VariableDeclaration",
+                    "src": "7639:21:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "_canAdjustSupply",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 8888,
+                        "name": "ElementaryTypeName",
+                        "src": "7670:4:65"
+                      }
+                    ],
+                    "id": 8889,
+                    "name": "VariableDeclaration",
+                    "src": "7670:29:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "_canConvert",
+                      "scope": 8893,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 8890,
+                        "name": "ElementaryTypeName",
+                        "src": "7709:4:65"
+                      }
+                    ],
+                    "id": 8891,
+                    "name": "VariableDeclaration",
+                    "src": "7709:16:65"
+                  }
+                ],
+                "id": 8892,
+                "name": "ParameterList",
+                "src": "7549:182:65"
+              }
+            ],
+            "id": 8893,
+            "name": "EventDefinition",
+            "src": "7530:202:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "CreateNoteRegistry"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "noteRegistryId",
+                      "scope": 8897,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 8894,
+                        "name": "ElementaryTypeName",
+                        "src": "7763:7:65"
+                      }
+                    ],
+                    "id": 8895,
+                    "name": "VariableDeclaration",
+                    "src": "7763:22:65"
+                  }
+                ],
+                "id": 8896,
+                "name": "ParameterList",
+                "src": "7762:24:65"
+              }
+            ],
+            "id": 8897,
+            "name": "EventDefinition",
+            "src": "7738:49:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "CreateNote"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 8905,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8898,
+                        "name": "ElementaryTypeName",
+                        "src": "7810:7:65"
+                      }
+                    ],
+                    "id": 8899,
+                    "name": "VariableDeclaration",
+                    "src": "7810:21:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "noteHash",
+                      "scope": 8905,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8900,
+                        "name": "ElementaryTypeName",
+                        "src": "7833:7:65"
+                      }
+                    ],
+                    "id": 8901,
+                    "name": "VariableDeclaration",
+                    "src": "7833:24:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "metadata",
+                      "scope": 8905,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8902,
+                        "name": "ElementaryTypeName",
+                        "src": "7859:5:65"
+                      }
+                    ],
+                    "id": 8903,
+                    "name": "VariableDeclaration",
+                    "src": "7859:14:65"
+                  }
+                ],
+                "id": 8904,
+                "name": "ParameterList",
+                "src": "7809:65:65"
+              }
+            ],
+            "id": 8905,
+            "name": "EventDefinition",
+            "src": "7793:82:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "DestroyNote"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 8911,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8906,
+                        "name": "ElementaryTypeName",
+                        "src": "7899:7:65"
+                      }
+                    ],
+                    "id": 8907,
+                    "name": "VariableDeclaration",
+                    "src": "7899:21:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "noteHash",
+                      "scope": 8911,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8908,
+                        "name": "ElementaryTypeName",
+                        "src": "7922:7:65"
+                      }
+                    ],
+                    "id": 8909,
+                    "name": "VariableDeclaration",
+                    "src": "7922:24:65"
+                  }
+                ],
+                "id": 8910,
+                "name": "ParameterList",
+                "src": "7898:49:65"
+              }
+            ],
+            "id": 8911,
+            "name": "EventDefinition",
+            "src": "7881:67:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "ConvertTokens"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 8917,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8912,
+                        "name": "ElementaryTypeName",
+                        "src": "7974:7:65"
+                      }
+                    ],
+                    "id": 8913,
+                    "name": "VariableDeclaration",
+                    "src": "7974:21:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "value",
+                      "scope": 8917,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 8914,
+                        "name": "ElementaryTypeName",
+                        "src": "7997:7:65"
+                      }
+                    ],
+                    "id": 8915,
+                    "name": "VariableDeclaration",
+                    "src": "7997:13:65"
+                  }
+                ],
+                "id": 8916,
+                "name": "ParameterList",
+                "src": "7973:38:65"
+              }
+            ],
+            "id": 8917,
+            "name": "EventDefinition",
+            "src": "7954:58:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "RedeemTokens"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 8923,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8918,
+                        "name": "ElementaryTypeName",
+                        "src": "8037:7:65"
+                      }
+                    ],
+                    "id": 8919,
+                    "name": "VariableDeclaration",
+                    "src": "8037:21:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "value",
+                      "scope": 8923,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 8920,
+                        "name": "ElementaryTypeName",
+                        "src": "8060:7:65"
+                      }
+                    ],
+                    "id": 8921,
+                    "name": "VariableDeclaration",
+                    "src": "8060:13:65"
+                  }
+                ],
+                "id": 8922,
+                "name": "ParameterList",
+                "src": "8036:38:65"
+              }
+            ],
+            "id": 8923,
+            "name": "EventDefinition",
+            "src": "8018:57:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "UpdateNoteMetaData"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 8931,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 8924,
+                        "name": "ElementaryTypeName",
+                        "src": "8110:7:65"
+                      }
+                    ],
+                    "id": 8925,
+                    "name": "VariableDeclaration",
+                    "src": "8110:21:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "noteHash",
+                      "scope": 8931,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8926,
+                        "name": "ElementaryTypeName",
+                        "src": "8133:7:65"
+                      }
+                    ],
+                    "id": 8927,
+                    "name": "VariableDeclaration",
+                    "src": "8133:24:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "metadata",
+                      "scope": 8931,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8928,
+                        "name": "ElementaryTypeName",
+                        "src": "8159:5:65"
+                      }
+                    ],
+                    "id": 8929,
+                    "name": "VariableDeclaration",
+                    "src": "8159:14:65"
+                  }
+                ],
+                "id": 8930,
+                "name": "ParameterList",
+                "src": "8109:65:65"
+              }
+            ],
+            "id": 8931,
+            "name": "EventDefinition",
+            "src": "8085:90:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "UpdateTotalBurned"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "noteHash",
+                      "scope": 8937,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8932,
+                        "name": "ElementaryTypeName",
+                        "src": "8205:7:65"
+                      }
+                    ],
+                    "id": 8933,
+                    "name": "VariableDeclaration",
+                    "src": "8205:16:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "noteData",
+                      "scope": 8937,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8934,
+                        "name": "ElementaryTypeName",
+                        "src": "8223:5:65"
+                      }
+                    ],
+                    "id": 8935,
+                    "name": "VariableDeclaration",
+                    "src": "8223:14:65"
+                  }
+                ],
+                "id": 8936,
+                "name": "ParameterList",
+                "src": "8204:34:65"
+              }
+            ],
+            "id": 8937,
+            "name": "EventDefinition",
+            "src": "8181:58:65"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "UpdateTotalMinted"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "noteHash",
+                      "scope": 8943,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 8938,
+                        "name": "ElementaryTypeName",
+                        "src": "8269:7:65"
+                      }
+                    ],
+                    "id": 8939,
+                    "name": "VariableDeclaration",
+                    "src": "8269:16:65"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "metaData",
+                      "scope": 8943,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 8940,
+                        "name": "ElementaryTypeName",
+                        "src": "8287:5:65"
+                      }
+                    ],
+                    "id": 8941,
+                    "name": "VariableDeclaration",
+                    "src": "8287:14:65"
+                  }
+                ],
+                "id": 8942,
+                "name": "ParameterList",
+                "src": "8268:34:65"
+              }
+            ],
+            "id": 8943,
+            "name": "EventDefinition",
+            "src": "8245:58:65"
+          }
+        ],
+        "id": 8944,
+        "name": "ContractDefinition",
+        "src": "763:7542:65"
+      }
+    ],
+    "id": 8945,
+    "name": "SourceUnit",
+    "src": "2:8305:65"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.529Z",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "An interface defining the ZkAssetAdjustable standard. * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {
+      "batchConfidentialApprove(bytes32[],address,bool[],bytes)": {
+        "details": "Note owner can approve a third party address, such as a smart contract, to spend multiple notes on their behalf. This allows a batch approval of notes to be performed, rather than individually for each note via confidentialApprove(). ",
+        "params": {
+          "_batchSignature": "- ECDSA signature over the notes, approving them to be spent",
+          "_noteHashes": "- array of the keccak256 hashes of notes, due to be spent",
+          "_spender": "- address being approved to spend the notes",
+          "_spenderApprovals": "- array of approvals, defining whether the _spender being approved or revoked permission to spend the relevant note. True if approval granted, false if revoked"
+        }
+      },
+      "confidentialApprove(bytes32,address,bool,bytes)": {
+        "details": "Note owner approving a third party, another address, to spend the note on owner's behalf. This is necessary to allow the confidentialTransferFrom() method to be called",
+        "params": {
+          "_noteHash": "- keccak256 hash of the note coordinates (gamma and sigma)",
+          "_signature": "- ECDSA signature from the note owner that validates the confidentialApprove() instruction",
+          "_spender": "- address being approved to spend the note",
+          "_spenderApproval": "- defines whether the _spender address is being approved to spend the note, or if permission is being revoked. True if approved, false if not approved"
+        }
+      },
+      "confidentialBurn(uint24,bytes)": {
+        "details": "Executes a confidential burning procedure, dependent on the provided proofData being succesfully validated by the zero-knowledge validator",
+        "params": {
+          "_proof": "- uint24 variable which acts as a unique identifier for the proof which _proofOutput is being submitted. _proof contains three concatenated uint8 variables: 1) epoch number 2) category number 3) ID number for the proof",
+          "_proofData": "- bytes array of proof data, outputted from a proof construction"
+        }
+      },
+      "confidentialMint(uint24,bytes)": {
+        "details": "Executes a confidential minting procedure, dependent on the provided proofData being succesfully validated by the zero-knowledge validator",
+        "params": {
+          "_proof": "- uint24 variable which acts as a unique identifier for the proof which _proofOutput is being submitted. _proof contains three concatenated uint8 variables: 1) epoch number 2) category number 3) ID number for the proof",
+          "_proofData": "- bytes array of proof data, outputted from a proof construction"
+        }
+      },
+      "confidentialTransfer(bytes,bytes)": {
+        "details": "Executes a basic unilateral, confidential transfer of AZTEC notes Will submit _proofData to the validateProof() function of the Cryptography Engine.    * Upon successfull verification, it will update note registry state - creating output notes and destroying input notes.",
+        "params": {
+          "_proofData": "- bytes variable outputted from a proof verification contract, representing transfer instructions for the ACE",
+          "_signatures": "- array of the ECDSA signatures over all inputNotes"
+        }
+      },
+      "confidentialTransfer(uint24,bytes,bytes)": {
+        "details": "Executes a basic unilateral, confidential transfer of AZTEC notes Will submit _proofData to the validateProof() function of the Cryptography Engine.    * Upon successfull verification, it will update note registry state - creating output notes and destroying input notes.",
+        "params": {
+          "_proofData": "- bytes variable outputted from a proof verification contract, representing transfer instructions for the ACE",
+          "_proofId": "- id of proof to be validated. Needs to be a balanced proof.",
+          "_signatures": "- array of the ECDSA signatures over all inputNotes"
+        }
+      },
+      "confidentialTransferFrom(uint24,bytes)": {
+        "details": "Executes a value transfer mediated by smart contracts. The method is supplied with transfer instructions represented by a bytes _proofOutput argument that was outputted from a proof verification contract.",
+        "params": {
+          "_proof": "- uint24 variable which acts as a unique identifier for the proof which _proofOutput is being submitted. _proof contains three concatenated uint8 variables: 1) epoch number 2) category number 3) ID number for the proof",
+          "_proofOutput": "- output of a zero-knowledge proof validation contract. Represents transfer instructions for the ACE"
+        }
+      },
+      "setProofs(uint8,uint256)": {
+        "details": "Set which proofs this asset is able to listen to and validate",
+        "params": {
+          "_epoch": "epoch number to which the proof belongs",
+          "_proofs": "proofs for which the asset will listen to"
+        }
+      },
+      "supportsProof(uint24)": {
+        "details": "Return whether the proof is supported or not by this asset. Note that we have    to subtract 1 from the proof id because the original representation is uint8,    but here that id is considered to be an exponent",
+        "params": {
+          "_proof": "- unique identifier specifying the proof to be checked as to whether it is                supported by the asset"
+        },
+        "return": "boolean defining whether the asset supports the proof specified by _proof input"
+      },
+      "updateNoteMetaData(bytes32,bytes)": {
+        "details": "Update the metadata of a note that already exists in storage. ",
+        "params": {
+          "metaData": "- metadata to update the note with",
+          "noteHash": "- hash of a note, used as a unique identifier for the note"
+        }
+      },
+      "upgradeRegistryVersion(uint24)": {
+        "details": "Upgrade the note registry of this asset, by pointing it to a new factory",
+        "params": {
+          "_factoryId": "- the ID of the factory which will supply the upgraded behaviour contracts"
+        }
+      }
+    },
+    "title": "IZkAssetAdjustable"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

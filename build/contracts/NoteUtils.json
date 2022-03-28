@@ -1,0 +1,2400 @@
+{
+  "contractName": "NoteUtils",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"NoteUtils is a utility library that extracts user-readable information from AZTEC proof outputs.     Specifically, `bytes proofOutput` objects can be extracted from `bytes proofOutputs`,     `bytes proofOutput` and `bytes note` can be extracted into their constituent components, * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{},\"title\":\"NoteUtils\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/NoteUtils.sol\":\"NoteUtils\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/NoteUtils.sol\":{\"keccak256\":\"0xe1f4cb0e01304169106f6114a4044eabfde25beaf4f8b2362823391a55474548\",\"urls\":[\"bzz-raw://a5a45ce057e7c30e82f2dcb3af8c9b61a5ff6e4092430c36958698b8ff5c5df1\",\"dweb:/ipfs/QmeCW5rErow3E153DBAdM5SrpS6EiF62c52iD3m6Mtk5zj\"]}},\"version\":1}",
+  "bytecode": "0x60556023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820cd52cec85bea6aac149bbf2b0d43d9ac583ac14dfeacaadb91c6fbeacef1a38864736f6c63430005110032",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea265627a7a72315820cd52cec85bea6aac149bbf2b0d43d9ac583ac14dfeacaadb91c6fbeacef1a38864736f6c63430005110032",
+  "sourceMap": "985:5510:79:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;222:2;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "985:5510:79:-;;;;;;;;",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\n\n/**\n * @title NoteUtils\n * @author AZTEC\n * @dev NoteUtils is a utility library that extracts user-readable information from AZTEC proof outputs.\n *      Specifically, `bytes proofOutput` objects can be extracted from `bytes proofOutputs`,\n *      `bytes proofOutput` and `bytes note` can be extracted into their constituent components,\n *\n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\nlibrary NoteUtils {\n\n    /**\n    * @dev Get the number of entries in an AZTEC-ABI array (bytes proofOutputs, bytes inputNotes, bytes outputNotes)\n    *      All 3 are rolled into a single function to eliminate 'wet' code - the implementations are identical\n    * @param _proofOutputsOrNotes `proofOutputs`, `inputNotes` or `outputNotes`\n    * @return number of entries in the pseudo dynamic array\n    */\n    function getLength(bytes memory _proofOutputsOrNotes) internal pure returns (\n        uint len\n    ) {\n        assembly {\n            // first word = the raw byte length\n            // second word = the actual number of entries (hence the 0x20 offset)\n            len := mload(add(_proofOutputsOrNotes, 0x20))\n        }\n    }\n\n    /**\n    * @dev Get a bytes object out of a dynamic AZTEC-ABI array\n    * @param _proofOutputsOrNotes `proofOutputs`, `inputNotes` or `outputNotes`\n    * @param _i the desired entry\n    * @return number of entries in the pseudo dynamic array\n    */\n    function get(bytes memory _proofOutputsOrNotes, uint _i) internal pure returns (\n        bytes memory out\n    ) {\n        bool valid;\n        assembly {\n            // check that i < the number of entries\n            valid := lt(\n                _i,\n                mload(add(_proofOutputsOrNotes, 0x20))\n            )\n            // memory map of the array is as follows:\n            // 0x00 - 0x20 : byte length of array\n            // 0x20 - 0x40 : n, the number of entries\n            // 0x40 - 0x40 + (0x20 * i) : relative memory offset to start of i'th entry (i <= n)\n\n            // Step 1: compute location of relative memory offset: _proofOutputsOrNotes + 0x40 + (0x20 * i) \n            // Step 2: loaded relative offset and add to _proofOutputsOrNotes to get absolute memory location\n            out := add(\n                mload(\n                    add(\n                        add(_proofOutputsOrNotes, 0x40),\n                        mul(_i, 0x20)\n                    )\n                ),\n                _proofOutputsOrNotes\n            )\n        }\n        require(valid, \"AZTEC array index is out of bounds\");\n    }\n\n    /**\n    * @dev Extract constituent elements of a `bytes _proofOutput` object\n    * @param _proofOutput an AZTEC proof output\n    * @return inputNotes, AZTEC-ABI dynamic array of input AZTEC notes\n    * @return outputNotes, AZTEC-ABI dynamic array of output AZTEC notes\n    * @return publicOwner, the Ethereum address of the owner of any public tokens involved in the proof\n    * @return publicValue, the amount of public tokens involved in the proof\n    *         if (publicValue > 0), this represents a transfer of tokens from ACE to publicOwner\n    *         if (publicValue < 0), this represents a transfer of tokens from publicOwner to ACE\n    */\n    function extractProofOutput(bytes memory _proofOutput) internal pure returns (\n        bytes memory inputNotes,\n        bytes memory outputNotes,\n        address publicOwner,\n        int256 publicValue\n    ) {\n        assembly {\n            // memory map of a proofOutput:\n            // 0x00 - 0x20 : byte length of proofOutput\n            // 0x20 - 0x40 : relative offset to inputNotes\n            // 0x40 - 0x60 : relative offset to outputNotes\n            // 0x60 - 0x80 : publicOwner\n            // 0x80 - 0xa0 : publicValue\n            // 0xa0 - 0xc0 : challenge\n            inputNotes := add(_proofOutput, mload(add(_proofOutput, 0x20)))\n            outputNotes := add(_proofOutput, mload(add(_proofOutput, 0x40)))\n            publicOwner := and(\n                mload(add(_proofOutput, 0x60)),\n                0xffffffffffffffffffffffffffffffffffffffff\n            )\n            publicValue := mload(add(_proofOutput, 0x80))\n        }\n    }\n\n    /**\n    * @dev Extract the challenge from a bytes proofOutput variable\n    * @param _proofOutput bytes proofOutput, outputted from a proof validation smart contract\n    * @return bytes32 challenge - cryptographic variable that is part of the sigma protocol\n    */\n    function extractChallenge(bytes memory _proofOutput) internal pure returns (\n        bytes32 challenge\n    ) {\n        assembly {\n            challenge := mload(add(_proofOutput, 0xa0))\n        }\n    }\n\n    /**\n    * @dev Extract constituent elements of an AZTEC note\n    * @param _note an AZTEC note\n    * @return owner, Ethereum address of note owner\n    * @return noteHash, the hash of the note's public key\n    * @return metadata, note-specific metadata (contains public key and any extra data needed by note owner)\n    */\n    function extractNote(bytes memory _note) internal pure returns (\n            address owner,\n            bytes32 noteHash,\n            bytes memory metadata\n    ) {\n        assembly {\n            // memory map of a note:\n            // 0x00 - 0x20 : byte length of note\n            // 0x20 - 0x40 : note type\n            // 0x40 - 0x60 : owner\n            // 0x60 - 0x80 : noteHash\n            // 0x80 - 0xa0 : start of metadata byte array\n            owner := and(\n                mload(add(_note, 0x40)),\n                0xffffffffffffffffffffffffffffffffffffffff\n            )\n            noteHash := mload(add(_note, 0x60))\n            metadata := add(_note, 0x80)\n        }\n    }\n    \n    /**\n    * @dev Get the note type\n    * @param _note an AZTEC note\n    * @return noteType\n    */\n    function getNoteType(bytes memory _note) internal pure returns (\n        uint256 noteType\n    ) {\n        assembly {\n            noteType := mload(add(_note, 0x20))\n        }\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/NoteUtils.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/NoteUtils.sol",
+    "exportedSymbols": {
+      "NoteUtils": [
+        9818
+      ]
+    },
+    "id": 9819,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9743,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:79"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": "@title NoteUtils\n@author AZTEC\n@dev NoteUtils is a utility library that extracts user-readable information from AZTEC proof outputs.\n     Specifically, `bytes proofOutput` objects can be extracted from `bytes proofOutputs`,\n     `bytes proofOutput` and `bytes note` can be extracted into their constituent components,\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 9818,
+        "linearizedBaseContracts": [
+          9818
+        ],
+        "name": "NoteUtils",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 9751,
+              "nodeType": "Block",
+              "src": "1494:224:79",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "len": {
+                        "declaration": 9748,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1657:3:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutputsOrNotes": {
+                        "declaration": 9745,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1674:20:79",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 9750,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    len := mload(add(_proofOutputsOrNotes, 0x20))\n}",
+                  "src": "1504:208:79"
+                }
+              ]
+            },
+            "documentation": "@dev Get the number of entries in an AZTEC-ABI array (bytes proofOutputs, bytes inputNotes, bytes outputNotes)\n     All 3 are rolled into a single function to eliminate 'wet' code - the implementations are identical\n@param _proofOutputsOrNotes `proofOutputs`, `inputNotes` or `outputNotes`\n@return number of entries in the pseudo dynamic array",
+            "id": 9752,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getLength",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9746,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9745,
+                  "name": "_proofOutputsOrNotes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9752,
+                  "src": "1412:33:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9744,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1412:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1411:35:79"
+            },
+            "returnParameters": {
+              "id": 9749,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9748,
+                  "name": "len",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9752,
+                  "src": "1479:8:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9747,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1479:4:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1469:24:79"
+            },
+            "scope": 9818,
+            "src": "1393:325:79",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9770,
+              "nodeType": "Block",
+              "src": "2088:1018:79",
+              "statements": [
+                {
+                  "assignments": [
+                    9762
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 9762,
+                      "name": "valid",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 9770,
+                      "src": "2098:10:79",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 9761,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "2098:4:79",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 9763,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2098:10:79"
+                },
+                {
+                  "externalReferences": [
+                    {
+                      "valid": {
+                        "declaration": 9762,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "2193:5:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutputsOrNotes": {
+                        "declaration": 9754,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "2252:20:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_i": {
+                        "declaration": 9756,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "2222:2:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "out": {
+                        "declaration": 9759,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "2782:3:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutputsOrNotes": {
+                        "declaration": 9754,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "2870:20:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_i": {
+                        "declaration": 9756,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "2927:2:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutputsOrNotes": {
+                        "declaration": 9754,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "2994:20:79",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 9764,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    valid := lt(_i, mload(add(_proofOutputsOrNotes, 0x20)))\n    out := add(mload(add(add(_proofOutputsOrNotes, 0x40), mul(_i, 0x20))), _proofOutputsOrNotes)\n}",
+                  "src": "2118:920:79"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 9766,
+                        "name": "valid",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9762,
+                        "src": "3055:5:79",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "415a54454320617272617920696e646578206973206f7574206f6620626f756e6473",
+                        "id": 9767,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "3062:36:79",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_fef7e11d006e37ebeaba4d36fa21ef80f0c14fc265baea30291d0e8494d1ee17",
+                          "typeString": "literal_string \"AZTEC array index is out of bounds\""
+                        },
+                        "value": "AZTEC array index is out of bounds"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_fef7e11d006e37ebeaba4d36fa21ef80f0c14fc265baea30291d0e8494d1ee17",
+                          "typeString": "literal_string \"AZTEC array index is out of bounds\""
+                        }
+                      ],
+                      "id": 9765,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        13464,
+                        13465
+                      ],
+                      "referencedDeclaration": 13465,
+                      "src": "3047:7:79",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 9768,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3047:52:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9769,
+                  "nodeType": "ExpressionStatement",
+                  "src": "3047:52:79"
+                }
+              ]
+            },
+            "documentation": "@dev Get a bytes object out of a dynamic AZTEC-ABI array\n@param _proofOutputsOrNotes `proofOutputs`, `inputNotes` or `outputNotes`\n@param _i the desired entry\n@return number of entries in the pseudo dynamic array",
+            "id": 9771,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "get",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9757,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9754,
+                  "name": "_proofOutputsOrNotes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9771,
+                  "src": "1989:33:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9753,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1989:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9756,
+                  "name": "_i",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9771,
+                  "src": "2024:7:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9755,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2024:4:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1988:44:79"
+            },
+            "returnParameters": {
+              "id": 9760,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9759,
+                  "name": "out",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9771,
+                  "src": "2065:16:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9758,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2065:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2055:32:79"
+            },
+            "scope": 9818,
+            "src": "1976:1130:79",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9785,
+              "nodeType": "Block",
+              "src": "3975:740:79",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "inputNotes": {
+                        "declaration": 9776,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4348:10:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutput": {
+                        "declaration": 9773,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4390:12:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutput": {
+                        "declaration": 9773,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4366:12:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "publicOwner": {
+                        "declaration": 9780,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4501:11:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "outputNotes": {
+                        "declaration": 9778,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4424:11:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutput": {
+                        "declaration": 9773,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4467:12:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutput": {
+                        "declaration": 9773,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4443:12:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "publicValue": {
+                        "declaration": 9782,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4654:11:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutput": {
+                        "declaration": 9773,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4547:12:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutput": {
+                        "declaration": 9773,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "4679:12:79",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 9784,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    inputNotes := add(_proofOutput, mload(add(_proofOutput, 0x20)))\n    outputNotes := add(_proofOutput, mload(add(_proofOutput, 0x40)))\n    publicOwner := and(mload(add(_proofOutput, 0x60)), 0xffffffffffffffffffffffffffffffffffffffff)\n    publicValue := mload(add(_proofOutput, 0x80))\n}",
+                  "src": "3985:724:79"
+                }
+              ]
+            },
+            "documentation": "@dev Extract constituent elements of a `bytes _proofOutput` object\n@param _proofOutput an AZTEC proof output\n@return inputNotes, AZTEC-ABI dynamic array of input AZTEC notes\n@return outputNotes, AZTEC-ABI dynamic array of output AZTEC notes\n@return publicOwner, the Ethereum address of the owner of any public tokens involved in the proof\n@return publicValue, the amount of public tokens involved in the proof\n        if (publicValue > 0), this represents a transfer of tokens from ACE to publicOwner\n        if (publicValue < 0), this represents a transfer of tokens from publicOwner to ACE",
+            "id": 9786,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "extractProofOutput",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9774,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9773,
+                  "name": "_proofOutput",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9786,
+                  "src": "3795:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9772,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3795:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3794:27:79"
+            },
+            "returnParameters": {
+              "id": 9783,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9776,
+                  "name": "inputNotes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9786,
+                  "src": "3854:23:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9775,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3854:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9778,
+                  "name": "outputNotes",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9786,
+                  "src": "3887:24:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9777,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3887:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9780,
+                  "name": "publicOwner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9786,
+                  "src": "3921:19:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9779,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3921:7:79",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9782,
+                  "name": "publicValue",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9786,
+                  "src": "3950:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_int256",
+                    "typeString": "int256"
+                  },
+                  "typeName": {
+                    "id": 9781,
+                    "name": "int256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3950:6:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_int256",
+                      "typeString": "int256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3844:130:79"
+            },
+            "scope": 9818,
+            "src": "3767:948:79",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9794,
+              "nodeType": "Block",
+              "src": "5098:92:79",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "challenge": {
+                        "declaration": 9791,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "5131:9:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_proofOutput": {
+                        "declaration": 9788,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "5154:12:79",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 9793,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    challenge := mload(add(_proofOutput, 0xa0))\n}",
+                  "src": "5108:76:79"
+                }
+              ]
+            },
+            "documentation": "@dev Extract the challenge from a bytes proofOutput variable\n@param _proofOutput bytes proofOutput, outputted from a proof validation smart contract\n@return bytes32 challenge - cryptographic variable that is part of the sigma protocol",
+            "id": 9795,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "extractChallenge",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9789,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9788,
+                  "name": "_proofOutput",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9795,
+                  "src": "5015:25:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9787,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5015:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5014:27:79"
+            },
+            "returnParameters": {
+              "id": 9792,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9791,
+                  "name": "challenge",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9795,
+                  "src": "5074:17:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 9790,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5074:7:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5064:33:79"
+            },
+            "scope": 9818,
+            "src": "4989:201:79",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9807,
+              "nodeType": "Block",
+              "src": "5682:521:79",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "owner": {
+                        "declaration": 9800,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "5971:5:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_note": {
+                        "declaration": 9797,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "6011:5:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "metadata": {
+                        "declaration": 9804,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "6159:8:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "noteHash": {
+                        "declaration": 9802,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "6111:8:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_note": {
+                        "declaration": 9797,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "6133:5:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_note": {
+                        "declaration": 9797,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "6175:5:79",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 9806,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    owner := and(mload(add(_note, 0x40)), 0xffffffffffffffffffffffffffffffffffffffff)\n    noteHash := mload(add(_note, 0x60))\n    metadata := add(_note, 0x80)\n}",
+                  "src": "5692:505:79"
+                }
+              ]
+            },
+            "documentation": "@dev Extract constituent elements of an AZTEC note\n@param _note an AZTEC note\n@return owner, Ethereum address of note owner\n@return noteHash, the hash of the note's public key\n@return metadata, note-specific metadata (contains public key and any extra data needed by note owner)",
+            "id": 9808,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "extractNote",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9798,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9797,
+                  "name": "_note",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9808,
+                  "src": "5541:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9796,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5541:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5540:20:79"
+            },
+            "returnParameters": {
+              "id": 9805,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9800,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9808,
+                  "src": "5597:13:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9799,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5597:7:79",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9802,
+                  "name": "noteHash",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9808,
+                  "src": "5624:16:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 9801,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5624:7:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9804,
+                  "name": "metadata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9808,
+                  "src": "5654:21:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9803,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5654:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5583:98:79"
+            },
+            "scope": 9818,
+            "src": "5520:683:79",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9816,
+              "nodeType": "Block",
+              "src": "6409:84:79",
+              "statements": [
+                {
+                  "externalReferences": [
+                    {
+                      "noteType": {
+                        "declaration": 9813,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "6442:8:79",
+                        "valueSize": 1
+                      }
+                    },
+                    {
+                      "_note": {
+                        "declaration": 9810,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "6464:5:79",
+                        "valueSize": 1
+                      }
+                    }
+                  ],
+                  "id": 9815,
+                  "nodeType": "InlineAssembly",
+                  "operations": "{\n    noteType := mload(add(_note, 0x20))\n}",
+                  "src": "6419:68:79"
+                }
+              ]
+            },
+            "documentation": "@dev Get the note type\n@param _note an AZTEC note\n@return noteType",
+            "id": 9817,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getNoteType",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9811,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9810,
+                  "name": "_note",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9817,
+                  "src": "6334:18:79",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9809,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6334:5:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6333:20:79"
+            },
+            "returnParameters": {
+              "id": 9814,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9813,
+                  "name": "noteType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9817,
+                  "src": "6386:16:79",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9812,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "6386:7:79",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "6376:32:79"
+            },
+            "scope": 9818,
+            "src": "6313:180:79",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 9819,
+        "src": "985:5510:79"
+      }
+    ],
+    "src": "0:6496:79"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/NoteUtils.sol",
+      "exportedSymbols": {
+        "NoteUtils": [
+          9818
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 9743,
+        "name": "PragmaDirective",
+        "src": "0:31:79"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "documentation": "@title NoteUtils\n@author AZTEC\n@dev NoteUtils is a utility library that extracts user-readable information from AZTEC proof outputs.\n     Specifically, `bytes proofOutput` objects can be extracted from `bytes proofOutputs`,\n     `bytes proofOutput` and `bytes note` can be extracted into their constituent components,\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            9818
+          ],
+          "name": "NoteUtils",
+          "scope": 9819
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": "@dev Get the number of entries in an AZTEC-ABI array (bytes proofOutputs, bytes inputNotes, bytes outputNotes)\n     All 3 are rolled into a single function to eliminate 'wet' code - the implementations are identical\n@param _proofOutputsOrNotes `proofOutputs`, `inputNotes` or `outputNotes`\n@return number of entries in the pseudo dynamic array",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getLength",
+              "scope": 9818,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofOutputsOrNotes",
+                      "scope": 9752,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9744,
+                        "name": "ElementaryTypeName",
+                        "src": "1412:5:79"
+                      }
+                    ],
+                    "id": 9745,
+                    "name": "VariableDeclaration",
+                    "src": "1412:33:79"
+                  }
+                ],
+                "id": 9746,
+                "name": "ParameterList",
+                "src": "1411:35:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "len",
+                      "scope": 9752,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 9747,
+                        "name": "ElementaryTypeName",
+                        "src": "1479:4:79"
+                      }
+                    ],
+                    "id": 9748,
+                    "name": "VariableDeclaration",
+                    "src": "1479:8:79"
+                  }
+                ],
+                "id": 9749,
+                "name": "ParameterList",
+                "src": "1469:24:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "len": {
+                            "declaration": 9748,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "1657:3:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutputsOrNotes": {
+                            "declaration": 9745,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "1674:20:79",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{\n    len := mload(add(_proofOutputsOrNotes, 0x20))\n}"
+                    },
+                    "children": [],
+                    "id": 9750,
+                    "name": "InlineAssembly",
+                    "src": "1504:208:79"
+                  }
+                ],
+                "id": 9751,
+                "name": "Block",
+                "src": "1494:224:79"
+              }
+            ],
+            "id": 9752,
+            "name": "FunctionDefinition",
+            "src": "1393:325:79"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Get a bytes object out of a dynamic AZTEC-ABI array\n@param _proofOutputsOrNotes `proofOutputs`, `inputNotes` or `outputNotes`\n@param _i the desired entry\n@return number of entries in the pseudo dynamic array",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "get",
+              "scope": 9818,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofOutputsOrNotes",
+                      "scope": 9771,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9753,
+                        "name": "ElementaryTypeName",
+                        "src": "1989:5:79"
+                      }
+                    ],
+                    "id": 9754,
+                    "name": "VariableDeclaration",
+                    "src": "1989:33:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_i",
+                      "scope": 9771,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 9755,
+                        "name": "ElementaryTypeName",
+                        "src": "2024:4:79"
+                      }
+                    ],
+                    "id": 9756,
+                    "name": "VariableDeclaration",
+                    "src": "2024:7:79"
+                  }
+                ],
+                "id": 9757,
+                "name": "ParameterList",
+                "src": "1988:44:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "out",
+                      "scope": 9771,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9758,
+                        "name": "ElementaryTypeName",
+                        "src": "2065:5:79"
+                      }
+                    ],
+                    "id": 9759,
+                    "name": "VariableDeclaration",
+                    "src": "2065:16:79"
+                  }
+                ],
+                "id": 9760,
+                "name": "ParameterList",
+                "src": "2055:32:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        9762
+                      ],
+                      "initialValue": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "valid",
+                          "scope": 9770,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "bool",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bool",
+                              "type": "bool"
+                            },
+                            "id": 9761,
+                            "name": "ElementaryTypeName",
+                            "src": "2098:4:79"
+                          }
+                        ],
+                        "id": 9762,
+                        "name": "VariableDeclaration",
+                        "src": "2098:10:79"
+                      }
+                    ],
+                    "id": 9763,
+                    "name": "VariableDeclarationStatement",
+                    "src": "2098:10:79"
+                  },
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "valid": {
+                            "declaration": 9762,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "2193:5:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutputsOrNotes": {
+                            "declaration": 9754,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "2252:20:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_i": {
+                            "declaration": 9756,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "2222:2:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "out": {
+                            "declaration": 9759,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "2782:3:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutputsOrNotes": {
+                            "declaration": 9754,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "2870:20:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_i": {
+                            "declaration": 9756,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "2927:2:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutputsOrNotes": {
+                            "declaration": 9754,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "2994:20:79",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{\n    valid := lt(_i, mload(add(_proofOutputsOrNotes, 0x20)))\n    out := add(mload(add(add(_proofOutputsOrNotes, 0x40), mul(_i, 0x20))), _proofOutputsOrNotes)\n}"
+                    },
+                    "children": [],
+                    "id": 9764,
+                    "name": "InlineAssembly",
+                    "src": "2118:920:79"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_fef7e11d006e37ebeaba4d36fa21ef80f0c14fc265baea30291d0e8494d1ee17",
+                                  "typeString": "literal_string \"AZTEC array index is out of bounds\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                13464,
+                                13465
+                              ],
+                              "referencedDeclaration": 13465,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 9765,
+                            "name": "Identifier",
+                            "src": "3047:7:79"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9762,
+                              "type": "bool",
+                              "value": "valid"
+                            },
+                            "id": 9766,
+                            "name": "Identifier",
+                            "src": "3055:5:79"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "415a54454320617272617920696e646578206973206f7574206f6620626f756e6473",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"AZTEC array index is out of bounds\"",
+                              "value": "AZTEC array index is out of bounds"
+                            },
+                            "id": 9767,
+                            "name": "Literal",
+                            "src": "3062:36:79"
+                          }
+                        ],
+                        "id": 9768,
+                        "name": "FunctionCall",
+                        "src": "3047:52:79"
+                      }
+                    ],
+                    "id": 9769,
+                    "name": "ExpressionStatement",
+                    "src": "3047:52:79"
+                  }
+                ],
+                "id": 9770,
+                "name": "Block",
+                "src": "2088:1018:79"
+              }
+            ],
+            "id": 9771,
+            "name": "FunctionDefinition",
+            "src": "1976:1130:79"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Extract constituent elements of a `bytes _proofOutput` object\n@param _proofOutput an AZTEC proof output\n@return inputNotes, AZTEC-ABI dynamic array of input AZTEC notes\n@return outputNotes, AZTEC-ABI dynamic array of output AZTEC notes\n@return publicOwner, the Ethereum address of the owner of any public tokens involved in the proof\n@return publicValue, the amount of public tokens involved in the proof\n        if (publicValue > 0), this represents a transfer of tokens from ACE to publicOwner\n        if (publicValue < 0), this represents a transfer of tokens from publicOwner to ACE",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "extractProofOutput",
+              "scope": 9818,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofOutput",
+                      "scope": 9786,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9772,
+                        "name": "ElementaryTypeName",
+                        "src": "3795:5:79"
+                      }
+                    ],
+                    "id": 9773,
+                    "name": "VariableDeclaration",
+                    "src": "3795:25:79"
+                  }
+                ],
+                "id": 9774,
+                "name": "ParameterList",
+                "src": "3794:27:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "inputNotes",
+                      "scope": 9786,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9775,
+                        "name": "ElementaryTypeName",
+                        "src": "3854:5:79"
+                      }
+                    ],
+                    "id": 9776,
+                    "name": "VariableDeclaration",
+                    "src": "3854:23:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "outputNotes",
+                      "scope": 9786,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9777,
+                        "name": "ElementaryTypeName",
+                        "src": "3887:5:79"
+                      }
+                    ],
+                    "id": 9778,
+                    "name": "VariableDeclaration",
+                    "src": "3887:24:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "publicOwner",
+                      "scope": 9786,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9779,
+                        "name": "ElementaryTypeName",
+                        "src": "3921:7:79"
+                      }
+                    ],
+                    "id": 9780,
+                    "name": "VariableDeclaration",
+                    "src": "3921:19:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "publicValue",
+                      "scope": 9786,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "int256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "int256",
+                          "type": "int256"
+                        },
+                        "id": 9781,
+                        "name": "ElementaryTypeName",
+                        "src": "3950:6:79"
+                      }
+                    ],
+                    "id": 9782,
+                    "name": "VariableDeclaration",
+                    "src": "3950:18:79"
+                  }
+                ],
+                "id": 9783,
+                "name": "ParameterList",
+                "src": "3844:130:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "inputNotes": {
+                            "declaration": 9776,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4348:10:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutput": {
+                            "declaration": 9773,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4390:12:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutput": {
+                            "declaration": 9773,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4366:12:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "publicOwner": {
+                            "declaration": 9780,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4501:11:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "outputNotes": {
+                            "declaration": 9778,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4424:11:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutput": {
+                            "declaration": 9773,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4467:12:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutput": {
+                            "declaration": 9773,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4443:12:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "publicValue": {
+                            "declaration": 9782,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4654:11:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutput": {
+                            "declaration": 9773,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4547:12:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutput": {
+                            "declaration": 9773,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "4679:12:79",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{\n    inputNotes := add(_proofOutput, mload(add(_proofOutput, 0x20)))\n    outputNotes := add(_proofOutput, mload(add(_proofOutput, 0x40)))\n    publicOwner := and(mload(add(_proofOutput, 0x60)), 0xffffffffffffffffffffffffffffffffffffffff)\n    publicValue := mload(add(_proofOutput, 0x80))\n}"
+                    },
+                    "children": [],
+                    "id": 9784,
+                    "name": "InlineAssembly",
+                    "src": "3985:724:79"
+                  }
+                ],
+                "id": 9785,
+                "name": "Block",
+                "src": "3975:740:79"
+              }
+            ],
+            "id": 9786,
+            "name": "FunctionDefinition",
+            "src": "3767:948:79"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Extract the challenge from a bytes proofOutput variable\n@param _proofOutput bytes proofOutput, outputted from a proof validation smart contract\n@return bytes32 challenge - cryptographic variable that is part of the sigma protocol",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "extractChallenge",
+              "scope": 9818,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_proofOutput",
+                      "scope": 9795,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9787,
+                        "name": "ElementaryTypeName",
+                        "src": "5015:5:79"
+                      }
+                    ],
+                    "id": 9788,
+                    "name": "VariableDeclaration",
+                    "src": "5015:25:79"
+                  }
+                ],
+                "id": 9789,
+                "name": "ParameterList",
+                "src": "5014:27:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "challenge",
+                      "scope": 9795,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 9790,
+                        "name": "ElementaryTypeName",
+                        "src": "5074:7:79"
+                      }
+                    ],
+                    "id": 9791,
+                    "name": "VariableDeclaration",
+                    "src": "5074:17:79"
+                  }
+                ],
+                "id": 9792,
+                "name": "ParameterList",
+                "src": "5064:33:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "challenge": {
+                            "declaration": 9791,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "5131:9:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_proofOutput": {
+                            "declaration": 9788,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "5154:12:79",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{\n    challenge := mload(add(_proofOutput, 0xa0))\n}"
+                    },
+                    "children": [],
+                    "id": 9793,
+                    "name": "InlineAssembly",
+                    "src": "5108:76:79"
+                  }
+                ],
+                "id": 9794,
+                "name": "Block",
+                "src": "5098:92:79"
+              }
+            ],
+            "id": 9795,
+            "name": "FunctionDefinition",
+            "src": "4989:201:79"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Extract constituent elements of an AZTEC note\n@param _note an AZTEC note\n@return owner, Ethereum address of note owner\n@return noteHash, the hash of the note's public key\n@return metadata, note-specific metadata (contains public key and any extra data needed by note owner)",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "extractNote",
+              "scope": 9818,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_note",
+                      "scope": 9808,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9796,
+                        "name": "ElementaryTypeName",
+                        "src": "5541:5:79"
+                      }
+                    ],
+                    "id": 9797,
+                    "name": "VariableDeclaration",
+                    "src": "5541:18:79"
+                  }
+                ],
+                "id": 9798,
+                "name": "ParameterList",
+                "src": "5540:20:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "owner",
+                      "scope": 9808,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9799,
+                        "name": "ElementaryTypeName",
+                        "src": "5597:7:79"
+                      }
+                    ],
+                    "id": 9800,
+                    "name": "VariableDeclaration",
+                    "src": "5597:13:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "noteHash",
+                      "scope": 9808,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 9801,
+                        "name": "ElementaryTypeName",
+                        "src": "5624:7:79"
+                      }
+                    ],
+                    "id": 9802,
+                    "name": "VariableDeclaration",
+                    "src": "5624:16:79"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "metadata",
+                      "scope": 9808,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9803,
+                        "name": "ElementaryTypeName",
+                        "src": "5654:5:79"
+                      }
+                    ],
+                    "id": 9804,
+                    "name": "VariableDeclaration",
+                    "src": "5654:21:79"
+                  }
+                ],
+                "id": 9805,
+                "name": "ParameterList",
+                "src": "5583:98:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "owner": {
+                            "declaration": 9800,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "5971:5:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_note": {
+                            "declaration": 9797,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "6011:5:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "metadata": {
+                            "declaration": 9804,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "6159:8:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "noteHash": {
+                            "declaration": 9802,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "6111:8:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_note": {
+                            "declaration": 9797,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "6133:5:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_note": {
+                            "declaration": 9797,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "6175:5:79",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{\n    owner := and(mload(add(_note, 0x40)), 0xffffffffffffffffffffffffffffffffffffffff)\n    noteHash := mload(add(_note, 0x60))\n    metadata := add(_note, 0x80)\n}"
+                    },
+                    "children": [],
+                    "id": 9806,
+                    "name": "InlineAssembly",
+                    "src": "5692:505:79"
+                  }
+                ],
+                "id": 9807,
+                "name": "Block",
+                "src": "5682:521:79"
+              }
+            ],
+            "id": 9808,
+            "name": "FunctionDefinition",
+            "src": "5520:683:79"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Get the note type\n@param _note an AZTEC note\n@return noteType",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getNoteType",
+              "scope": 9818,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_note",
+                      "scope": 9817,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9809,
+                        "name": "ElementaryTypeName",
+                        "src": "6334:5:79"
+                      }
+                    ],
+                    "id": 9810,
+                    "name": "VariableDeclaration",
+                    "src": "6334:18:79"
+                  }
+                ],
+                "id": 9811,
+                "name": "ParameterList",
+                "src": "6333:20:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "noteType",
+                      "scope": 9817,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 9812,
+                        "name": "ElementaryTypeName",
+                        "src": "6386:7:79"
+                      }
+                    ],
+                    "id": 9813,
+                    "name": "VariableDeclaration",
+                    "src": "6386:16:79"
+                  }
+                ],
+                "id": 9814,
+                "name": "ParameterList",
+                "src": "6376:32:79"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "externalReferences": [
+                        {
+                          "noteType": {
+                            "declaration": 9813,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "6442:8:79",
+                            "valueSize": 1
+                          }
+                        },
+                        {
+                          "_note": {
+                            "declaration": 9810,
+                            "isOffset": false,
+                            "isSlot": false,
+                            "src": "6464:5:79",
+                            "valueSize": 1
+                          }
+                        }
+                      ],
+                      "operations": "{\n    noteType := mload(add(_note, 0x20))\n}"
+                    },
+                    "children": [],
+                    "id": 9815,
+                    "name": "InlineAssembly",
+                    "src": "6419:68:79"
+                  }
+                ],
+                "id": 9816,
+                "name": "Block",
+                "src": "6409:84:79"
+              }
+            ],
+            "id": 9817,
+            "name": "FunctionDefinition",
+            "src": "6313:180:79"
+          }
+        ],
+        "id": 9818,
+        "name": "ContractDefinition",
+        "src": "985:5510:79"
+      }
+    ],
+    "id": 9819,
+    "name": "SourceUnit",
+    "src": "0:6496:79"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.542Z",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "NoteUtils is a utility library that extracts user-readable information from AZTEC proof outputs.     Specifically, `bytes proofOutput` objects can be extracted from `bytes proofOutputs`,     `bytes proofOutput` and `bytes note` can be extracted into their constituent components, * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {},
+    "title": "NoteUtils"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

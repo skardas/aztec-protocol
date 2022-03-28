@@ -1,0 +1,627 @@
+{
+  "contractName": "MetaDataUtilsTest",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "metaData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "addressPos",
+          "type": "uint256"
+        }
+      ],
+      "name": "extractAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "desiredAddress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.17+commit.d19bba13\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"metaData\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"addressPos\",\"type\":\"uint256\"}],\"name\":\"extractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"desiredAddress\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"AZTEC\",\"details\":\"Library of MetaData manipulation operations  * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*\",\"methods\":{\"extractAddress(bytes,uint256)\":{\"details\":\"Extract a single approved address from the metaData\",\"params\":{\"addressPos\":\"- indexer for the desired address, the one to be extracted\",\"metaData\":\"- metaData containing addresses according to the schema defined in x\"},\"return\":\"desiredAddress - extracted address specified by the inputs to this function\"}},\"title\":\"MetaDataUtilsTest\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/MetaDataUtilsTest.sol\":\"MetaDataUtilsTest\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/MetaDataUtils.sol\":{\"keccak256\":\"0xe5cc8bc4ceb2758eb40d7aa13645b2322846805e2ba15db9a558d34f4ce5a381\",\"urls\":[\"bzz-raw://7e3f2cb8eb0540d3cd3db3d74610935785f3272145f1bf611197d936a1ebdb19\",\"dweb:/ipfs/QmbJdMTdULWrv8DkZ952QrN4yvx1HTn4zK4ksRxKiDHnYY\"]},\"/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/MetaDataUtilsTest.sol\":{\"keccak256\":\"0xd735811e2f67ed613324e63383f0c1f32b59987b6a34635c89dabb86452b638d\",\"urls\":[\"bzz-raw://beb18fa19c8ff9ca277cafb0ff90ff1218f1cda217450cc50b7b4932e2628e80\",\"dweb:/ipfs/QmXjEKpRg93PhJvDVM4yxTgC765GTfrj7dR1en6P7TiGgn\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506101f6806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c80635855da3d14610030575b600080fd5b6100d86004803603604081101561004657600080fd5b81019060208101813564010000000081111561006157600080fd5b82018360208201111561007357600080fd5b8035906020019184600183028401116401000000008311171561009557600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050913592506100f4915050565b604080516001600160a01b039092168252519081900360200190f35b6000610106838363ffffffff61010d16565b9392505050565b602082810151908202830161010101519080831061015c5760405162461bcd60e51b815260040180806020018281038252605e815260200180610164605e913960600191505060405180910390fd5b509291505056fe61646472657373506f73206f7574206f6620626f756e6473202d2061646472657373506f73206d757374206265206c657373207468616e20746865206e756d626572206f662061646472657373657320746f20626520617070726f766564a265627a7a7231582037d663b96105837c0f1bc2d4d1a1d44ce9d406ad344e0fb959597cd8944d086364736f6c63430005110032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c80635855da3d14610030575b600080fd5b6100d86004803603604081101561004657600080fd5b81019060208101813564010000000081111561006157600080fd5b82018360208201111561007357600080fd5b8035906020019184600183028401116401000000008311171561009557600080fd5b91908080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525092955050913592506100f4915050565b604080516001600160a01b039092168252519081900360200190f35b6000610106838363ffffffff61010d16565b9392505050565b602082810151908202830161010101519080831061015c5760405162461bcd60e51b815260040180806020018281038252605e815260200180610164605e913960600191505060405180910390fd5b509291505056fe61646472657373506f73206f7574206f6620626f756e6473202d2061646472657373506f73206d757374206265206c657373207468616e20746865206e756d626572206f662061646472657373657320746f20626520617070726f766564a265627a7a7231582037d663b96105837c0f1bc2d4d1a1d44ce9d406ad344e0fb959597cd8944d086364736f6c63430005110032",
+  "sourceMap": "792:584:107:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;792:584:107;;;;;;;",
+  "deployedSourceMap": "792:584:107:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;792:584:107;;;;;;;;;;;;;;;;;;;1203:171;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1203:171:107;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;1203:171:107;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1203:171:107;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1203:171:107;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;1203:171:107;;-1:-1:-1;;1203:171:107;;;-1:-1:-1;1203:171:107;;-1:-1:-1;;1203:171:107:i;:::-;;;;-1:-1:-1;;;;;1203:171:107;;;;;;;;;;;;;;;1291:22;1332:35;:8;1356:10;1332:35;:23;:35;:::i;:::-;1325:42;1203:171;-1:-1:-1;;;1203:171:107:o;1119:1556:77:-;2135:4;2121:19;;;2115:26;2397:21;;;2195:272;;2283:15;2195:272;2172:309;;2522:25;;;2501:167;;;;-1:-1:-1;;;2501:167:77;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1119:1556;;;;;:::o",
+  "source": "pragma solidity >= 0.5.0 <0.6.0;\n\nimport \"../../libs/MetaDataUtils.sol\";\n\n/**\n * @title MetaDataUtilsTest\n * @author AZTEC\n * @dev Library of MetaData manipulation operations\n * \n * Copyright 2020 Spilsbury Holdings Ltd \n *\n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n *\n * This program is distributed in the hope that it will be useful,\n * but WITHOUT ANY WARRANTY; without even the implied warranty of\n * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n * GNU Lesser General Public License for more details.\n *\n * You should have received a copy of the GNU Lesser General Public License\n * along with this program.  If not, see <https://www.gnu.org/licenses/>.\n**/\n\ncontract MetaDataUtilsTest {\n    using MetaDataUtils for bytes;\n\n    /**\n    * @dev Extract a single approved address from the metaData\n    * @param metaData - metaData containing addresses according to the schema defined in x\n    * @param addressPos - indexer for the desired address, the one to be extracted\n    * @return desiredAddress - extracted address specified by the inputs to this function\n    */\n    function extractAddress(bytes memory metaData, uint256 addressPos) public pure returns (address desiredAddress) {\n        return metaData.extractAddress(addressPos);\n    }\n}\n",
+  "sourcePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/MetaDataUtilsTest.sol",
+  "ast": {
+    "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/MetaDataUtilsTest.sol",
+    "exportedSymbols": {
+      "MetaDataUtilsTest": [
+        11534
+      ]
+    },
+    "id": 11535,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 11514,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:107"
+      },
+      {
+        "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/MetaDataUtils.sol",
+        "file": "../../libs/MetaDataUtils.sol",
+        "id": 11515,
+        "nodeType": "ImportDirective",
+        "scope": 11535,
+        "sourceUnit": 9724,
+        "src": "34:38:107",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title MetaDataUtilsTest\n@author AZTEC\n@dev Library of MetaData manipulation operations\n\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+        "fullyImplemented": true,
+        "id": 11534,
+        "linearizedBaseContracts": [
+          11534
+        ],
+        "name": "MetaDataUtilsTest",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 11518,
+            "libraryName": {
+              "contractScope": null,
+              "id": 11516,
+              "name": "MetaDataUtils",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 9723,
+              "src": "831:13:107",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_MetaDataUtils_$9723",
+                "typeString": "library MetaDataUtils"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "825:30:107",
+            "typeName": {
+              "id": 11517,
+              "name": "bytes",
+              "nodeType": "ElementaryTypeName",
+              "src": "849:5:107",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes_storage_ptr",
+                "typeString": "bytes"
+              }
+            }
+          },
+          {
+            "body": {
+              "id": 11532,
+              "nodeType": "Block",
+              "src": "1315:59:107",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 11529,
+                        "name": "addressPos",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11522,
+                        "src": "1356:10:107",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 11527,
+                        "name": "metaData",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11520,
+                        "src": "1332:8:107",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes_memory_ptr",
+                          "typeString": "bytes memory"
+                        }
+                      },
+                      "id": 11528,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "extractAddress",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 9722,
+                      "src": "1332:23:107",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_pure$_t_bytes_memory_ptr_$_t_uint256_$returns$_t_address_$bound_to$_t_bytes_memory_ptr_$",
+                        "typeString": "function (bytes memory,uint256) pure returns (address)"
+                      }
+                    },
+                    "id": 11530,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1332:35:107",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 11526,
+                  "id": 11531,
+                  "nodeType": "Return",
+                  "src": "1325:42:107"
+                }
+              ]
+            },
+            "documentation": "@dev Extract a single approved address from the metaData\n@param metaData - metaData containing addresses according to the schema defined in x\n@param addressPos - indexer for the desired address, the one to be extracted\n@return desiredAddress - extracted address specified by the inputs to this function",
+            "id": 11533,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "extractAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11523,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11520,
+                  "name": "metaData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11533,
+                  "src": "1227:21:107",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 11519,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1227:5:107",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 11522,
+                  "name": "addressPos",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11533,
+                  "src": "1250:18:107",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11521,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1250:7:107",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1226:43:107"
+            },
+            "returnParameters": {
+              "id": 11526,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 11525,
+                  "name": "desiredAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 11533,
+                  "src": "1291:22:107",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 11524,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1291:7:107",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1290:24:107"
+            },
+            "scope": 11534,
+            "src": "1203:171:107",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 11535,
+        "src": "792:584:107"
+      }
+    ],
+    "src": "0:1377:107"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/test/libs/MetaDataUtilsTest.sol",
+      "exportedSymbols": {
+        "MetaDataUtilsTest": [
+          11534
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 11514,
+        "name": "PragmaDirective",
+        "src": "0:32:107"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 9724,
+          "absolutePath": "/Users/suleymankardas/Desktop/aztec/aztec-protocol/contracts/libs/MetaDataUtils.sol",
+          "file": "../../libs/MetaDataUtils.sol",
+          "scope": 11535,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 11515,
+        "name": "ImportDirective",
+        "src": "34:38:107"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "@title MetaDataUtilsTest\n@author AZTEC\n@dev Library of MetaData manipulation operations\n\n * Copyright 2020 Spilsbury Holdings Ltd \n * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\");\nyou may not use this file except in compliance with the License.\n * This program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU Lesser General Public License for more details.\n * You should have received a copy of the GNU Lesser General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            11534
+          ],
+          "name": "MetaDataUtilsTest",
+          "scope": 11535
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "MetaDataUtils",
+                  "referencedDeclaration": 9723,
+                  "type": "library MetaDataUtils"
+                },
+                "id": 11516,
+                "name": "UserDefinedTypeName",
+                "src": "831:13:107"
+              },
+              {
+                "attributes": {
+                  "name": "bytes",
+                  "type": "bytes"
+                },
+                "id": 11517,
+                "name": "ElementaryTypeName",
+                "src": "849:5:107"
+              }
+            ],
+            "id": 11518,
+            "name": "UsingForDirective",
+            "src": "825:30:107"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Extract a single approved address from the metaData\n@param metaData - metaData containing addresses according to the schema defined in x\n@param addressPos - indexer for the desired address, the one to be extracted\n@return desiredAddress - extracted address specified by the inputs to this function",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "extractAddress",
+              "scope": 11534,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "metaData",
+                      "scope": 11533,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 11519,
+                        "name": "ElementaryTypeName",
+                        "src": "1227:5:107"
+                      }
+                    ],
+                    "id": 11520,
+                    "name": "VariableDeclaration",
+                    "src": "1227:21:107"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "addressPos",
+                      "scope": 11533,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 11521,
+                        "name": "ElementaryTypeName",
+                        "src": "1250:7:107"
+                      }
+                    ],
+                    "id": 11522,
+                    "name": "VariableDeclaration",
+                    "src": "1250:18:107"
+                  }
+                ],
+                "id": 11523,
+                "name": "ParameterList",
+                "src": "1226:43:107"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "desiredAddress",
+                      "scope": 11533,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 11524,
+                        "name": "ElementaryTypeName",
+                        "src": "1291:7:107"
+                      }
+                    ],
+                    "id": 11525,
+                    "name": "VariableDeclaration",
+                    "src": "1291:22:107"
+                  }
+                ],
+                "id": 11526,
+                "name": "ParameterList",
+                "src": "1290:24:107"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 11526
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "address",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "extractAddress",
+                              "referencedDeclaration": 9722,
+                              "type": "function (bytes memory,uint256) pure returns (address)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11520,
+                                  "type": "bytes memory",
+                                  "value": "metaData"
+                                },
+                                "id": 11527,
+                                "name": "Identifier",
+                                "src": "1332:8:107"
+                              }
+                            ],
+                            "id": 11528,
+                            "name": "MemberAccess",
+                            "src": "1332:23:107"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 11522,
+                              "type": "uint256",
+                              "value": "addressPos"
+                            },
+                            "id": 11529,
+                            "name": "Identifier",
+                            "src": "1356:10:107"
+                          }
+                        ],
+                        "id": 11530,
+                        "name": "FunctionCall",
+                        "src": "1332:35:107"
+                      }
+                    ],
+                    "id": 11531,
+                    "name": "Return",
+                    "src": "1325:42:107"
+                  }
+                ],
+                "id": 11532,
+                "name": "Block",
+                "src": "1315:59:107"
+              }
+            ],
+            "id": 11533,
+            "name": "FunctionDefinition",
+            "src": "1203:171:107"
+          }
+        ],
+        "id": 11534,
+        "name": "ContractDefinition",
+        "src": "792:584:107"
+      }
+    ],
+    "id": 11535,
+    "name": "SourceUnit",
+    "src": "0:1377:107"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.17+commit.d19bba13.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2022-03-28T14:36:05.572Z",
+  "devdoc": {
+    "author": "AZTEC",
+    "details": "Library of MetaData manipulation operations  * Copyright 2020 Spilsbury Holdings Ltd  * Licensed under the GNU Lesser General Public Licence, Version 3.0 (the \"License\"); you may not use this file except in compliance with the License. * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details. * You should have received a copy of the GNU Lesser General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.*",
+    "methods": {
+      "extractAddress(bytes,uint256)": {
+        "details": "Extract a single approved address from the metaData",
+        "params": {
+          "addressPos": "- indexer for the desired address, the one to be extracted",
+          "metaData": "- metaData containing addresses according to the schema defined in x"
+        },
+        "return": "desiredAddress - extracted address specified by the inputs to this function"
+      }
+    },
+    "title": "MetaDataUtilsTest"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
